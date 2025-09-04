@@ -18,7 +18,7 @@ type WorkItem = {
 
 export function SelectedWorks() {
   return (
-    <section id="works" className="w-full p-6 sm:p-8 md:p-16">
+    <section id="works " className="w-full p-6 sm:p-8 md:p-16">
       <div className="w-full max-w-[1072px] mx-auto grid gap-y-10 md:gap-y-16">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6">

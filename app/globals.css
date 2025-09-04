@@ -41,7 +41,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-   /* custom colors */
+  /* custom colors */
   --color-le-text: var(--le-text);
   --color-le-sub: var(--le-sub);
   --color-le-smoke: var(--le-smoke);
@@ -142,7 +142,18 @@
 
 @font-face {
   font-family: "Inter Tight";
-  src: url("/assets/fonts/InterTight-Regular.ttf") format("truetype");
+  src: url("/fonts/InterTight-Regular.ttf") format("truetype");
+}
+
+.quote-bg {
+  background: #4f46e5;
+  background: radial-gradient(
+    circle,
+    rgba(79, 70, 229, 1) 10%,
+    rgba(255, 67, 24, 1) 40%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  filter: blur(100px);
 }
 
 @keyframes gradient {
@@ -159,4 +170,13 @@
 
 .animate-gradient {
   animation: gradient 10s ease infinite;
+}
+
+/* globals.css */
+.mesh-bg {
+  background-color: #ffffff;
+  background-image: radial-gradient(at 20% 20%, #ffffff 0px, transparent 50%),
+    radial-gradient(at 80% 80%, #4f46e5 0px, transparent 50%),
+    radial-gradient(at 60% 100%, #ff4318 0px, transparent 60%);
+  background-attachment: fixed;
 }

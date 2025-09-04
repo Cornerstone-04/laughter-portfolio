@@ -4,8 +4,11 @@ export function FavouriteQuote() {
       {/* AURORA BACKGROUND */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#ffffff] via-[#FF4318] to-[#4F46E5] animate-gradient bg-[length:200%_200%]"
+        className="pointer-events-none absolute inset-0 -z-10 blur-in bg-gradient-to-br from-[#ffffff] via-[#FF4318] to-[#4F46E5] animate-gradient bg-[length:200%_200%]"
       />
+      {/* <div className="absolute inset-0 -z-20 w-full">
+        <img src="/images/gradient.png" alt="" />
+      </div> */}
 
       <div className="mx-auto w-full max-w-[784px] flex flex-col items-center justify-center gap-6 md:gap-8">
         <div className="flex flex-col items-center justify-center gap-4 md:gap-6">

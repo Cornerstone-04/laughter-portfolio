@@ -3,10 +3,11 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Gallery from "./gallery";
+import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="mt-12 sm:mt-16">
+    <section id="home" className="mt-12 sm:mt-16">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col items-center text-center">
           <h1
@@ -40,12 +41,16 @@ export default function Hero() {
               h-12 sm:h-14
               text-sm sm:text-base
               w-full sm:w-auto
-              px-5 sm:px-6
-              flex items-center justify-center gap-2.5
+              px-5 sm:px-6 
             "
             aria-label="Get in touch"
           >
-            Get in touch <ArrowRight className="size-4 sm:size-5" />
+            <Link
+              href="/#contact-me"
+              className="flex items-center justify-center gap-2.5"
+            >
+              Get in touch <ArrowRight className="size-4 sm:size-5" />
+            </Link>
           </Button>
         </div>
       </div>

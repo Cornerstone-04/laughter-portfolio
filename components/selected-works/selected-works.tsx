@@ -12,13 +12,13 @@ type WorkItem = {
   type: string;
   brands: string;
   year: string | number;
-  imageUrl: string; // e.g. "/images/bling.jpg"
-  link: string; // internal or external
+  imageUrl: string;
+  link: string;
 };
 
 export function SelectedWorks() {
   return (
-    <section className="w-full p-6 sm:p-8 md:p-16">
+    <section id="works" className="w-full p-6 sm:p-8 md:p-16">
       <div className="w-full max-w-[1072px] mx-auto grid gap-y-10 md:gap-y-16">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6">
@@ -112,7 +112,7 @@ export function SelectedWorks() {
             variant="primary"
             className="h-12 sm:h-14 w-full sm:w-fit px-6 sm:px-8 py-3 sm:py-4 text-base flex items-center justify-center gap-2"
           >
-            Start new project
+            <Link href="/#contact-me">Start new project</Link>
           </Button>
           <Button
             variant="secondary"

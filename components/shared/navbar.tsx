@@ -17,7 +17,7 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <Link
-              href="/"
+              href="#home"
               className="font-semibold text-base sm:text-lg leading-none dark:text-le-smoke -tracking-[0.02em]"
             >
               EPHRAIM LAUGHTER
@@ -27,13 +27,13 @@ export function Navbar() {
           {/* Desktop menu */}
           <div className="hidden md:flex gap-8 items-center justify-end">
             <div className="flex gap-3 items-center font-medium text-[#534C57] dark:text-[#cacaca]">
-              <Link href="/">Home</Link>
+              <Link href="/#home">Home</Link>
               <Link href="/#works">Works</Link>
-              <Link href="/about">About</Link>
+              <Link href="/#about">About</Link>
               <Link href="/#testimonials">Testimonials</Link>
             </div>
             <Button variant="primary" className="h-11 font-medium text-sm">
-              Contact Me
+              <Link href="/#contact-me">Contact Me</Link>
             </Button>
           </div>
 

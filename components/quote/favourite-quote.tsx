@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function FavouriteQuote() {
   return (
     <section className="relative isolate overflow-hidden w-full min-h-screen flex items-center justify-center text-center p-4 md:p-6">
@@ -14,7 +16,7 @@ export function FavouriteQuote() {
         <div className="flex flex-col items-center justify-center gap-4 md:gap-6">
           {/* Opening Quote */}
           <div className="py-4 md:py-6 px-3 md:px-4 flex items-center justify-center">
-            <img
+            <Image
               src="/icons/quote.svg"
               alt="quote icon"
               className="w-10 h-8 md:w-[70px] md:h-[55px] -scale-x-[1]"
@@ -23,14 +25,14 @@ export function FavouriteQuote() {
 
           {/* Quote Text */}
           <h2 className="text-pretty text-2xl md:text-[44px] font-medium leading-snug md:leading-[normal] -tracking-[1.32px] text-white">
-            The essence of cinema is editing. It's the combination of what can
+            The essence of cinema is editing. It&apos;s the combination of what can
             be extraordinary images of people during emotional moments, or
             images in a general sense, put together in a kind of alchemy.
           </h2>
 
           {/* Closing Quote */}
           <div className="py-4 md:py-6 px-3 md:px-4 flex items-center justify-center">
-            <img
+            <Image
               src="/icons/quote.svg"
               alt="quote icon"
               className="w-10 h-8 md:w-[70px] md:h-[55px]"

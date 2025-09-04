@@ -24,7 +24,7 @@ export const Footer = () => {
               Laughter Ephraim
             </h1>
             <p className="text-base sm:text-lg md:text-xl -tracking-[0.4px] leading-normal font-medium text-[#454545]">
-              Have any project in mind? Let's have a quick call.
+              Have any project in mind? Let&apos;s have a quick call.
             </p>
           </div>
 

@@ -14,7 +14,7 @@ export default function Hero() {
             className="
               uppercase font-semibold
               text-4xl xs:text-5xl sm:text-6xl md:text-8xl
-              leading-normal -tracking-[3.84px]
+              leading-normal tracking-normal sm:-tracking-[3.84px]
               mb-3 sm:mb-4
             "
           >
@@ -23,11 +23,7 @@ export default function Hero() {
 
           <p
             className="
-              text-[#454545]
-              text-base sm:text-lg md:text-xl
-              leading-normal -tracking-[.8px]
-              max-w-[38rem] sm:max-w-[42rem]
-              mb-5 sm:mb-6
+              text-[#454545] text-base sm:text-lg md:text-xl leading-normal -tracking-[.8px] max-w-[600px] mb-5 sm:mb-6
             "
           >
             I am an AMVCA-nominated film editor with a passion to create

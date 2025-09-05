@@ -1,0 +1,18 @@
+[
+  {
+    "id": "dtsv",
+    "icon": "/icons/dstv.svg"
+  },
+  {
+    "id": "netflix",
+    "icon": "/icons/netflix.svg"
+  },
+  {
+    "id": "prime",
+    "icon": "/icons/prime.svg"
+  },
+  {
+    "id": "am",
+    "icon": "/icons/am.svg"
+  }
+]

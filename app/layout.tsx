@@ -50,7 +50,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="">
+      <body className="relative">
         <ThemeProvider>
           <Navbar />
           <main className="min-h-dvh">{children}</main>

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Sharp Storytelling",
+    "description": "I transform raw footage into compelling narratives that evoke emotion, engage viewers, and deliver impact—because editing isn’t just technical, it’s storytelling at its finest.",
+    "color": "#FE7A27"
+  },
+  {
+    "id": 2,
+    "title": "Proven Excellence",
+    "description": "As an AMVCA-nominated editor, I bring industry-recognized excellence to every project, ensuring your story is told with award-worthy quality and cinematic finesse.",
+    "color": "#3341FA"
+  },
+  {
+    "id": 3,
+    "title": "Creative Sync",
+    "description": "I partner with directors and producers to bring their creative visions to life, offering a blend of technical mastery and narrative instinct that elevates every scene.",
+    "color": "#777DD7"
+  },
+  {
+    "id": 4,
+    "title": "Meaningful Impact",
+    "description": "Whether for big screens or digital campaigns, I edit with purpose—crafting content that sparks connection, reflects meaning, and leaves a lasting impression.",
+    "color": "#4F46E5"
+  }
+]

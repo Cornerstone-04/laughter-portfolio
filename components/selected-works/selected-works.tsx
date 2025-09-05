@@ -18,18 +18,20 @@ type WorkItem = {
 
 export function SelectedWorks() {
   return (
-    <section id="works " className="w-full p-6 sm:p-8 md:p-16">
+    <section id="works" className="w-full p-6 sm:p-8 md:p-16">
       <div className="w-full max-w-[1072px] mx-auto grid gap-y-10 md:gap-y-16">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6">
           <header className="flex flex-col gap-2 md:gap-1">
-            <div className="flex flex-wrap items-end justify-start gap-2.5">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-[100%] -tracking-[3%]">
+            <div className="flex flex-wrap items-end justify-between sm:justify-start gap-2.5">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-normal -tracking-[1.44px] text-le-text">
                 Selected Works
               </h1>
-              <h4 className="text-sm sm:text-base md:text-lg text-[#5A5874] leading-[100%] -tracking-[3%] font-medium px-2 pt-1 pb-1.5">
-                2020 - 2025
-              </h4>
+              <p className="w-fit pt-1 pb-1.5 px-2 flex justify-center items-center">
+                <span className="text-sm sm:text-base md:text-lg text-[#5A5874] leading-[100%] -tracking-[0.54px] font-medium">
+                  2020 - 2025
+                </span>
+              </p>
             </div>
             <p className="w-full max-w-lg text-base md:text-lg text-[#454545] leading-normal -tracking-[.54px] font-medium">
               Get an inside look at the edits, stories, and moments that shaped
@@ -76,7 +78,7 @@ export function SelectedWorks() {
                   />
 
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-xs">
                     <Link
                       href={item.link}
                       className="flex items-center justify-center gap-2.5 h-14 w-fit font-medium px-8 py-4 bg-le-purple text-white rounded-full shadow-lg hover:bg-le-purple/80 transition hover:scale-105"
@@ -88,8 +90,8 @@ export function SelectedWorks() {
                 </div>
 
                 <div>
-                  <h1 className="flex gap-2 justify-start items-end mb-1">
-                    <span className="font-semibold text-2xl sm:text-[26px] md:text-[28px] leading-[100%] -tracking-[3%] text-[#2A2936]">
+                  <h1 className="flex gap-2 justify-start items-center mb-1">
+                    <span className="font-semibold text-xl sm:text-2xl md:text-[28px] leading-normal -tracking-[0.84px] text-[#2A2936]">
                       {item.title}
                     </span>
                     <Badge className="py-[3px] px-1.5 rounded-full bg-[#DFDFDF] text-xs sm:text-sm font-medium text-[#636363] leading-[100%] -tracking-[3%]">

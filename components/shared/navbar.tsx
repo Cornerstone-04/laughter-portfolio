@@ -29,7 +29,7 @@ export function Navbar() {
             <div className="flex gap-3 items-center font-medium text-[#534C57] dark:text-[#cacaca]">
               <Link href="/#home">Home</Link>
               <Link href="/#works">Works</Link>
-              <Link href="/#about">About</Link>
+              <Link href="/#about-laughter">About</Link>
               <Link href="/#testimonials">Testimonials</Link>
             </div>
             <Button variant="primary" className="h-11 font-medium text-sm">
@@ -56,7 +56,7 @@ export function Navbar() {
             className="mt-2 md:hidden bg-white dark:bg-[#1d1d1d] rounded-xl shadow-lg p-4 space-y-4"
           >
             <Link
-              href="/"
+              href="/#home"
               className="block text-[#534C57] dark:text-[#cacaca]"
               onClick={() => setMenuOpen(false)}
             >
@@ -70,7 +70,7 @@ export function Navbar() {
               Works
             </Link>
             <Link
-              href="/about"
+              href="/#about-laughter"
               className="block text-[#534C57] dark:text-[#cacaca]"
               onClick={() => setMenuOpen(false)}
             >
@@ -88,7 +88,7 @@ export function Navbar() {
               className="w-full h-11 font-medium text-sm"
               onClick={() => setMenuOpen(false)}
             >
-              Contact Me
+              <Link href="/#contact-me">Contact Me</Link>
             </Button>
           </div>
         )}

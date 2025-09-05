@@ -5,7 +5,7 @@ import Image from "next/image";
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="py-10 sm:py-16 flex items-start justify-center relative overflow-hidden mt-[40px] px-6 sm:px-6 md:h-[640px]">
+    <footer className="py-10 sm:py-16 flex items-center justify-center relative overflow-hidden mt-[40px] px-6 sm:px-6 md:h-[640px]">
       <div className="absolute inset-0 -z-10">
         <Image
           src="/images/mesh-gradient.png"
@@ -35,7 +35,6 @@ export const Footer = () => {
             Book a call
           </Button>
         </div>
-
         {/* Bottom row */}
         <div className="w-full flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between gap-3 sm:gap-4 text-center md:text-left">
           <p className="text-[#464554] font-medium -tracking-[0.48px] text-base">
@@ -47,12 +46,10 @@ export const Footer = () => {
               devdesigntolu
             </Link>
           </p>
-
           <p className="text-white font-medium -tracking-[0.48px] text-base flex items-center">
             <span className="text-2xl">&copy;</span>
             {currentYear}. All rights reserved
           </p>
-
           <p className="text-white font-medium -tracking-[0.48px] text-base">
             Developed by{" "}
             <Link

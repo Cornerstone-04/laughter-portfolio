@@ -1,0 +1,9 @@
+[
+  { "id": "et-1", "icon": "/icons/davinci.svg", "label": "DaVinci Resolve" },
+  {
+    "id": "et-2",
+    "icon": "/icons/premiere-pro.svg",
+    "label": "Adobe Premiere Pro"
+  },
+  { "id": "et-3", "icon": "/icons/avid.svg", "label": "Avid Media Composer" }
+]

@@ -9,6 +9,5 @@ export type ThemeContextType = {
 
 export const ThemeContext = createContext<ThemeContextType>({
   dark: false,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   toggle: () => {},
 });

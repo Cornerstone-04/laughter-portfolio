@@ -34,7 +34,7 @@ export const AboutEphraim = () => {
                 href="#contact-me"
                 className="flex items-center justify-center gap-2.5"
               >
-                Let's Colab! <ArrowRight />
+                Let&apos;s Colab! <ArrowRight />
               </Link>
             </Button>
           </div>

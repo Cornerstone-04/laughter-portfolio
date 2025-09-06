@@ -1,4 +1,5 @@
 import { AboutEphraim } from "@/components/about/about";
+import { ContactMe } from "@/components/contact/contact-me";
 import Hero from "@/components/hero/hero";
 import { FavouriteQuote } from "@/components/quote/favourite-quote";
 import { SelectedWorks } from "@/components/selected-works/selected-works";
@@ -10,6 +11,7 @@ export default function HomePage() {
       <SelectedWorks />
       <FavouriteQuote />
       <AboutEphraim />
+      <ContactMe />
     </div>
   );
 }

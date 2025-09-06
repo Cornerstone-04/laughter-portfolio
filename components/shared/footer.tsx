@@ -5,7 +5,7 @@ import Image from "next/image";
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="py-10 sm:py-16 flex items-center justify-center relative overflow-hidden mt-[40px] px-6 sm:px-6 md:h-[640px]">
+    <footer className="py-10 sm:py-16 flex items-center justify-center self-stretch relative overflow-hidden mt-[40px] px-6 sm:px-6 md:h-[640px]">
       <div className="absolute inset-0 -z-10">
         <Image
           src="/images/mesh-gradient.png"
@@ -13,7 +13,7 @@ export const Footer = () => {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[70%_70%] md:object-center"
+          className="object-cover object-[70%_70%] md:object-center mix-blend-multiply shrink-0"
         />
       </div>
       <div className="w-full max-w-[1072px] flex flex-col md:gap-[90px] gap-10 items-center mx-auto">

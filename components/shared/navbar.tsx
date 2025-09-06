@@ -1,14 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+} from "@/components/ui/sheet";
 
 export function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <nav className="w-full px-4 sm:px-8 lg:px-[120px] sticky top-0 z-50">
       <div className="w-full py-4">
@@ -37,61 +40,70 @@ export function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile menu toggle */}
-          <button
-            className="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-            onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
-          >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
+          {/* Mobile menu (shadcn Sheet) */}
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <button
+                  className="p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                  aria-label="Open menu"
+                >
+                  <Menu size={22} />
+                </button>
+              </SheetTrigger>
 
-        {/* Mobile dropdown */}
-        {menuOpen && (
-          <div
-            id="mobile-menu"
-            className="mt-2 md:hidden bg-white dark:bg-[#1d1d1d] rounded-xl shadow-lg p-4 space-y-4"
-          >
-            <Link
-              href="/#home"
-              className="block text-[#534C57] dark:text-[#cacaca]"
-              onClick={() => setMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              href="/#works"
-              className="block text-[#534C57] dark:text-[#cacaca]"
-              onClick={() => setMenuOpen(false)}
-            >
-              Works
-            </Link>
-            <Link
-              href="/#about-laughter"
-              className="block text-[#534C57] dark:text-[#cacaca]"
-              onClick={() => setMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="/#testimonials"
-              className="block text-[#534C57] dark:text-[#cacaca]"
-              onClick={() => setMenuOpen(false)}
-            >
-              Testimonials
-            </Link>
-            <Button
-              variant="primary"
-              className="w-full h-11 font-medium text-sm"
-              onClick={() => setMenuOpen(false)}
-            >
-              <Link href="/#contact-me">Contact Me</Link>
-            </Button>
+              <SheetContent
+                side="right"
+                className="w-full pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] p-4 flex justify-center items-center flex-col"
+                aria-label="Mobile navigation"
+              >
+
+                <nav className="mt-4 w-full flex flex-col items-center text-3xl gap-8">
+                  <SheetClose asChild>
+                    <Link
+                      href="/#home"
+                      className="block text-[#534C57] dark:text-[#cacaca]"
+                    >
+                      Home
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link
+                      href="/#works"
+                      className="block text-[#534C57] dark:text-[#cacaca]"
+                    >
+                      Works
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link
+                      href="/#about-laughter"
+                      className="block text-[#534C57] dark:text-[#cacaca]"
+                    >
+                      About
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link
+                      href="/#testimonials"
+                      className="block text-[#534C57] dark:text-[#cacaca]"
+                    >
+                      Testimonials
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Button
+                      variant="primary"
+                      className="w-full h-fit font-medium text-3xl"
+                    >
+                      <Link href="/#contact-me">Contact Me</Link>
+                    </Button>
+                  </SheetClose>
+                </nav>
+              </SheetContent>
+            </Sheet>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

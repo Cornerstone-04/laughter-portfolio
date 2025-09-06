@@ -3,6 +3,7 @@ import { ContactMe } from "@/components/contact/contact-me";
 import Hero from "@/components/hero/hero";
 import { FavouriteQuote } from "@/components/quote/favourite-quote";
 import { SelectedWorks } from "@/components/selected-works/selected-works";
+import { Testimonials } from "@/components/testimonials/testimonials";
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
       <SelectedWorks />
       <FavouriteQuote />
       <AboutEphraim />
+      <Testimonials />
       <ContactMe />
     </div>
   );

@@ -2,7 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Gallery from "./gallery";
+import { Gallery } from "./gallery";
 import Link from "next/link";
 
 export default function Hero() {

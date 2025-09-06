@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "quote": "Don't think. Thinking is the enemy of creativity. It's self-conscious, and anything self-conscious is lousy. You can't try to do things. You simply must do things.",
+    "name": "Albert Einstein",
+    "title": "Film Director, Netflix",
+    "rating": 4,
+    "image": "/testimonials/user.jpg"
+  },
+  {
+    "id": 2,
+    "quote": "The best way to find out if you can trust somebody is to trust them. Creative work is not about perfection, it's about connection and authenticity.",
+    "name": "Maya Rodriguez",
+    "title": "Creative Director, HBO",
+    "rating": 5,
+    "image": "/testimonials/user.jpg"
+  },
+  {
+    "id": 3,
+    "quote": "Innovation distinguishes between a leader and a follower. Every project should push boundaries and challenge the status quo.",
+    "name": "James Chen",
+    "title": "Producer, Disney+",
+    "rating": 5,
+    "image": "/testimonials/user.jpg"
+  },
+  {
+    "id": 4,
+    "quote": "Storytelling is the most powerful way to put ideas into the world today. Every frame should serve the narrative and emotional journey.",
+    "name": "Sarah Johnson",
+    "title": "Executive Producer, Amazon",
+    "rating": 4,
+    "image": "/testimonials/user.jpg"
+  }
+]

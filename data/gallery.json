@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "type": "image",
+    "src": "/gallery/gallery-2.jpg",
+    "alt": "Film crew silhouettes at sunset",
+    "thumbnail": "/gallery/gallery-2.jpg"
+  },
+  {
+    "id": 2,
+    "type": "video",
+    "src": "/gallery/gallery-1.mp4",
+    "alt": "Portrait video of filmmaker",
+    "thumbnail": "/gallery/gallery-1.jpg",
+    "poster": "/gallery/gallery-1.jpg"
+  },
+  {
+    "id": 3,
+    "type": "image",
+    "src": "/gallery/gallery-2.jpg",
+    "alt": "Camera equipment setup",
+    "thumbnail": "/gallery/gallery-2.jpg"
+  },
+  {
+    "id": 4,
+    "type": "video",
+    "src": "/gallery/gallery-1.mp4",
+    "alt": "Behind the scenes footage",
+    "thumbnail": "/gallery/gallery-1.jpg",
+    "poster": "/gallery/gallery-1.jpg"
+  }
+]

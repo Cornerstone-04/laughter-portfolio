@@ -22,7 +22,7 @@ export const AboutEphraim = () => {
           id="details"
           className="flex flex-col items-start self-stretch gap-8"
         >
-          <div className="w-full flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 justify-between">
+          <div className="w-full flex flex-col md:flex-row items-center gap-4 md:gap-6 justify-between">
             <h1 className="text-[#2A2936] text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight md:leading-normal tracking-[-1.44px]">
               About Laughter
             </h1>

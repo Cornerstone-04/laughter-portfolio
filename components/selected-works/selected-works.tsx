@@ -23,12 +23,12 @@ export function SelectedWorks() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6">
           <header className="flex flex-col gap-2 md:gap-1">
-            <div className="flex flex-wrap items-end justify-between sm:justify-start gap-2.5">
+            <div className="flex items-baseline justify-between sm:justify-start gap-2.5">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-normal -tracking-[1.44px] text-le-text">
                 Selected Works
               </h1>
-              <p className="w-fit pt-1 pb-1.5 px-2 flex justify-center items-center">
-                <span className="text-sm sm:text-base md:text-lg text-[#5A5874] leading-[100%] -tracking-[0.54px] font-medium">
+              <p className="pt-1 pb-1.5 px-2 flex justify-center items-center">
+                <span className="text-sm sm:text-base md:text-lg text-[#5A5874] leading-normal -tracking-[0.54px] font-medium">
                   2020 - 2025
                 </span>
               </p>

@@ -7,15 +7,15 @@ import { ThemeProvider } from "@/lib/theme-provider";
 export const metadata: Metadata = {
   title: "Laughter Ephraim – Post Production Editor",
   description:
-    "Post Production Editor specializing in narrative, docs, promos, and social—DaVinci Resolve, Avid Media Composer, Premiere Pro.",
-  metadataBase: new URL("https://laughterephraim.com"),
+    "Laughter Ephraim is an AMVCA-nominated film editor with 6+ years of experience crafting stories with precision and creativity. Passionate about the power of storytelling to connect, inspire, and entertain.",
+  metadataBase: new URL("https://laughterephraim.vercel.app"),
   openGraph: {
     title: "Laughter Ephraim – Post Production Editor",
     description:
-      "Narrative, docs, promos, and social—DaVinci Resolve, Avid MC, Premiere Pro.",
+      "Laughter Ephraim is an AMVCA-nominated film editor with 6+ years of experience crafting stories with precision and creativity. Passionate about the power of storytelling to connect, inspire, and entertain.",
     url: "https://laughterephraim.vercel.app",
     siteName: "Laughter Ephraim",
-    images: ["/og-cover.jpg"],
+    images: ["/android-chrome-512x512.png"],
     locale: "en_US",
     type: "website",
   },
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Laughter Ephraim – Post Production Editor",
     description:
-      "Narrative, docs, promos, and social—DaVinci Resolve, Avid MC, Premiere Pro.",
-    images: ["/og-cover.jpg"],
+      "Laughter Ephraim is an AMVCA-nominated film editor with 6+ years of experience crafting stories with precision and creativity. Passionate about the power of storytelling to connect, inspire, and entertain.",
+    images: ["/android-chrome-512x512.png"],
   },
 };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
@@ -50,32 +50,21 @@ export const AboutEphraim = () => {
             </p>
           </div>
         </div>
-        <div id="focus" className="">
+        <div id="focus">
+          {/* Mobile-first image (shown only below lg) */}
+          <div className="relative rounded-2xl overflow-hidden min-h-[260px] sm:min-h-[320px] lg:hidden mb-4">
+            <Image
+              src="/images/laughter-headshot.jpg"
+              alt="Portrait of Laughter Ephraim"
+              fill
+              className="object-cover object-top md:object-center"
+              priority
+              sizes="100vw"
+            />
+          </div>
+
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {/* RIGHT COLUMN first on mobile (image first), second on desktop */}
-            <div className="order-1 lg:order-2 grid grid-cols-1 gap-4 lg:grid-rows-3">
-              {/* Image spans 2 rows on desktop */}
-              <div className="relative rounded-2xl overflow-hidden row-span-1 lg:row-span-2 min-h-[260px] sm:min-h-[320px]">
-                <Image
-                  src="/images/laughter-headshot.jpg"
-                  alt="Portrait of Laughter Ephraim"
-                  fill
-                  className="object-cover object-top md:object-center"
-                  priority
-                  sizes="(min-width:1024px) 50vw, 100vw"
-                />
-              </div>
-
-              {/* 4th card */}
-              <AboutCard
-                id={focus[3].id}
-                title={focus[3].title}
-                description={focus[3].description}
-                color={focus[3].color}
-              />
-            </div>
-
-            {/* LEFT COLUMN second on mobile, first on desktop */}
+            {/* LEFT COLUMN (cards 1–3) — second on mobile, first on desktop */}
             <div className="order-2 lg:order-1 grid grid-cols-1 gap-4 lg:grid-rows-3">
               {focus.slice(0, 3).map(({ id, title, description, color }) => (
                 <AboutCard
@@ -87,8 +76,32 @@ export const AboutEphraim = () => {
                 />
               ))}
             </div>
+
+            {/* RIGHT COLUMN (desktop image + card 4) — third on mobile, second on desktop */}
+            <div className="order-3 lg:order-2 grid grid-cols-1 gap-4 lg:grid-rows-3">
+              {/* Desktop image (hidden on mobile) */}
+              <div className="relative rounded-2xl overflow-hidden row-span-1 lg:row-span-2 min-h-[260px] sm:min-h-[320px] hidden lg:block">
+                <Image
+                  src="/images/laughter-headshot.jpg"
+                  alt="Portrait of Laughter Ephraim"
+                  fill
+                  className="object-cover object-top md:object-center"
+                  priority
+                  sizes="(min-width:1024px) 50vw, 100vw"
+                />
+              </div>
+
+              {/* Card 4 */}
+              <AboutCard
+                id={focus[3].id}
+                title={focus[3].title}
+                description={focus[3].description}
+                color={focus[3].color}
+              />
+            </div>
           </div>
         </div>
+
         <div id="tools" className="w-full">
           <EditingTools items={Tools} />
         </div>

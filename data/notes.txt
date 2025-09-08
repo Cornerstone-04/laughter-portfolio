@@ -1,0 +1,47 @@
+{/* <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4">
+          <Link
+            href={``}
+            target="_blank"
+            rel="noreferrer"
+            className="flex justify-between items-center -tracking-[0.48px] p-6 h-14 rounded-4xl bg-[#E6E5F0] hover:bg-[#E6E5F0]/80 text-[#160F8A] text-base font-medium leading-normal"
+          >
+            <span>Instagram</span>
+            <ArrowUpRight className="size-6" />
+          </Link>
+          <Link
+            href={``}
+            target="_blank"
+            rel="noreferrer"
+            className="row-span-2 flex justify-between items-center -tracking-[0.48px] p-6 h-14 md:h-full rounded-4xl bg-[#E6E5F0] hover:bg-[#E6E5F0]/80 text-[#160F8A] text-base font-medium leading-normal"
+          >
+            <span>Instagram</span>
+            <ArrowUpRight className="size-6" />
+          </Link>
+          <Link
+            href={``}
+            target="_blank"
+            rel="noreferrer"
+            className="flex justify-between items-center -tracking-[0.48px] p-6 h-14 rounded-4xl bg-[#E6E5F0] hover:bg-[#E6E5F0]/80 text-[#160F8A] text-base font-medium leading-normal"
+          >
+            <span>Instagram</span>
+            <ArrowUpRight className="size-6" />
+          </Link>
+          <Link
+            href={``}
+            target="_blank"
+            rel="noreferrer"
+            className="flex justify-between items-center -tracking-[0.48px] p-6 h-14 rounded-4xl bg-[#E6E5F0] hover:bg-[#E6E5F0]/80 text-[#160F8A] text-base font-medium leading-normal"
+          >
+            <span>Instagram</span>
+            <ArrowUpRight className="size-6" />
+          </Link>
+          <Link
+            href={``}
+            target="_blank"
+            rel="noreferrer"
+            className="flex justify-between items-center -tracking-[0.48px] p-6 h-14 rounded-4xl bg-[#E6E5F0] hover:bg-[#E6E5F0]/80 text-[#160F8A] text-base font-medium leading-normal"
+          >
+            <span>Instagram</span>
+            <ArrowUpRight className="size-6" />
+          </Link>
+        </div> */}

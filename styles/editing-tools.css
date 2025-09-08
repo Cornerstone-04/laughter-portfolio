@@ -1,0 +1,14 @@
+@keyframes tools-marquee {
+  0% {
+    transform: translateX(-25%); /* start in place */
+  }
+  100% {
+    transform: translateX(0%); /* move right-to-left */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  div[style*="tools-marquee"] {
+    animation: none !important;
+  }
+}

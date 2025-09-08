@@ -1,0 +1,13 @@
+@keyframes brand-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  div[style*="brand-marquee"] {
+    animation: none !important;
+  }
+}

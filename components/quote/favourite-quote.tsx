@@ -4,11 +4,7 @@ export function FavouriteQuote() {
   return (
     <section className="relative isolate overflow-hidden w-full min-h-screen flex items-center justify-center text-center p-4 md:p-6">
       {/* AURORA BACKGROUND */}
-      {/* <div
-        aria-hidden
-        className="absolute inset-0 -z-10"
-      /> */}
-      <div className="pointer-events-none absolute inset-0 -z-10 blur-in bg-gradient-to-br from-[#ffffff63] via-[#ff421861] to-[#4e46e572] animate-gradient bg-[length:200%_200%]">
+      <div className="pointer-events-none absolute inset-0 -z-10 blur-in bg-[#F9F9FB] animate-gradient bg-[length:200%_200%]">
         <Image
           src="/images/gradient.png"
           alt=""

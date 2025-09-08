@@ -1,9 +1,9 @@
 import Image from "next/image";
+import "@/styles/editing-tools.css";
 
 type Item = { id: string; icon: string; label: string };
 
 export function EditingTools({ items }: { items: Item[] }) {
-  // duplication not needed for ping-pong, but keeping it as you had
   const track = [...items, ...items];
 
   const ICON_SIZES: Record<string, { w: number; h: number }> = {
@@ -51,23 +51,6 @@ export function EditingTools({ items }: { items: Item[] }) {
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes tools-marquee {
-          0% {
-            transform: translateX(-25%); /* start in place */
-          }
-          100% {
-            transform: translateX(0%); /* move right-to-left */
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          div[style*="tools-marquee"] {
-            animation: none !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

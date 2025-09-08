@@ -1,4 +1,5 @@
 import Image from "next/image";
+import "@/styles/brands.css";
 
 type Item = { id: string; icon: string };
 
@@ -54,23 +55,6 @@ export function FeaturedBrands({ items }: { items: Item[] }) {
           })}
         </div>
       </div>
-
-      <style jsx>{`
-        /* ⬇️ unchanged keyframes, just reused with 'alternate' direction */
-        @keyframes brand-marquee {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-25%);
-          }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          div[style*="brand-marquee"] {
-            animation: none !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

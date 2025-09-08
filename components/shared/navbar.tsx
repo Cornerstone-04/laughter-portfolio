@@ -20,7 +20,7 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <Link
-              href="#home"
+              href="/"
               className="font-semibold text-base sm:text-lg leading-none dark:text-le-smoke -tracking-[0.02em]"
             >
               EPHRAIM LAUGHTER
@@ -31,7 +31,7 @@ export function Navbar() {
           <div className="hidden md:flex gap-8 items-center justify-end">
             <div className="flex gap-3 items-center font-medium text-[#534C57] dark:text-[#cacaca]">
               <Link href="/#home">Home</Link>
-              <Link href="/#works">Works</Link>
+              <Link href="/#selected-works">Works</Link>
               <Link href="/#about-laughter">About</Link>
               <Link href="/#testimonials">Testimonials</Link>
             </div>
@@ -57,7 +57,6 @@ export function Navbar() {
                 className="w-full pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] p-4 flex justify-center items-center flex-col"
                 aria-label="Mobile navigation"
               >
-
                 <nav className="mt-4 w-full flex flex-col items-center text-3xl gap-8">
                   <SheetClose asChild>
                     <Link
@@ -69,7 +68,7 @@ export function Navbar() {
                   </SheetClose>
                   <SheetClose asChild>
                     <Link
-                      href="/#works"
+                      href="/#selected-works"
                       className="block text-[#534C57] dark:text-[#cacaca]"
                     >
                       Works

@@ -81,6 +81,8 @@ export function SelectedWorks() {
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-xs">
                     <Link
                       href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2.5 h-14 w-fit font-medium px-8 py-4 bg-le-purple text-white rounded-full shadow-lg hover:bg-le-purple/80 transition hover:scale-105"
                     >
                       Watch Trailer{" "}

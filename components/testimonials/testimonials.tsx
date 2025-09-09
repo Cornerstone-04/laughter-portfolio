@@ -40,16 +40,16 @@ export const Testimonials = () => {
   const currentTestimonial = testimonials[currentIndex];
   return (
     <section
-      className="w-full p-6 sm:p-8 md:p-16 flex flex-col items-center justify-center self-stretch"
+      className="w-full p-6 sm:p-8 md:p-16 flex flex-col items-center justify-center self-stretch dark:bg-[#15151E]"
       id="testimonials"
     >
       <div className="w-full max-w-[1072px] flex flex-col items-center gap-11">
         {/* header */}
         <div className="text-center flex flex-col items-center gap-1">
-          <h2 className="text-3xl md:text-5xl font-semibold text-[#2A2936] leading-normal -tracking-[1.44px]">
+          <h2 className="text-3xl md:text-5xl font-semibold text-[#2A2936] dark:text-white leading-normal -tracking-[1.44px]">
             What my clients have to say
           </h2>
-          <p className="text-base md:text-lg -tracking-[0.54px] leading-normal text-[#454545] w-full max-w-[477px] text-center">
+          <p className="text-base md:text-lg -tracking-[0.54px] leading-normal text-[#454545] dark:text-[#CACACA] w-full max-w-[477px] text-center">
             Get an inside look at the edits, stories, and moments that shaped
             each frame. Dive into my world of cinematic storytelling.
           </p>

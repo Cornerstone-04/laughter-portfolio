@@ -54,15 +54,15 @@ export function WorkCard({ item, onOpen, large, priorityImage }: Props) {
 
       {/* Meta */}
       <div>
-        <h1 className="flex gap-2 justify-start items-center mb-1">
-          <span className="font-semibold text-xl sm:text-2xl md:text-[28px] leading-normal -tracking-[0.84px] text-[#2A2936]">
+        <h1 className="flex gap-2 justify-start dark:items-baseline items-center mb-1">
+          <span className="font-semibold text-xl sm:text-2xl md:text-[28px] leading-normal -tracking-[0.84px] text-[#2A2936] dark:text-white">
             {item.title}
           </span>
-          <Badge className="py-[3px] px-1.5 rounded-full bg-[#DFDFDF] text-xs sm:text-sm font-medium text-[#636363] leading-[100%] -tracking-[3%]">
+          <Badge className="py-[3px] px-1.5 rounded-full bg-[#DFDFDF] dark:bg-transparent text-xs sm:text-sm font-medium text-[#636363] dark:text-[#999999] leading-[100%] -tracking-[3%]">
             {item.type}
           </Badge>
         </h1>
-        <h3 className="flex justify-between items-end text-sm sm:text-base md:text-lg text-[#454545] leading-[100%] -tracking-[3%] font-medium">
+        <h3 className="flex justify-between items-end text-sm sm:text-base md:text-lg text-[#454545] dark:text-[#CACACA] leading-[100%] -tracking-[3%] font-medium">
           <span className="truncate">{item.brands}</span>
           <span>{item.year}</span>
         </h3>

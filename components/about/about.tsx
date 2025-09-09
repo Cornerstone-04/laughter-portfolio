@@ -15,7 +15,7 @@ export const AboutEphraim = () => {
   return (
     <section
       id="about-laughter"
-      className="w-full p-6 sm:p-8 md:p-16 flex flex-col items-center justify-center self-stretch"
+      className="w-full p-6 sm:p-8 md:p-16 flex flex-col items-center justify-center self-stretch dark:bg-[#15151E]"
     >
       <div className="flex flex-col gap-16 w-full max-w-[1072px] justify-center items-center mx-auto">
         <div
@@ -23,10 +23,11 @@ export const AboutEphraim = () => {
           className="flex flex-col items-start self-stretch gap-8"
         >
           <div className="w-full flex flex-col md:flex-row items-center gap-4 md:gap-6 justify-between">
-            <h1 className="text-[#2A2936] text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight md:leading-normal tracking-[-1.44px]">
+            <h1 className="text-[#2A2936] dark:text-white text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight md:leading-normal tracking-[-1.44px]">
               About Laughter
             </h1>
             <Button
+              asChild
               variant="primary"
               className="h-12 sm:h-14 w-full sm:w-fit px-6 sm:px-8 py-3 sm:py-4 text-base flex items-center justify-center font-medium"
             >
@@ -39,7 +40,7 @@ export const AboutEphraim = () => {
             </Button>
           </div>
           <div>
-            <p className="text-[#454545] text-base sm:text-lg md:text-2xl font-medium leading-relaxed md:leading-normal tracking-[-0.48px] self-stretch ">
+            <p className="text-[#454545] dark:text-[#cacaca] text-base sm:text-lg md:text-2xl font-medium leading-relaxed md:leading-normal tracking-[-0.48px] self-stretch ">
               Hi there! I&apos;m Laughter Ephraim, an AMVCA-nominated film
               editor with a passion to create stories. With 6 years in the film
               industry, I have developed a love for bringing stories to life

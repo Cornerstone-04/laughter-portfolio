@@ -18,23 +18,23 @@ export const ContactForm = () => {
         <Input
           type="text"
           placeholder="Name"
-          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal -tracking-[0.48px] placeholder:text-[#61616B] bg-[#E0DFEC]"
+          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal -tracking-[0.48px] placeholder:text-[#61616B] bg-[#E0DFEC]!"
           required
         />
         <Input
           type="email"
           placeholder="Email Adresss"
-          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal -tracking-[0.48px] placeholder:text-[#61616B] bg-[#E0DFEC]"
+          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal -tracking-[0.48px] placeholder:text-[#61616B] bg-[#E0DFEC]!"
           required
         />
         <Textarea
           placeholder="Your Message"
-          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal -tracking-[0.48px] placeholder:text-[#61616B] h-40 bg-[#E0DFEC] resize-none"
+          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal -tracking-[0.48px] placeholder:text-[#61616B] h-40 bg-[#E0DFEC]! resize-none"
           required
         />
         <Button
           variant="secondary"
-          className="py-4 px-8 bg-[#2A2936] w-full h-14"
+          className="py-4 px-8 bg-[#2A2936]! dark:text-white! w-full h-14"
         >
           Send message
         </Button>

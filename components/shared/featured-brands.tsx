@@ -20,7 +20,7 @@ export function FeaturedBrands({ items }: { items: Item[] }) {
       aria-label="Scrolling list of tools"
       className="w-full overflow-hidden flex flex-col gap-6 items-start"
     >
-      <h3 className="text-[#47474D] text-lg sm:text-xl md:text-2xl font-semibold leading-normal -tracking-[0.72px]">
+      <h3 className="text-[#47474D] dark:text-white text-lg sm:text-xl md:text-2xl font-semibold leading-normal -tracking-[0.72px]">
         Film production featured
       </h3>
 

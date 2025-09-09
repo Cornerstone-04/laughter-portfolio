@@ -17,7 +17,7 @@ export function EditingTools({ items }: { items: Item[] }) {
       aria-label="Scrolling list of tools"
       className="w-full overflow-hidden flex flex-col gap-6 items-start"
     >
-      <h3 className="text-[#47474D] text-lg sm:text-xl md:text-2xl font-semibold leading-normal -tracking-[0.72px]">
+      <h3 className="text-[#47474D] dark:text-white text-lg sm:text-xl md:text-2xl font-semibold leading-normal -tracking-[0.72px]">
         Proficient with these editing tools
       </h3>
 
@@ -44,7 +44,7 @@ export function EditingTools({ items }: { items: Item[] }) {
                   className="object-contain"
                 />
               </span>
-              <span className="text-base sm:text-lg md:text-xl text-[#797882] leading-normal -tracking-[0.6px] font-medium">
+              <span className="text-base sm:text-lg md:text-xl text-[#797882] dark:text-[#cacaca] leading-normal -tracking-[0.6px] font-medium">
                 {item.label}
               </span>
             </div>

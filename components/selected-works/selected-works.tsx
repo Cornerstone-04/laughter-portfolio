@@ -3,17 +3,17 @@
 import works from "@/data/selected-works.json";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import Image from "next/image";
 import { useMemo, useState } from "react";
 import { WorkModal, WorkItem } from "@/components/works/work-modal";
 import { WorkCard } from "@/components/works/work-card";
+import { InfoTooltip } from "../shared/info-tooltip";
 
 export function SelectedWorks() {
   const data = useMemo(() => works as WorkItem[], []);
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState<WorkItem | null>(null);
+  const [tipOpen, setTipOpen] = useState(false);
 
   const handleOpen = (item: WorkItem) => {
     setCurrent(item);
@@ -21,24 +21,25 @@ export function SelectedWorks() {
   };
 
   return (
-    <section id="selected-works" className="w-full p-6 sm:p-8 md:p-16">
+    <section id="selected-works" className="w-full p-6 sm:p-8 md:p-16 dark:bg-[#15151E]">
       <div className="w-full max-w-[1072px] mx-auto grid gap-y-10 md:gap-y-16">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6">
           <header className="flex flex-col gap-2 md:gap-1">
             <div className="flex items-baseline justify-between sm:justify-start gap-2.5">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-normal -tracking-[1.44px] text-le-text">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-normal -tracking-[1.44px] text-le-text dark:text-white">
                 Selected Works
               </h1>
               <p className="pt-1 pb-1.5 px-2 flex justify-center items-center">
-                <span className="text-sm sm:text-base md:text-lg text-[#5A5874] leading-normal -tracking-[0.54px] font-medium">
+                <span className="text-sm sm:text-base md:text-lg text-[#5A5874] leading-normal -tracking-[0.54px] font-medium dark:text-[#999999]">
                   2020 - 2025
                 </span>
               </p>
             </div>
-            <p className="w-full max-w-lg text-base md:text-lg text-[#454545] leading-normal -tracking-[.54px] font-medium">
+            <p className="w-full max-w-lg text-base md:text-lg text-[#454545] dark:text-[#cacaca] leading-normal -tracking-[.54px] font-medium">
               Get an inside look at the edits, stories, and moments that shaped
               each frame. Dive into my world of cinematic storytelling.
+              <InfoTooltip className="ml-2 dark:text-[#cacaca]" message="Click any card to view details and preview." />
             </p>
           </header>
 

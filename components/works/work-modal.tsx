@@ -36,9 +36,9 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogOverlay className="bg-black/80 backdrop-blur-sm" />
+      <DialogOverlay className="bg-[#131316]/80 backdrop-blur-sm" />
 
-      <DialogContent className="max-w-3xl p-0 overflow-hidden">
+      <DialogContent className="max-w-3xl p-0 overflow-hidden bg-white dark:bg-[#131316]">
         <div className="relative h-56 w-full">
           <Image
             src={item.imageUrl}
@@ -46,13 +46,13 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
             fill
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-[#131316]/30" />
         </div>
 
         <div className="grid gap-4 p-6">
           <DialogHeader>
-            <DialogTitle className="text-2xl">{item.title}</DialogTitle>
-            <DialogDescription className="sr-only">
+            <DialogTitle className="text-2xl text-[#2A2936] dark:text-white">{item.title}</DialogTitle>
+            <DialogDescription className="sr-only text-[#2A2936] dark:text-white">
               Details and preview for {item.title}
             </DialogDescription>
           </DialogHeader>
@@ -60,25 +60,29 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
           <div className="grid md:grid-cols-5 gap-6 text-sm">
             <div className="md:col-span-2 space-y-3">
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Type</span>
-                <span className="font-medium">{item.type}</span>
+                <span className="text-[#2A2936] dark:text-white">Type</span>
+                <span className="font-medium text-[#454545] dark:text-[#cacaca]">
+                  {item.type}
+                </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Year</span>
-                <span className="font-medium">{item.year}</span>
+                <span className="text-[#2A2936] dark:text-white">Year</span>
+                <span className="font-medium text-[#454545] dark:text-[#cacaca]">
+                  {item.year}
+                </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-muted-foreground">
+                <span className="text-[#2A2936] dark:text-white">
                   Production / Brands
                 </span>
-                <span className="font-medium text-right max-w-[220px] line-clamp-2">
+                <span className="font-medium text-right max-w-[220px] line-clamp-2 text-[#454545] dark:text-[#cacaca]">
                   {item.brands}
                 </span>
               </div>
               {item.role && (
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Role</span>
-                  <span className="font-medium text-right max-w-[220px]">
+                  <span className="text-[#2A2936] dark:text-white">Role</span>
+                  <span className="font-medium text-right max-w-[220px] text-[#454545] dark:text-[#cacaca]">
                     {item.role}
                   </span>
                 </div>
@@ -86,14 +90,17 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
             </div>
 
             <div className="md:col-span-3">
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-[#454545] dark:text-[#cacaca] leading-relaxed">
                 Explore credits, roles, and a preview below.
               </p>
             </div>
           </div>
 
           <DialogFooter>
-            <Button asChild>
+            <Button
+              asChild
+              className="bg-[#2A2936] text-white dark:text-[#131316] dark:bg-white dark:hover:bg-white/90"
+            >
               <Link href={item.link} target="_blank" rel="noopener noreferrer">
                 {item.previewTitle ?? "Preview / Watch Trailer"}{" "}
                 <ExternalLink className="ml-2 h-4 w-4" />

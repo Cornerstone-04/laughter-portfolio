@@ -17,12 +17,13 @@ import { ExternalLink } from "lucide-react";
 export type WorkItem = {
   title: string;
   type: string;
-  brands: string;
+  production: string;
   year: string | number;
   imageUrl: string;
   link: string;
   role?: string;
   previewTitle?: string;
+  synopsis?: string;
 };
 
 type Props = {
@@ -51,7 +52,9 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
 
         <div className="grid gap-4 p-6">
           <DialogHeader>
-            <DialogTitle className="text-2xl text-[#2A2936] dark:text-white">{item.title}</DialogTitle>
+            <DialogTitle className="text-2xl text-[#2A2936] dark:text-white normal-case">
+              {item.title}
+            </DialogTitle>
             <DialogDescription className="sr-only text-[#2A2936] dark:text-white">
               Details and preview for {item.title}
             </DialogDescription>
@@ -73,10 +76,10 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
               </div>
               <div className="flex justify-between">
                 <span className="text-[#2A2936] dark:text-white">
-                  Production / Brands
+                  Production
                 </span>
                 <span className="font-medium text-right max-w-[220px] line-clamp-2 text-[#454545] dark:text-[#cacaca]">
-                  {item.brands}
+                  {item.production}
                 </span>
               </div>
               {item.role && (
@@ -91,7 +94,7 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
 
             <div className="md:col-span-3">
               <p className="text-[#454545] dark:text-[#cacaca] leading-relaxed">
-                Explore credits, roles, and a preview below.
+                {item.synopsis}{" "}
               </p>
             </div>
           </div>

@@ -32,7 +32,7 @@ export function SelectedWorks() {
               </h1>
               <p className="pt-1 pb-1.5 px-2 flex justify-center items-center">
                 <span className="text-sm sm:text-base md:text-lg text-[#5A5874] leading-normal -tracking-[0.54px] font-medium dark:text-[#999999]">
-                  2020 - 2025
+                  2022 - 2025
                 </span>
               </p>
             </div>

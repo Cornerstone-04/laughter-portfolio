@@ -2,7 +2,7 @@
   {
     "title": "Far from home",
     "type": "TV Series",
-    "brands": "Netflix, Inkblot",
+    "production": "Netflix, Inkblot",
     "year": "2022",
     "imageUrl": "/works/far-from-home.jpeg",
     "link": "https://youtu.be/JtrA9DELEhA?si=Se9YFBzK28Jlq8e9"
@@ -10,7 +10,7 @@
   {
     "title": "Obara'm",
     "type": "Feature film",
-    "brands": "Film Trybe",
+    "production": "Film Trybe",
     "year": "2023",
     "imageUrl": "/works/obaram.jpg",
     "link": "https://youtu.be/P7oG85bv4Zw?si=YSHM3qyibG71quNZ"
@@ -18,7 +18,7 @@
   {
     "title": "Ebuka turns up Africa",
     "type": "Reality TV",
-    "brands": "Film Trybe",
+    "production": "Film Trybe",
     "year": "2024",
     "imageUrl": "/works/ebuka-turns-up-africa.jpg",
     "link": "https://youtu.be/HP5Ny9ud7xg?si=cy8L3V7oYgU44jsp"
@@ -26,7 +26,7 @@
   {
     "title": "To kill a monkey",
     "type": "TV Series",
-    "brands": "Netflix, Inkblot",
+    "production": "Netflix, Inkblot",
     "year": "2025",
     "imageUrl": "/works/to-kill-a-monkey.JPG",
     "link": "https://youtu.be/aLxhNzvqToY?si=0VxpxzfPXXULQcaK"
@@ -34,7 +34,7 @@
   {
     "title": "My fairytale wedding",
     "type": "TV Series",
-    "brands": "Netflix, Inkblot",
+    "production": "Netflix, Inkblot",
     "year": "2022",
     "imageUrl": "/works/my-fairytale-wedding.jpg",
     "link": "https://youtu.be/LM9fYJmqQ1Y?si=n1ioGUy7FoqmfWbi"
@@ -42,7 +42,7 @@
   {
     "title": "Shanty town",
     "type": "Feature film",
-    "brands": "Film Trybe",
+    "production": "Film Trybe",
     "year": "2023",
     "imageUrl": "/works/shanty-town.jpg",
     "link": "https://youtu.be/g3-TbsMEVPw?si=rPVQ7N-rWL5_oWBx"

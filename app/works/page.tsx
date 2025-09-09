@@ -1,7 +1,6 @@
-// app/works/page.tsx
 "use client";
 
-import works from "@/data/selected-works.json";
+import works from "@/data/works.json";
 import { useMemo, useState } from "react";
 import { WorkCard } from "@/components/works/work-card";
 import { WorkModal, WorkItem } from "@/components/works/work-modal";

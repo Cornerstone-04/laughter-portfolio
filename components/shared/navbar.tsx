@@ -10,8 +10,18 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
+import { useActiveSection } from "@/hooks/useActiveSection";
 
 export function Navbar() {
+  const { activeHash, setActiveFromHref } = useActiveSection("#home");
+
+  const navItems = [
+    { href: "/#home", label: "Home" },
+    { href: "/#selected-works", label: "Works" },
+    { href: "/#about-laughter", label: "About" },
+    { href: "/#testimonials", label: "Testimonials" },
+  ];
+
   return (
     <nav className="w-full px-4 sm:px-8 lg:px-[120px] sticky top-0 z-50">
       <div className="w-full py-4">
@@ -22,6 +32,8 @@ export function Navbar() {
             <Link
               href="/"
               className="font-semibold text-base sm:text-lg leading-none dark:text-le-smoke -tracking-[0.02em]"
+              // optional: treat clicking logo as "Home"
+              onClick={() => setActiveFromHref("/#home")}
             >
               EPHRAIM LAUGHTER
             </Link>
@@ -30,33 +42,35 @@ export function Navbar() {
           {/* Desktop menu */}
           <div className="hidden md:flex gap-8 items-center justify-end">
             <div className="flex gap-3 items-center font-medium text-[#534C57] dark:text-[#cacaca]">
-              <Link
-                href="/#home"
-                className="hover:text-le-purple transition-all ease-linear"
-              >
-                Home
-              </Link>
-              <Link
-                href="/#selected-works"
-                className="hover:text-le-purple transition-all ease-linear"
-              >
-                Works
-              </Link>
-              <Link
-                href="/#about-laughter"
-                className="hover:text-le-purple transition-all ease-linear"
-              >
-                About
-              </Link>
-              <Link
-                href="/#testimonials"
-                className="hover:text-le-purple active:text-le-purple transition-all ease-linear"
-              >
-                Testimonials
-              </Link>
+              {navItems.map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setActiveFromHref(href)}
+                  className={`transition-all ease-linear ${
+                    activeHash === href.replace("/", "")
+                      ? "text-le-purple font-semibold"
+                      : "text-[#534C57] dark:text-[#cacaca] hover:text-le-purple"
+                  }`}
+                  aria-current={
+                    activeHash === href.replace("/", "") ? "page" : undefined
+                  }
+                >
+                  {label}
+                </Link>
+              ))}
             </div>
-            <Button variant="primary" className="h-11 font-medium text-sm">
-              <Link href="/#contact-me">Contact Me</Link>
+            <Button
+              variant="primary"
+              className="h-11 font-medium text-sm"
+              asChild
+            >
+              <Link
+                href="/#contact-me"
+                onClick={() => setActiveFromHref("/#contact-me")}
+              >
+                Contact Me
+              </Link>
             </Button>
           </div>
 
@@ -78,45 +92,39 @@ export function Navbar() {
                 aria-label="Mobile navigation"
               >
                 <nav className="mt-4 w-full flex flex-col items-center text-3xl gap-8">
-                  <SheetClose asChild>
-                    <Link
-                      href="/#home"
-                      className="block text-[#534C57] dark:text-[#cacaca] hover:text-le-purple transition-all ease-linear"
-                    >
-                      Home
-                    </Link>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <Link
-                      href="/#selected-works"
-                      className="block text-[#534C57] dark:text-[#cacaca] hover:text-le-purple transition-all ease-linear"
-                    >
-                      Works
-                    </Link>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <Link
-                      href="/#about-laughter"
-                      className="block text-[#534C57] dark:text-[#cacaca] hover:text-le-purple transition-all ease-linear"
-                    >
-                      About
-                    </Link>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <Link
-                      href="/#testimonials"
-                      className="block text-[#534C57] dark:text-[#cacaca] hover:text-le-purple transition-all ease-linear"
-                    >
-                      Testimonials
-                    </Link>
-                  </SheetClose>
+                  {navItems.map(({ href, label }) => (
+                    <SheetClose asChild key={href}>
+                      <Link
+                        href={href}
+                        onClick={() => setActiveFromHref(href)}
+                        className={`block text-3xl ${
+                          activeHash === href.replace("/", "")
+                            ? "text-le-purple font-semibold"
+                            : "text-[#534C57] dark:text-[#cacaca] hover:text-le-purple"
+                        } transition-all ease-linear`}
+                        aria-current={
+                          activeHash === href.replace("/", "")
+                            ? "page"
+                            : undefined
+                        }
+                      >
+                        {label}
+                      </Link>
+                    </SheetClose>
+                  ))}
+
                   <SheetClose asChild>
                     <Button
                       asChild
                       variant="primary"
                       className="w-full h-fit! font-medium text-2xl"
                     >
-                      <Link href="/#contact-me">Contact Me</Link>
+                      <Link
+                        href="/#contact-me"
+                        onClick={() => setActiveFromHref("/#contact-me")}
+                      >
+                        Contact Me
+                      </Link>
                     </Button>
                   </SheetClose>
                 </nav>

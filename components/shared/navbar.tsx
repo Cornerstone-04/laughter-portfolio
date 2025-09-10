@@ -23,6 +23,7 @@ export function Navbar() {
   ];
 
   return (
+    // max-w-7xl mx-auto
     <nav className="w-full px-4 sm:px-8 lg:px-[120px] sticky top-0 z-50">
       <div className="w-full py-4">
         <div className="flex justify-between items-center px-3 py-2 bg-white dark:bg-[#1d1d1d] rounded-[41px]">

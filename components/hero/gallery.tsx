@@ -3,7 +3,6 @@
 import rawGallery from "@/data/gallery.json";
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
 
 type GalleryItems = {
   id: number;
@@ -124,40 +123,6 @@ export const Gallery = () => {
       );
     }
   };
-
-  // --- Framer Motion variants for slide swipe ---
-  const variants = {
-    enter: (dir: 1 | -1) => ({
-      x: dir === 1 ? "100%" : "-100%",
-      opacity: 0,
-      position: "absolute" as const,
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-    }),
-    center: {
-      x: "0%",
-      opacity: 1,
-      position: "absolute" as const,
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-    },
-    exit: (dir: 1 | -1) => ({
-      x: dir === 1 ? "-100%" : "100%",
-      opacity: 0,
-      position: "absolute" as const,
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-    }),
-  };
-
-  // Drag threshold (px) to trigger navigation
-  const DRAG_THRESHOLD = 60;
 
   return (
     <div

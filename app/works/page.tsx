@@ -19,36 +19,38 @@ import { Section } from "@/components/shared/animated-section";
 const MIN_YEAR = 2020;
 const MAX_YEAR = 2025;
 
+// Extend WorkItem to include the year field (string or number)
+type WorkWithYear = WorkItem & { year: string | number };
+
 export default function WorksPage() {
-  const data = useMemo(() => works as WorkItem[], []);
+  const data = useMemo(() => works as WorkWithYear[], []);
   const [open, setOpen] = useState(false);
-  const [current, setCurrent] = useState<WorkItem | null>(null);
+  const [current, setCurrent] = useState<WorkWithYear | null>(null);
 
   // single-select year filter ("all" means no filter)
   const [yearFilter, setYearFilter] = useState<string>("all");
 
-  // extract a 4-digit year from strings like "2022" or "2020 - 2025"
-  const getYear = (val: unknown): number | null => {
-    if (typeof val !== "string" && typeof val !== "number") return null;
+  // extract first 4-digit year from strings like "2022" or "2020 - 2025"
+  const getYear = (val: string | number): number | null => {
     const s = String(val);
     const m = s.match(/\d{4}/);
     if (!m) return null;
-    const y = parseInt(m[0], 10);
+    const y = Number(m[0]);
     return Number.isFinite(y) ? y : null;
   };
 
   const filtered = useMemo(() => {
-    let list = data;
+    let list: WorkWithYear[] = data;
 
     if (yearFilter !== "all") {
-      const target = parseInt(yearFilter, 10);
-      list = data.filter((item) => getYear((item as any).year) === target);
+      const target = Number(yearFilter);
+      list = data.filter((item) => getYear(item.year) === target);
     }
 
     // sort by year (desc)
     return [...list].sort((a, b) => {
-      const ya = getYear((a as any).year) ?? 0;
-      const yb = getYear((b as any).year) ?? 0;
+      const ya = getYear(a.year) ?? 0;
+      const yb = getYear(b.year) ?? 0;
       return yb - ya; // newer first
     });
   }, [data, yearFilter]);
@@ -58,7 +60,6 @@ export default function WorksPage() {
     { length: MAX_YEAR - MIN_YEAR + 1 },
     (_, i) => MAX_YEAR - i
   );
-
   return (
     <LazyMotion features={domAnimation}>
       <Section amount={0}>

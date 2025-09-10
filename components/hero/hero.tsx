@@ -32,6 +32,7 @@ export default function Hero() {
           </p>
 
           <Button
+            asChild
             variant="primary"
             className="
               h-12 sm:h-14

@@ -77,6 +77,7 @@ export function SelectedWorks() {
         {/* CTA Buttons */}
         <div className="mx-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full">
           <Button
+            asChild
             variant="primary"
             className="h-12 sm:h-14 w-full sm:w-fit px-6 sm:px-8 py-3 sm:py-4 text-base flex items-center justify-center gap-2"
           >

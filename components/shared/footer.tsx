@@ -54,7 +54,7 @@ export const Footer = () => {
             Developed by{" "}
             <Link
               href="https://linkedin.com/in/cornerstone-ephraim"
-              className="text-le-text dark:text-[#cacaca] underline"
+              className="dark:text-[#cacaca] underline"
             >
               Cornerstone
             </Link>

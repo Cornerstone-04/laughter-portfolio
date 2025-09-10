@@ -128,7 +128,7 @@ export const Gallery = () => {
           alt={item.alt}
           width={1600}
           height={900}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 60vw"
           priority={isMain}
         />

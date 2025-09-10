@@ -40,7 +40,7 @@ export const Footer = () => {
           <p className="text-[#464554] dark:text-white font-medium -tracking-[0.48px] text-base">
             Designed by{" "}
             <Link
-              href="https://instagram.com/devdesigntolu"
+              href="https://www.linkedin.com/in/devdesigntolu/"
               target="_blank"
               className="text-le-purple dark:text-[#cacaca] underline"
             >

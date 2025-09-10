@@ -3,6 +3,7 @@
 import rawGallery from "@/data/gallery.json";
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
+import Image from "next/image";
 
 type GalleryItems = {
   id: number;
@@ -97,15 +98,22 @@ export const Gallery = () => {
   const rightItem = galleryItems[currentIndex + 1] || galleryItems[0];
 
   const renderMediaContent = (item: GalleryItems, isMain = false) => {
+    const srcToUse = item.poster || item.thumbnail || item.src;
+
     if (item.type === "video") {
       return (
         <div className="relative w-full h-full group">
-          <img
-            src={item.poster || item.thumbnail || item.src}
+          <Image
+            src={srcToUse}
             alt={item.alt}
+            // Intrinsic dimensions (any reasonable ratio works); Tailwind still controls box size
+            width={1600}
+            height={900}
             className="w-full h-full object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 33vw"
+            priority={isMain}
           />
-          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="absolute inset-0 bg-black/20" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-16 h-16 bg-[#FF2626]/60 rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors cursor-pointer">
               <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
@@ -115,10 +123,14 @@ export const Gallery = () => {
       );
     } else {
       return (
-        <img
+        <Image
           src={isMain ? item.src : item.thumbnail ?? item.src}
           alt={item.alt}
+          width={1600}
+          height={900}
           className="w-full h-full object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 60vw"
+          priority={isMain}
         />
       );
     }

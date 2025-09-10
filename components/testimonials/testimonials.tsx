@@ -4,40 +4,39 @@ import { useState } from "react";
 import testimonials from "@/data/testimonials.json";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { Button } from "../ui/button";
+import Image from "next/image";
 
 export const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    setCurrentIndex((prev) =>
+      prev === testimonials.length - 1 ? 0 : prev + 1
     );
   };
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    setCurrentIndex((prev) =>
+      prev === 0 ? testimonials.length - 1 : prev - 1
     );
   };
 
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
+  const goToSlide = (index: number) => setCurrentIndex(index);
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, index) => (
+  const renderStars = (rating: number) =>
+    Array.from({ length: 5 }, (_, i) => (
       <Star
-        key={index}
+        key={i}
         className={`w-6 h-6 ${
-          index < rating
+          i < rating
             ? "fill-[#D0BB1C] text-[#D0BB1C]"
             : "fill-[#D9D9D9] text-[#D9D9D9]"
         }`}
       />
     ));
-  };
 
   const currentTestimonial = testimonials[currentIndex];
+
   return (
     <section
       className="w-full p-6 sm:p-8 md:p-16 flex flex-col items-center justify-center self-stretch dark:bg-[#15151E]"
@@ -54,16 +53,24 @@ export const Testimonials = () => {
             each frame. Dive into my world of cinematic storytelling.
           </p>
         </div>
+
         {/* card */}
         <div className="flex flex-col lg:flex-row items-stretch gap-6 max-w-[800px] bg-white rounded-2xl overflow-hidden lg:h-[400px]">
           {/* Image */}
-          <div className="flex-shrink-0 w-full lg:max-w-[316px] h-56 sm:h-72 md:h-80 lg:h-full overflow-hidden">
-            <img
-              src={currentTestimonial.image}
-              alt={`${currentTestimonial.name} testimonial`}
-              className="w-full h-full object-cover"
-            />
-          </div>
+         {/* Image */}
+<div className="flex-shrink-0 w-full lg:max-w-[316px] h-56 sm:h-72 md:h-80 lg:h-full overflow-hidden">
+  <Image
+    src={currentTestimonial.image}
+    alt={`${currentTestimonial.name} testimonial`}
+    // Give intrinsic dimensions (any reasonable aspect ratio works);
+    // Tailwind still controls the rendered size via w-full/h-full.
+    width={640}
+    height={800}
+    className="w-full h-full object-cover"
+    sizes="(max-width: 1024px) 100vw, 316px"
+    priority={currentIndex === 0}
+  />
+</div>
 
           {/* Content */}
           <div className="flex flex-1 w-full lg:max-w-[460px] px-6 lg:pl-0 py-6 lg:pr-6">
@@ -91,6 +98,7 @@ export const Testimonials = () => {
           </div>
         </div>
 
+        {/* footer controls */}
         <div className="flex items-center justify-between w-full max-w-[800px]">
           {/* Pagination Dots */}
           <div className="flex gap-2">

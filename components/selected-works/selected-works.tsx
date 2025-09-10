@@ -13,7 +13,6 @@ export function SelectedWorks() {
   const data = useMemo(() => works as WorkItem[], []);
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState<WorkItem | null>(null);
-  const [tipOpen, setTipOpen] = useState(false);
 
   const handleOpen = (item: WorkItem) => {
     setCurrent(item);

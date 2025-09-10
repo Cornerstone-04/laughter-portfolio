@@ -2,30 +2,29 @@
   {
     "id": 1,
     "type": "image",
-    "src": "/gallery/dark-room.jpg",
-    
+    "src": "/gallery/dark-room.JPG",
     "alt": "editing room",
-    "thumbnail": "/gallery/dark-room.jpg"
+    "thumbnail": "/gallery/dark-room.JPG"
   },
   {
     "id": 2,
     "type": "image",
-    "src": "/gallery/timeline-2.png",
+    "src": "/gallery/timeline-2.PNG",
     "alt": "Timeline for my fairytale wedding",
-    "thumbnail": "/gallery/timeline-2.png"
+    "thumbnail": "/gallery/timeline-2.PNG"
   },
   {
     "id": 3,
     "type": "image",
-    "src": "/gallery/timeline.jpg",
+    "src": "/gallery/timeline.JPG",
     "alt": "timeline for street",
-    "thumbnail": "/gallery/timeline.jpg"
+    "thumbnail": "/gallery/timeline.JPG"
   },
   {
     "id": 4,
     "type": "image",
-    "src": "/gallery/timeline-3.jpg",
+    "src": "/gallery/timeline-3.JPG",
     "alt": "Timeline for princess on a hill",
-    "thumbnail": "/gallery/timeline-3.jpg"
+    "thumbnail": "/gallery/timeline-3.JPG"
   }
 ]

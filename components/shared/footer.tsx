@@ -41,6 +41,7 @@ export const Footer = () => {
             Designed by{" "}
             <Link
               href="https://instagram.com/devdesigntolu"
+              target="_blank"
               className="text-le-purple dark:text-[#cacaca] underline"
             >
               devdesigntolu
@@ -54,6 +55,7 @@ export const Footer = () => {
             Developed by{" "}
             <Link
               href="https://linkedin.com/in/cornerstone-ephraim"
+              target="_blank"
               className="dark:text-[#cacaca] underline"
             >
               Cornerstone

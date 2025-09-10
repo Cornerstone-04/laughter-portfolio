@@ -1,37 +1,23 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { ThemeContext } from "@/lib/theme-context";
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [dark, setDark] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  // hydrate from localStorage, avoid mismatch
-  useEffect(() => {
-    const stored =
-      typeof window !== "undefined" &&
-      localStorage.getItem("dark-mode") === "true";
-    setDark(stored);
-    document.documentElement.classList.toggle("dark", stored);
-    setMounted(true);
-  }, []);
+  // Initialize from the SSR-applied class on <html>.
+  const [dark, setDark] = useState<boolean>(() => {
+    if (typeof document === "undefined") return false; // SSR fallback
+    return document.documentElement.classList.contains("dark");
+  });
 
   const toggle = () => {
-    setDark((prev) => {
-      const next = !prev;
-      if (typeof window !== "undefined") {
-        localStorage.setItem("dark-mode", String(next));
-        document.documentElement.classList.toggle("dark", next);
-      }
-      return next;
-    });
+    const next = !dark;
+    setDark(next);
+    try {
+      localStorage.setItem("dark-mode", String(next));
+    } catch {}
+    document.documentElement.classList.toggle("dark", next);
   };
-
-  // Prevent UI flash until theme is known
-  if (!mounted) {
-    return <div style={{ visibility: "hidden" }}>{children}</div>;
-  }
 
   return (
     <ThemeContext.Provider value={{ dark, toggle }}>

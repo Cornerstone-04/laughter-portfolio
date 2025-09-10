@@ -34,23 +34,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
-        {/* Optional: set dark class before React mounts to avoid flash */}
+        {/* Set initial theme BEFORE hydration to avoid flashes/mismatch */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function() {
-                try {
-                  var d = localStorage.getItem('dark-mode') === 'true';
-                  if (d) document.documentElement.classList.add('dark');
-                } catch (e) {}
-              })();
+(function () {
+  try {
+    var stored = localStorage.getItem('dark-mode');
+    var shouldDark = stored === null
+      ? window.matchMedia('(prefers-color-scheme: dark)').matches
+      : stored === 'true';
+    var root = document.documentElement;
+    if (shouldDark) root.classList.add('dark');
+    else root.classList.remove('dark');
+  } catch (e) {}
+})();
             `,
           }}
         />
       </head>
-      <body className="relative">
+      <body className="relative" suppressHydrationWarning>
         <ThemeProvider>
           <Navbar />
           <main className="min-h-dvh">{children}</main>

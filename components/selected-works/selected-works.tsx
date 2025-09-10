@@ -83,15 +83,6 @@ export function SelectedWorks() {
           >
             <Link href="/#contact-me">Start new project</Link>
           </Button>
-          <Button
-            asChild
-            variant="secondary"
-            className="h-12 sm:h-14 w-full sm:w-fit px-6 sm:px-8 py-3 sm:py-4 text-base flex items-center justify-center gap-2"
-          >
-            <Link href="/works">
-              See all works <ArrowRight />
-            </Link>
-          </Button>
         </div>
 
         <WorkModal open={open} onOpenChange={setOpen} item={current} />

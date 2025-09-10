@@ -2,31 +2,30 @@
   {
     "id": 1,
     "type": "image",
-    "src": "/gallery/gallery-2.jpg",
-    "alt": "Film crew silhouettes at sunset",
-    "thumbnail": "/gallery/gallery-2.jpg"
+    "src": "/gallery/dark-room.jpg",
+    
+    "alt": "editing room",
+    "thumbnail": "/gallery/dark-room.jpg"
   },
   {
     "id": 2,
-    "type": "video",
-    "src": "/gallery/gallery-1.mp4",
-    "alt": "Portrait video of filmmaker",
-    "thumbnail": "/gallery/gallery-1.jpg",
-    "poster": "/gallery/gallery-1.jpg"
+    "type": "image",
+    "src": "/gallery/timeline-2.png",
+    "alt": "Timeline for my fairytale wedding",
+    "thumbnail": "/gallery/timeline-2.png"
   },
   {
     "id": 3,
     "type": "image",
-    "src": "/gallery/gallery-2.jpg",
-    "alt": "Camera equipment setup",
-    "thumbnail": "/gallery/gallery-2.jpg"
+    "src": "/gallery/timeline.jpg",
+    "alt": "timeline for street",
+    "thumbnail": "/gallery/timeline.jpg"
   },
   {
     "id": 4,
-    "type": "video",
-    "src": "/gallery/gallery-1.mp4",
-    "alt": "Behind the scenes footage",
-    "thumbnail": "/gallery/gallery-1.jpg",
-    "poster": "/gallery/gallery-1.jpg"
+    "type": "image",
+    "src": "/gallery/timeline-3.jpg",
+    "alt": "Timeline for princess on a hill",
+    "thumbnail": "/gallery/timeline-3.jpg"
   }
 ]

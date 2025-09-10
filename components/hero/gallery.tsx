@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 import rawGallery from "@/data/gallery.json";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 
 type GalleryItems = {
@@ -15,14 +15,85 @@ type GalleryItems = {
 
 export const Gallery = () => {
   const galleryItems = rawGallery as GalleryItems[];
-  const [currentIndex, setCurrentIndex] = useState(1); // Start with the main video (index 1)
+
+  // Start with the main video (index 1)
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Autoplay controls
+  const [autoplay, setAutoplay] = useState(true);
+  const resumeTimerRef = useRef<number | null>(null);
+
+  const INTERVAL_MS = 5000; // advance every 5s
+  const RESUME_AFTER_MS = 6000; // resume autoplay 8s after user interaction
+
+  const total = galleryItems.length;
 
   const goToSlide = (index: number) => {
-    setCurrentIndex(index);
+    // Clamp to 0..total-1
+    const next = (index + total) % total;
+    setCurrentIndex(next);
+    pauseThenScheduleResume();
   };
+
+  const goNext = () => goToSlide(currentIndex + 1);
+  const goPrev = () => goToSlide(currentIndex - 1);
+
+  // Pause autoplay immediately, then schedule resume
+  const pauseThenScheduleResume = () => {
+    setAutoplay(false);
+    if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = window.setTimeout(() => {
+      setAutoplay(true);
+    }, RESUME_AFTER_MS);
+  };
+
+  // Hover/focus pause/resume (desktop)
+  const handleMouseEnter = () => setAutoplay(false);
+  const handleMouseLeave = () => setAutoplay(true);
+  const handleFocus = () => setAutoplay(false);
+  const handleBlur = () => setAutoplay(true);
+
+  // Autoplay effect
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    // Respect reduced motion
+    const prefersReduced =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    if (!autoplay) return;
+
+    const tick = () => {
+      setCurrentIndex((i) => (i + 1) % total);
+    };
+
+    const id = window.setInterval(tick, INTERVAL_MS);
+
+    // Pause when tab is hidden
+    const onVisibility = () => {
+      if (document.hidden) {
+        window.clearInterval(id);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      window.clearInterval(id);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, [autoplay, total]);
+
+  // Cleanup resume timer on unmount
+  useEffect(() => {
+    return () => {
+      if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
+    };
+  }, []);
+
   const currentItem = galleryItems[currentIndex];
-  const leftItem =
-    galleryItems[currentIndex - 1] || galleryItems[galleryItems.length - 1];
+  const leftItem = galleryItems[currentIndex - 1] || galleryItems[total - 1];
   const rightItem = galleryItems[currentIndex + 1] || galleryItems[0];
 
   const renderMediaContent = (item: GalleryItems, isMain = false) => {
@@ -54,7 +125,13 @@ export const Gallery = () => {
   };
 
   return (
-    <div className="mx-auto flex flex-col gap-4 items-center justify-center">
+    <div
+      className="mx-auto flex flex-col gap-4 items-center justify-center"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+    >
       {/* Header */}
       <div className="text-center flex flex-col items-center gap-3.5">
         <h2 className="text-lg leading-normal -tracking-[0.36px] font-semibold text-[#706F7C]">
@@ -71,7 +148,7 @@ export const Gallery = () => {
                 index === currentIndex
                   ? "w-8 bg-[#4F46E5]"
                   : index === currentIndex + 1 ||
-                    (currentIndex === galleryItems.length - 1 && index === 0)
+                    (currentIndex === total - 1 && index === 0)
                   ? "bg-[#9D98F5]"
                   : "bg-[#DBD9FF]"
               }`}
@@ -86,16 +163,12 @@ export const Gallery = () => {
         {/* Left Side Panel */}
         <div
           className="
-      hidden md:block
-      w-1/6 h-11/12 rounded-2xl overflow-hidden shadow-lg cursor-pointer
-      transform transition-transform duration-300 hover:scale-105
-      md:-translate-x-6 lg:-translate-x-10
-    "
-          onClick={() =>
-            goToSlide(
-              currentIndex === 0 ? galleryItems.length - 1 : currentIndex - 1
-            )
-          }
+            hidden md:block
+            w-1/6 h-11/12 rounded-2xl overflow-hidden shadow-lg cursor-pointer
+            transform transition-transform duration-300 hover:scale-105
+            md:-translate-x-6 lg:-translate-x-10
+          "
+          onClick={goPrev}
         >
           <div className="w-full h-full relative">
             {renderMediaContent(leftItem)}
@@ -104,7 +177,7 @@ export const Gallery = () => {
 
         {/* Main Content */}
         <div className="w-full md:w-3/5 h-full rounded-2xl overflow-hidden">
-          <div className="w-full h-full relative">
+          <div className="w-full h-full relative transition-transform duration-700 ease-linear">
             {renderMediaContent(currentItem, true)}
           </div>
         </div>
@@ -112,16 +185,12 @@ export const Gallery = () => {
         {/* Right Side Panel */}
         <div
           className="
-      hidden md:block
-      w-1/6 h-11/12 rounded-2xl overflow-hidden shadow-lg cursor-pointer
-      transform transition-transform duration-300 hover:scale-105
-      md:translate-x-6 lg:translate-x-10
-    "
-          onClick={() =>
-            goToSlide(
-              currentIndex === galleryItems.length - 1 ? 0 : currentIndex + 1
-            )
-          }
+            hidden md:block
+            w-1/6 h-11/12 rounded-2xl overflow-hidden shadow-lg cursor-pointer
+            transform transition-transform duration-300 hover:scale-105
+            md:translate-x-6 lg:translate-x-10
+          "
+          onClick={goNext}
         >
           <div className="w-full h-full relative">
             {renderMediaContent(rightItem)}
@@ -132,22 +201,16 @@ export const Gallery = () => {
       {/* Mobile Navigation */}
       <div className="flex md:hidden justify-center gap-4">
         <button
-          onClick={() =>
-            goToSlide(
-              currentIndex === 0 ? galleryItems.length - 1 : currentIndex - 1
-            )
-          }
+          onClick={goPrev}
           className="px-6 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg transition-colors"
+          aria-label="Previous"
         >
           <ArrowLeft />
         </button>
         <button
-          onClick={() =>
-            goToSlide(
-              currentIndex === galleryItems.length - 1 ? 0 : currentIndex + 1
-            )
-          }
+          onClick={goNext}
           className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+          aria-label="Next"
         >
           <ArrowRight />
         </button>

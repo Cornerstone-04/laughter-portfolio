@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { ThemeProvider } from "@/lib/theme-provider";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Laughter Ephraim – Post Production Editor",
@@ -60,6 +61,7 @@ export default function RootLayout({
           <Navbar />
           <main className="min-h-dvh">{children}</main>
           <Footer />
+          <Toaster richColors position="top-right" />
         </ThemeProvider>
       </body>
     </html>

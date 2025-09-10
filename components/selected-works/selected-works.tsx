@@ -20,7 +20,10 @@ export function SelectedWorks() {
   };
 
   return (
-    <section id="selected-works" className="w-full p-6 sm:p-8 md:p-16 dark:bg-[#15151E]">
+    <section
+      id="selected-works"
+      className="w-full p-6 sm:p-8 md:p-16 dark:bg-[#15151E]"
+    >
       <div className="w-full max-w-[1072px] mx-auto grid gap-y-10 md:gap-y-16">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6">
@@ -38,7 +41,10 @@ export function SelectedWorks() {
             <p className="w-full max-w-lg text-base md:text-lg text-[#454545] dark:text-[#cacaca] leading-normal -tracking-[.54px] font-medium">
               Get an inside look at the edits, stories, and moments that shaped
               each frame. Dive into my world of cinematic storytelling.
-              <InfoTooltip className="ml-2 dark:text-[#cacaca]" message="Click any card to view details and preview." />
+              <InfoTooltip
+                className="ml-2 dark:text-[#cacaca]"
+                message="Click any card to view details and preview."
+              />
             </p>
           </header>
 

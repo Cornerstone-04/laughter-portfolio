@@ -35,6 +35,7 @@ export function WorkCard({ item, onOpen, large, priorityImage }: Props) {
           className={[
             "object-cover transition-transform duration-500 ease-in-out group-hover:scale-105",
             large ? "object-top" : "",
+            item.title=== "To Kill a Monkey" && "object-center!"
           ].join(" ")}
           sizes={
             large
@@ -58,7 +59,7 @@ export function WorkCard({ item, onOpen, large, priorityImage }: Props) {
           <span className="font-semibold text-xl sm:text-2xl md:text-[28px] leading-normal -tracking-[0.84px] text-[#2A2936] dark:text-white capitalize!">
             {item.title}
           </span>
-          <Badge className="py-[3px] px-1.5 rounded-full bg-[#DFDFDF] dark:bg-transparent text-xs sm:text-sm font-medium text-[#636363] dark:text-[#999999] leading-[100%] -tracking-[3%]"> 
+          <Badge className="py-[3px] px-1.5 rounded-full bg-[#DFDFDF] dark:bg-transparent text-xs sm:text-sm font-medium text-[#636363] dark:text-[#999999] leading-[100%] -tracking-[3%]">
             {item.type}
           </Badge>
         </h1>

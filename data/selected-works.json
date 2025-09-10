@@ -1,50 +1,62 @@
 [
   {
-    "title": "Far from home",
+    "title": "Far From Home",
     "type": "TV Series",
     "production": "Netflix, Inkblot",
     "year": "2022",
     "imageUrl": "/works/far-from-home.jpeg",
-    "link": "https://youtu.be/JtrA9DELEhA?si=Se9YFBzK28Jlq8e9"
+    "link": "https://www.youtube.com/watch?v=JtrA9DELEhA",
+    "synopsis": "A troubled teenager finds himself in the world of luxury after winning a prestigious scholarship to an exclusive school. As he attempts to navigate this new world, the teenagers continues to aim for the top.",
+    "role": "Assistant Editor"
   },
   {
     "title": "Obara'm",
-    "type": "Feature film",
+    "type": "Feature Film",
     "production": "Film Trybe",
-    "year": "2023",
+    "year": "2022",
     "imageUrl": "/works/obaram.jpg",
-    "link": "https://youtu.be/P7oG85bv4Zw?si=YSHM3qyibG71quNZ"
+    "link": "https://youtu.be/P7oG85bv4Zw?si=YSHM3qyibG71quNZ",
+    "synopsis": "Confronted by her past, promising musician Oluchi tries to reconcile with the daughter she abandoned. However, some things cannot be forgiven.",
+    "role": "Editor"
   },
   {
-    "title": "Ebuka turns up Africa",
-    "type": "Reality TV",
-    "production": "Film Trybe",
+    "title": "Africa Magic @20",
+    "type": "Documentary",
+    "production": "Africa Magic",
     "year": "2024",
-    "imageUrl": "/works/ebuka-turns-up-africa.jpg",
-    "link": "https://youtu.be/HP5Ny9ud7xg?si=cy8L3V7oYgU44jsp"
+    "imageUrl": "/works/AFMAG @20.jpg",
+    "link": "https://vimeo.com/1035826636?share=copy#t=0",
+    "synopsis": "A documentary series celebrating Africa Magic at 20",
+    "role": "Editor"
   },
   {
-    "title": "To kill a monkey",
+    "title": "Princess on a Hill",
     "type": "TV Series",
-    "production": "Netflix, Inkblot",
+    "production": "Blink Studios, Suss Productions",
+    "year": "2024",
+    "imageUrl": "/works/POAH.jpg",
+    "link": "https://vimeo.com/1032822683?share=copy#t=0",
+    "synopsis": "Zara, the naive protege and winner of a reality show, makes her debut in the most powerful boardroom in the country. She must save the company from decline while resisting the dark influence of the enigmatic tyrant pulling her strings.",
+    "role": "Editor, Trailer Editor"
+  },
+  {
+    "title": "To Kill a Monkey",
+    "type": "TV Series",
+    "production": "Netflix, Kemi Adetiba Visuals",
     "year": "2025",
     "imageUrl": "/works/to-kill-a-monkey.JPG",
-    "link": "https://youtu.be/aLxhNzvqToY?si=0VxpxzfPXXULQcaK"
+    "link": "https://www.youtube.com/watch?v=aLxhNzvqToY&pp=ygUQdG8ga2lsbCBhIG1vbmtleQ%3D%3D",
+    "synopsis": "Efemini, a down-on-his-luck everyman whose life changes forever after a chance meeting with an old friend. Forced by circumstance to suppress his principles and explore a life of cybercrime, he finds himself making ever-greater moral compromises to stay ahead of the consequences of his new choices... and broadening tastes.",
+    "role": "Offline Editor"
   },
   {
-    "title": "My fairytale wedding",
-    "type": "TV Series",
-    "production": "Netflix, Inkblot",
-    "year": "2022",
-    "imageUrl": "/works/my-fairytale-wedding.jpg",
-    "link": "https://youtu.be/LM9fYJmqQ1Y?si=n1ioGUy7FoqmfWbi"
-  },
-  {
-    "title": "Shanty town",
-    "type": "Feature film",
-    "production": "Film Trybe",
-    "year": "2023",
-    "imageUrl": "/works/shanty-town.jpg",
-    "link": "https://youtu.be/g3-TbsMEVPw?si=rPVQ7N-rWL5_oWBx"
+    "title": "Bam Bam",
+    "type": "Short Film",
+    "production": "LSW FIlms",
+    "year": "2025",
+    "imageUrl": "/works/BAMBAM IG RECTANGLE.png",
+    "link": "https://vimeo.com/1116263035?fl=pl&fe=sh",
+    "synopsis": "Babatunde is a gifted but awkward teenager caught in the middle of his parents’ divorce. When he falls for a girl in his class, he turns to Bam Bam, his AI friend who seems to have all the answers. but the closer he gets to love, the more he must choose between connection and the doubts that have always controlled him.",
+    "role": "Editor"
   }
 ]

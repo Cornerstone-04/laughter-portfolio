@@ -30,9 +30,12 @@ export const Footer = () => {
 
           <Button
             variant="primary"
+            asChild
             className="h-12 sm:h-14 w-full sm:w-fit px-6 sm:px-8 py-3 sm:py-4 text-base flex items-center justify-center font-medium"
           >
-            Book a call
+            <Link href="" target="_blank" rel="noopener noreferrer">
+              Book a call
+            </Link>
           </Button>
         </div>
         {/* Bottom row */}
@@ -42,6 +45,7 @@ export const Footer = () => {
             <Link
               href="https://www.linkedin.com/in/devdesigntolu/"
               target="_blank"
+              rel="noopener noreferrer"
               className="text-le-purple dark:text-[#cacaca] underline"
             >
               devdesigntolu
@@ -55,6 +59,7 @@ export const Footer = () => {
             Developed by{" "}
             <Link
               href="https://linkedin.com/in/cornerstone-ephraim"
+              rel="noopener noreferrer"
               target="_blank"
               className="dark:text-[#cacaca] underline"
             >

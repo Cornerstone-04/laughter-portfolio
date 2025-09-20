@@ -57,20 +57,20 @@ export const Testimonials = () => {
         {/* card */}
         <div className="flex flex-col lg:flex-row items-stretch gap-6 max-w-[800px] bg-white rounded-2xl overflow-hidden lg:h-[400px]">
           {/* Image */}
-         {/* Image */}
-<div className="flex-shrink-0 w-full lg:max-w-[316px] h-56 sm:h-72 md:h-80 lg:h-full overflow-hidden">
-  <Image
-    src={currentTestimonial.image}
-    alt={`${currentTestimonial.name} testimonial`}
-    // Give intrinsic dimensions (any reasonable aspect ratio works);
-    // Tailwind still controls the rendered size via w-full/h-full.
-    width={640}
-    height={800}
-    className="w-full h-full object-cover"
-    sizes="(max-width: 1024px) 100vw, 316px"
-    priority={currentIndex === 0}
-  />
-</div>
+          {/* Image */}
+          <div className="flex-shrink-0 w-full lg:max-w-[316px] h-56 sm:h-72 md:h-80 lg:h-full overflow-hidden">
+            <Image
+              src={currentTestimonial.image}
+              alt={`${currentTestimonial.name} testimonial`}
+              // Give intrinsic dimensions (any reasonable aspect ratio works);
+              // Tailwind still controls the rendered size via w-full/h-full.
+              width={640}
+              height={800}
+              className="w-full h-full object-cover"
+              sizes="(max-width: 1024px) 100vw, 316px"
+              priority={currentIndex === 0}
+            />
+          </div>
 
           {/* Content */}
           <div className="flex flex-1 w-full lg:max-w-[460px] px-6 lg:pl-0 py-6 lg:pr-6">
@@ -81,7 +81,7 @@ export const Testimonials = () => {
               </div>
 
               {/* Quote */}
-              <p className="text-xl md:text-2xl font-medium text-[#2A2936] leading-normal -tracking-[0.48px]">
+              <p className="text-xl  font-medium text-[#2A2936] leading-normal -tracking-[0.48px]">
                 &quot;{currentTestimonial.quote}&quot;
               </p>
 

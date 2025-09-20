@@ -25,9 +25,9 @@ export default function HomePage() {
         <Section amount={0.15} delay={0.05}>
           <AboutEphraim />
         </Section>
-        <Section amount={0.15} delay={0.05}>
+        {/* <Section amount={0.15} delay={0.05}>
           <Testimonials />
-        </Section>
+        </Section> */}
         <Section amount={0.15} delay={0.05}>
           <ContactMe />
         </Section>

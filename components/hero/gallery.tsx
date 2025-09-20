@@ -24,8 +24,8 @@ export const Gallery = () => {
   const [autoplay, setAutoplay] = useState(true);
   const resumeTimerRef = useRef<number | null>(null);
 
-  const INTERVAL_MS = 3500;
-  const RESUME_AFTER_MS = 5000;
+  const INTERVAL_MS = 2500;
+  const RESUME_AFTER_MS = 3000;
 
   const total = galleryItems.length;
 

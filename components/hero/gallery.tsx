@@ -127,7 +127,7 @@ export const Gallery = () => {
           alt={item.alt}
           width={1600}
           height={900}
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center aspect-video"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 60vw"
           priority={isMain}
         />
@@ -181,14 +181,14 @@ export const Gallery = () => {
           "
           onClick={goPrev}
         >
-          <div className="w-full h-full relative">
+          <div className="w-full h-full relative transition-opacity duration-500 ease-in-out">
             {renderMediaContent(leftItem)}
           </div>
         </div>
 
         {/* Main Content */}
         <div className="w-full md:w-3/5 h-full rounded-2xl overflow-hidden">
-          <div className="w-full h-full relative transition-transform duration-700 ease-linear">
+          <div className="w-full h-full relative transition-opacity duration-500 ease-in-out">
             {renderMediaContent(currentItem, true)}
           </div>
         </div>
@@ -203,7 +203,7 @@ export const Gallery = () => {
           "
           onClick={goNext}
         >
-          <div className="w-full h-full relative">
+          <div className="w-full h-full relative transition-opacity duration-500 ease-in-out">
             {renderMediaContent(rightItem)}
           </div>
         </div>

@@ -56,14 +56,10 @@ export const Testimonials = () => {
 
         {/* card */}
         <div className="flex flex-col lg:flex-row items-stretch gap-6 max-w-[800px] bg-white rounded-2xl overflow-hidden lg:h-[400px]">
-          {/* Image */}
-          {/* Image */}
           <div className="flex-shrink-0 w-full lg:max-w-[316px] h-56 sm:h-72 md:h-80 lg:h-full overflow-hidden">
             <Image
               src={currentTestimonial.image}
               alt={`${currentTestimonial.name} testimonial`}
-              // Give intrinsic dimensions (any reasonable aspect ratio works);
-              // Tailwind still controls the rendered size via w-full/h-full.
               width={640}
               height={800}
               className="w-full h-full object-cover"

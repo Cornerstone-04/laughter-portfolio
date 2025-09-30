@@ -3,32 +3,16 @@
     "id": 1,
     "quote": "Laughter has consistently shown efficiency, diligence, and creativity in every project. He goes above and beyond to deliver excellent outcomes with strong technical skills. Dependable and disciplined, he approaches work with integrity and humility. His Christian faith and love for God reflect in his honesty, dedication, and character.",
     "name": "Adeleke Oluwadamilare",
-    "title": "Director/Editor, ⁠PostNomad Studio",
+    "title": "Director/Editor⁠, PostNomad Studio",
     "rating": 5,
-    "image": "/testimonials/user.jpg"
+    "image": "/testimonials/DAMILARE.jpeg"
   },
   {
     "id": 2,
-    "quote": "The best way to find out if you can trust somebody is to trust them. Creative work is not about perfection, it's about connection and authenticity.",
-    "name": "Maya Rodriguez",
-    "title": "Creative Director, HBO",
+    "quote": "Laughter Ephraim is a talented film editor with unparalleled attention to details and a passion for storytelling that shines through in his work. His seamless editing expertise brings narratives to life in a truly impressive way. I've had the pleasure of working with him, and I highly recommend him for any film project.",
+    "name": "Ayomikun",
+    "title": "Film Editor, Blink Studios",
     "rating": 5,
-    "image": "/testimonials/user.jpg"
-  },
-  {
-    "id": 3,
-    "quote": "Innovation distinguishes between a leader and a follower. Every project should push boundaries and challenge the status quo.",
-    "name": "James Chen",
-    "title": "Producer, Disney+",
-    "rating": 5,
-    "image": "/testimonials/user.jpg"
-  },
-  {
-    "id": 4,
-    "quote": "Storytelling is the most powerful way to put ideas into the world today. Every frame should serve the narrative and emotional journey.",
-    "name": "Sarah Johnson",
-    "title": "Executive Producer, Amazon",
-    "rating": 4,
-    "image": "/testimonials/user.jpg"
+    "image": "/testimonials/ayomikun.jpeg"
   }
 ]

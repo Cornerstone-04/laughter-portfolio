@@ -4,7 +4,7 @@ import Hero from "@/components/hero/hero";
 import { SelectedWorks } from "@/components/selected-works/selected-works";
 import { FavouriteQuote } from "@/components/quote/favourite-quote";
 import { AboutEphraim } from "@/components/about/about";
-// import { Testimonials } from "@/components/testimonials/testimonials";
+import { Testimonials } from "@/components/testimonials/testimonials";
 import { ContactMe } from "@/components/contact/contact-me";
 import { LazyMotion, domAnimation } from "framer-motion";
 import { Section } from "@/components/shared/animated-section";
@@ -25,9 +25,9 @@ export default function HomePage() {
         <Section amount={0.15} delay={0.05}>
           <AboutEphraim />
         </Section>
-        {/* <Section amount={0.15} delay={0.05}>
+        <Section amount={0.15} delay={0.05}>
           <Testimonials />
-        </Section> */}
+        </Section>
         <Section amount={0.15} delay={0.05}>
           <ContactMe />
         </Section>

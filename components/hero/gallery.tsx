@@ -1,8 +1,9 @@
 "use client";
 import rawGallery from "@/data/gallery.json";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 type GalleryItems = {
   id: number;
@@ -16,27 +17,46 @@ type GalleryItems = {
 export const Gallery = () => {
   const galleryItems = rawGallery as GalleryItems[];
 
-  // Start with the main video (index 1)
+  // Start with the first item
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Autoplay controls
   const [autoplay, setAutoplay] = useState(true);
   const resumeTimerRef = useRef<number | null>(null);
 
+  // Track direction for animations
+  const dirRef = useRef<1 | -1>(1);
+
   const INTERVAL_MS = 2500;
   const RESUME_AFTER_MS = 3000;
 
   const total = galleryItems.length;
 
-  const goToSlide = (index: number) => {
-    // Clamp to 0..total-1
-    const next = (index + total) % total;
-    setCurrentIndex(next);
-    pauseThenScheduleResume();
-  };
+  const goToSlide = useCallback(
+    (index: number) => {
+      const next = (index + total) % total;
+      // Determine direction
+      dirRef.current =
+        next > currentIndex || (currentIndex === total - 1 && next === 0)
+          ? 1
+          : -1;
+      setCurrentIndex(next);
+      pauseThenScheduleResume();
+    },
+    [currentIndex, total]
+  );
 
-  const goNext = () => goToSlide(currentIndex + 1);
-  const goPrev = () => goToSlide(currentIndex - 1);
+  const goNext = useCallback(() => {
+    dirRef.current = 1;
+    setCurrentIndex((i) => (i + 1) % total);
+    pauseThenScheduleResume();
+  }, [total]);
+
+  const goPrev = useCallback(() => {
+    dirRef.current = -1;
+    setCurrentIndex((i) => (i - 1 + total) % total);
+    pauseThenScheduleResume();
+  }, [total]);
 
   // Pause autoplay immediately, then schedule resume
   const pauseThenScheduleResume = () => {
@@ -66,6 +86,7 @@ export const Gallery = () => {
     if (!autoplay) return;
 
     const tick = () => {
+      dirRef.current = 1; // Always go forward on autoplay
       setCurrentIndex((i) => (i + 1) % total);
     };
 
@@ -93,8 +114,8 @@ export const Gallery = () => {
   }, []);
 
   const currentItem = galleryItems[currentIndex];
-  const leftItem = galleryItems[currentIndex - 1] || galleryItems[total - 1];
-  const rightItem = galleryItems[currentIndex + 1] || galleryItems[0];
+  const leftItem = galleryItems[(currentIndex - 1 + total) % total];
+  const rightItem = galleryItems[(currentIndex + 1) % total];
 
   const renderMediaContent = (item: GalleryItems, isMain = false) => {
     const srcToUse = item.poster || item.thumbnail || item.src;
@@ -105,7 +126,6 @@ export const Gallery = () => {
           <Image
             src={srcToUse}
             alt={item.alt}
-            // Intrinsic dimensions (any reasonable ratio works); Tailwind still controls box size
             width={1600}
             height={900}
             className="w-full h-full object-cover"
@@ -181,16 +201,36 @@ export const Gallery = () => {
           "
           onClick={goPrev}
         >
-          <div className="w-full h-full relative transition-opacity duration-500 ease-in-out">
-            {renderMediaContent(leftItem)}
-          </div>
+          <AnimatePresence mode="wait" initial={false} custom={dirRef.current}>
+            <motion.div
+              key={`left-${leftItem.id}`}
+              custom={dirRef.current}
+              initial={{ opacity: 0, x: -15 * dirRef.current }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 15 * dirRef.current }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="w-full h-full relative"
+            >
+              {renderMediaContent(leftItem)}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Main Content */}
         <div className="w-full md:w-3/5 h-full rounded-2xl overflow-hidden">
-          <div className="w-full h-full relative transition-opacity duration-500 ease-in-out">
-            {renderMediaContent(currentItem, true)}
-          </div>
+          <AnimatePresence mode="wait" initial={false} custom={dirRef.current}>
+            <motion.div
+              key={`main-${currentItem.id}`}
+              custom={dirRef.current}
+              initial={{ opacity: 0, x: 25 * dirRef.current }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -25 * dirRef.current }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="w-full h-full relative"
+            >
+              {renderMediaContent(currentItem, true)}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Right Side Panel */}
@@ -203,9 +243,19 @@ export const Gallery = () => {
           "
           onClick={goNext}
         >
-          <div className="w-full h-full relative transition-opacity duration-500 ease-in-out">
-            {renderMediaContent(rightItem)}
-          </div>
+          <AnimatePresence mode="wait" initial={false} custom={dirRef.current}>
+            <motion.div
+              key={`right-${rightItem.id}`}
+              custom={dirRef.current}
+              initial={{ opacity: 0, x: 15 * dirRef.current }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -15 * dirRef.current }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="w-full h-full relative"
+            >
+              {renderMediaContent(rightItem)}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 

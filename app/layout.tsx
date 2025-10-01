@@ -37,7 +37,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="scroll-smooth scroll-pt-20 md:scroll-pt-24"
+      suppressHydrationWarning
+    >
       <head>
         {/* Set initial theme BEFORE hydration to avoid flashes/mismatch */}
         <script
@@ -60,7 +64,7 @@ export default function RootLayout({
       </head>
       <body className="relative" suppressHydrationWarning>
         <ThemeProvider>
-          <LoadingScreen/>
+          <LoadingScreen />
           <Navbar />
           <main className="min-h-dvh">{children}</main>
           <Footer />

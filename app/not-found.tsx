@@ -77,7 +77,7 @@ export default function NotFound() {
             Scene Not Found
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-[#454545] dark:text-[#cacaca] max-w-md mx-auto leading-relaxed">
-            Looks like this frame didn't make the final cut. Let's get you back
+            Looks like this frame didn&apos;t make the final cut. Let&apos;s get you back
             on track.
           </p>
         </motion.div>

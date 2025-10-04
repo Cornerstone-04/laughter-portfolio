@@ -12,7 +12,7 @@ import {
   imageVariants,
 } from "../../lib/testimonial-variants";
 
-const AUTOPLAY_MS = 3500;
+const AUTOPLAY_MS = 4000;
 
 export const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

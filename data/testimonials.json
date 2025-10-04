@@ -11,8 +11,16 @@
     "id": 2,
     "quote": "Laughter Ephraim is a talented film editor with unparalleled attention to details and a passion for storytelling that shines through in his work. His seamless editing expertise brings narratives to life in a truly impressive way. I've had the pleasure of working with him, and I highly recommend him for any film project.",
     "name": "Ayomikun",
-    "title": "Film Editor, Blink Studios",
+    "title": "Film Editor",
     "rating": 5,
     "image": "/testimonials/ayomikun.jpeg"
+  },
+  {
+    "id": 3,
+    "quote": "Laughter is one of my favourite people to work with because of how attentive he his to details and the effort he puts into each project he is working on.",
+    "name": "⁠Karunwi Samuel",
+    "title": "Lead Editor, ⁠Feemit Films",
+    "rating": 5,
+    "image": "/testimonials/samuel.jpeg"
   }
 ]

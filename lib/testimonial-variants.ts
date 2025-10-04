@@ -1,25 +1,16 @@
 // Animation variants for image
-type ImageVariantsProps = {
-  enter: (direction: number) => { x: number; opacity: number; scale: number };
-  center: { x: number; opacity: number; scale: number };
-  exit: (direction: number) => { x: number; opacity: number; scale: number };
-};
-
-const imageVariants: ImageVariantsProps = {
-  enter: (direction) => ({
-    x: direction > 0 ? 100 : -100,
+const imageVariants = {
+  enter: () => ({
     opacity: 0,
-    scale: 0.95,
+    scale: 0.98,
   }),
   center: {
-    x: 0,
     opacity: 1,
     scale: 1,
   },
-  exit: (direction) => ({
-    x: direction > 0 ? -100 : 100,
+  exit: () => ({
     opacity: 0,
-    scale: 0.95,
+    scale: 0.98,
   }),
 };
 

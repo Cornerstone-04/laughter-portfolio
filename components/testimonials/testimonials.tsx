@@ -12,8 +12,6 @@ import {
   imageVariants,
 } from "../../lib/testimonial-variants";
 
-const AUTOPLAY_MS = 4000;
-
 export const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
@@ -54,7 +52,7 @@ export const Testimonials = () => {
       intervalRef.current = setInterval(() => {
         setDirection(1);
         setCurrentIndex((prev) => (prev === len - 1 ? 0 : prev + 1));
-      }, AUTOPLAY_MS);
+      }, 5000);
     };
 
     const handleVisibility = () => {
@@ -79,7 +77,7 @@ export const Testimonials = () => {
     safeClear();
     fn();
     // give a small delay before resuming autoplay so it doesn’t jump immediately
-    const resumeId = setTimeout(() => setPaused(false), 800);
+    const resumeId = setTimeout(() => setPaused(false), 2000);
     return () => clearTimeout(resumeId);
   };
 

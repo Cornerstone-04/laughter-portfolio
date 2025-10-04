@@ -26,12 +26,5 @@
     "src": "/gallery/timeline-2.PNG",
     "alt": "timeline for street",
     "thumbnail": "/gallery/timeline-2.PNG"
-  },
-  {
-    "id": 5,
-    "type": "image",
-    "src": "/gallery/timeline-3.JPG",
-    "alt": "Timeline for princess on a hill",
-    "thumbnail": "/gallery/timeline-3.JPG"
   }
 ]

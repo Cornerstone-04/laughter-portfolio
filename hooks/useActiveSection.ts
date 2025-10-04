@@ -9,9 +9,16 @@ export function useActiveSection(defaultHash = "#home") {
 
   const readHash = useCallback(() => {
     if (typeof window === "undefined") return;
-    const h = window.location.hash || defaultHash;
+
+    let h = window.location.hash || defaultHash;
+
+    // ✅ Treat /works as #selected-works
+    if (!window.location.hash && pathname === "/works") {
+      h = "#selected-works";
+    }
+
     setActiveHash(h);
-  }, [defaultHash]);
+  }, [defaultHash, pathname]);
 
   // On mount & whenever pathname changes (e.g., from /works -> /)
   useEffect(() => {
@@ -33,7 +40,7 @@ export function useActiveSection(defaultHash = "#home") {
   const setActiveFromHref = useCallback((href: string) => {
     // normalize "/#about" -> "#about"
     const hash = href.startsWith("/#") ? href.slice(1) : href;
-    setActiveHash(hash);
+    setActiveHash(hash === "/works" ? "#selected-works" : hash);
   }, []);
 
   return { activeHash, setActiveFromHref };

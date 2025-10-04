@@ -16,7 +16,7 @@ export default function LoadingScreen() {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 z-100 flex items-center justify-center bg-white dark:bg-[#15151e]"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-white dark:bg-[#15151e] min-h-screen"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}

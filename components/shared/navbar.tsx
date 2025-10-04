@@ -9,6 +9,7 @@ import {
   SheetContent,
   SheetTrigger,
   SheetClose,
+  SheetTitle,
 } from "@/components/ui/sheet";
 import { useActiveSection } from "@/hooks/useActiveSection";
 
@@ -89,9 +90,10 @@ export function Navbar() {
 
               <SheetContent
                 side="right"
-                className="w-full pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] p-4 flex justify-center items-center flex-col dark:bg-[#131316]"
+                className="w-full pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] p-4 flex justify-center items-center flex-col dark:bg-[#131316] min-h-screen"
                 aria-label="Mobile navigation"
               >
+                <SheetTitle className="hidden">Mobile Menu</SheetTitle>
                 <nav className="mt-4 w-full flex flex-col items-center text-3xl gap-8">
                   {navItems.map(({ href, label }) => (
                     <SheetClose asChild key={href}>

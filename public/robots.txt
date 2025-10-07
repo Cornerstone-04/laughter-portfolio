@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /api
+Disallow: /404
+
+# Host
+Host: https://laughterephraim.vercel.app
+
+# Sitemaps
+Sitemap: https://laughterephraim.vercel.app/sitemap.xml

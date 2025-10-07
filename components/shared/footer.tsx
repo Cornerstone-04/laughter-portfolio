@@ -33,7 +33,11 @@ export const Footer = () => {
             asChild
             className="h-12 sm:h-14 w-full sm:w-fit px-6 sm:px-8 py-3 sm:py-4 text-base flex items-center justify-center font-medium"
           >
-            <Link href="" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://calendar.app.google/f4RhQrpnjYe2uv6y5"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Book a call
             </Link>
           </Button>
@@ -43,12 +47,12 @@ export const Footer = () => {
           <p className="text-[#464554] dark:text-white font-medium -tracking-[0.48px] text-base">
             Designed by{" "}
             <Link
-              href="https://www.linkedin.com/in/devdesigntolu/"
+              href="https://linktr.ee/ToluwalopeAdebunmi"
               target="_blank"
               rel="noopener noreferrer"
               className="text-le-purple dark:text-[#cacaca] underline"
             >
-              devdesigntolu
+              Tolu Adebunmi
             </Link>
           </p>
           <p className="text-white dark:text-white font-medium -tracking-[0.48px] text-base flex items-center">
@@ -58,7 +62,7 @@ export const Footer = () => {
           <p className="text-white dark:text-white font-medium -tracking-[0.48px] text-base">
             Developed by{" "}
             <Link
-              href="https://linkedin.com/in/cornerstone-ephraim"
+              href="https://cornerstoneephraim.vercel.app/"
               rel="noopener noreferrer"
               target="_blank"
               className="dark:text-[#cacaca] underline"

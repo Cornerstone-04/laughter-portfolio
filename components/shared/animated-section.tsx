@@ -1,4 +1,4 @@
-import { m as motion, useReducedMotion } from "framer-motion";
+import { m as motion, useReducedMotion } from "motion/react";
 import type { PropsWithChildren } from "react";
 
 const fadeUp = {

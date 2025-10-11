@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { domAnimation, LazyMotion } from "framer-motion";
+import { domAnimation, LazyMotion } from "motion/react";
 import { Section } from "@/components/shared/animated-section";
 
 const MIN_YEAR = 2020;

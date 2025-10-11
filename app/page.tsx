@@ -6,7 +6,7 @@ import { FavouriteQuote } from "@/components/quote/favourite-quote";
 import { AboutEphraim } from "@/components/about/about";
 import { Testimonials } from "@/components/testimonials/testimonials";
 import { ContactMe } from "@/components/contact/contact-me";
-import { LazyMotion, domAnimation } from "framer-motion";
+import { LazyMotion, domAnimation } from "motion/react";
 import { Section } from "@/components/shared/animated-section";
 
 export default function HomePage() {

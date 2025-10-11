@@ -3,7 +3,7 @@ import rawGallery from "@/data/gallery.json";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 type GalleryItems = {
   id: number;

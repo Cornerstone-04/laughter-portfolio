@@ -10,7 +10,7 @@ import { EditingTools } from "../shared/editing-tools";
 import Tools from "@/data/tools.json";
 import Brands from "@/data/brands.json";
 import { FeaturedBrands } from "../shared/featured-brands";
-import { m as motion, useReducedMotion } from "framer-motion";
+import { m as motion, useReducedMotion } from "motion/react";
 
 export const AboutEphraim = () => {
   const prefersReduced = useReducedMotion();

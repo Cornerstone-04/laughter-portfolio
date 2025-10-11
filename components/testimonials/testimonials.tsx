@@ -5,7 +5,7 @@ import testimonials from "@/data/testimonials.json";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import {
   containerVariants,
   contentVariants,

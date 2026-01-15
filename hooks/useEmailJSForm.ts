@@ -14,9 +14,9 @@ type Options<T extends HTMLFormElement> = {
 
 export function useEmailJSForm<T extends HTMLFormElement = HTMLFormElement>({
   clearAfterMs = 4000,
-  serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "",
-  templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "",
-  publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "",
+  serviceId = process.env.local.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "",
+  templateId = process.env.local.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "",
+  publicKey = process.env.local.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "",
 }: Options<T> = {}) {
   const [sending, setSending] = useState(false);
   const initializedRef = useRef(false);

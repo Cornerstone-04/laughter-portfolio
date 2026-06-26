@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   title: "Laughter Ephraim – Post Production Editor",
   description:
     "Laughter Ephraim is an AMVCA-nominated film editor with 6+ years of experience crafting stories with precision and creativity. Passionate about the power of storytelling to connect, inspire, and entertain.",
-  metadataBase: new URL("https://laughterephraim.vercel.app/"),
+  metadataBase: new URL("https://laughterephraim.com/"),
   openGraph: {
     title: "Laughter Ephraim – Post Production Editor",
     description:
       "Laughter Ephraim is an AMVCA-nominated film editor with 6+ years of experience crafting stories with precision and creativity. Passionate about the power of storytelling to connect, inspire, and entertain.",
-    url: "https://laughterephraim.vercel.app/",
+    url: "https://laughterephraim.com/",
     siteName: "Laughter Ephraim",
     images: ["/android-chrome-512x512.png"],
     locale: "en_US",

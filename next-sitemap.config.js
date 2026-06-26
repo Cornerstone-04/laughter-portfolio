@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://laughterephraim.vercel.app",
+  siteUrl: "https://laughterephraim.com",
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: "weekly",
@@ -77,7 +77,7 @@ module.exports = {
     ],
     additionalSitemaps: [
       // If you add more sitemaps in the future
-      // "https://laughterephraim.vercel.app/server-sitemap.xml",
+      // "https://laughterephraim.com/server-sitemap.xml",
     ],
   },
 };

@@ -8,7 +8,7 @@ Disallow: /api
 Disallow: /404
 
 # Host
-Host: https://laughterephraim.vercel.app
+Host: https://laughterephraim.com
 
 # Sitemaps
-Sitemap: https://laughterephraim.vercel.app/sitemap.xml
+Sitemap: https://laughterephraim.com/sitemap.xml

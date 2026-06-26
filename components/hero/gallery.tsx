@@ -4,18 +4,14 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
+import type { GalleryItem } from "@/sanity/lib/portfolio-data";
 
-type GalleryItems = {
-  id: number;
-  type: "image" | "video";
-  src: string;
-  alt: string;
-  thumbnail?: string;
-  poster?: string;
+type Props = {
+  items?: GalleryItem[];
 };
 
-export const Gallery = () => {
-  const galleryItems = rawGallery as GalleryItems[];
+export const Gallery = ({ items }: Props) => {
+  const galleryItems = items?.length ? items : (rawGallery as GalleryItem[]);
 
   // Start with the first item
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -117,7 +113,7 @@ export const Gallery = () => {
   const leftItem = galleryItems[(currentIndex - 1 + total) % total];
   const rightItem = galleryItems[(currentIndex + 1) % total];
 
-  const renderMediaContent = (item: GalleryItems, isMain = false) => {
+  const renderMediaContent = (item: GalleryItem, isMain = false) => {
     const srcToUse = item.poster || item.thumbnail || item.src;
 
     if (item.type === "video") {

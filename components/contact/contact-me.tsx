@@ -3,8 +3,15 @@ import socials from "@/data/socials.json";
 import { ArrowUpRight, Copy } from "lucide-react";
 import Image from "next/image";
 import { ContactForm } from "./contact-form";
+import type { SiteSettings } from "@/sanity/lib/portfolio-data";
 
-export const ContactMe = () => {
+type Props = {
+  settings?: SiteSettings;
+};
+
+export const ContactMe = ({ settings }: Props) => {
+  const links = settings?.socials?.length ? settings.socials : socials;
+
   return (
     <section
       className="w-full p-6 sm:p-8 md:p-16 flex flex-col items-center justify-center self-stretch"
@@ -21,8 +28,8 @@ export const ContactMe = () => {
             priority
           />
         </div>
-        <ContactForm />
-        {socials.map(({ id, label, link }) => (
+        <ContactForm heading={settings?.contactHeading} intro={settings?.contactIntro} />
+        {links.map(({ id, label, link }) => (
           <Link
             key={`${label} - ${id}`}
             href={link}

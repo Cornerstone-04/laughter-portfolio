@@ -8,9 +8,14 @@ import { useMemo, useState } from "react";
 import { WorkModal, WorkItem } from "@/components/works/work-modal";
 import { WorkCard } from "@/components/works/work-card";
 import { InfoTooltip } from "../shared/info-tooltip";
+import type { WorkContent } from "@/sanity/lib/portfolio-data";
 
-export function SelectedWorks() {
-  const data = useMemo(() => works as WorkItem[], []);
+type Props = {
+  works?: WorkContent[];
+};
+
+export function SelectedWorks({ works: cmsWorks }: Props) {
+  const data = useMemo(() => (cmsWorks?.length ? cmsWorks : works) as WorkItem[], [cmsWorks]);
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState<WorkItem | null>(null);
 

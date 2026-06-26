@@ -11,9 +11,18 @@ import Tools from "@/data/tools.json";
 import Brands from "@/data/brands.json";
 import { FeaturedBrands } from "../shared/featured-brands";
 import { m as motion, useReducedMotion } from "motion/react";
+import type { AboutPageContent } from "@/sanity/lib/portfolio-data";
 
-export const AboutEphraim = () => {
+type Props = {
+  content?: AboutPageContent;
+};
+
+export const AboutEphraim = ({ content }: Props) => {
   const prefersReduced = useReducedMotion();
+  const focusCards = content?.focusCards?.length ? content.focusCards : focus;
+  const tools = content?.tools?.length ? content.tools : Tools;
+  const brands = content?.brands?.length ? content.brands : Brands;
+  const headshot = content?.headshot || "/images/laughter-headshot.jpg";
 
   // parent controls the stagger
   const gridContainer = {
@@ -41,7 +50,7 @@ export const AboutEphraim = () => {
         <div id="details" className="flex flex-col items-start self-stretch gap-8">
           <div className="w-full flex flex-col md:flex-row items-center gap-4 md:gap-6 justify-between">
             <h1 className="text-[#2A2936] dark:text-white text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight md:leading-normal tracking-[-1.44px]">
-              About Laughter
+              {content?.headline ?? "About Laughter"}
             </h1>
             <Button
               asChild
@@ -55,11 +64,8 @@ export const AboutEphraim = () => {
           </div>
           <div>
             <p className="text-[#454545] dark:text-[#cacaca] text-base sm:text-lg md:text-2xl font-medium leading-relaxed md:leading-normal tracking-[-0.48px] self-stretch ">
-              Hi there! I&apos;m Laughter Ephraim, an AMVCA-nominated film editor with a passion to
-              create stories. With 6 years in the film industry, I have developed a love for
-              bringing stories to life with precision and creativity. I believe in the power of
-              storytelling and its ability to connect, inspire and entertain. It&apos;s more than
-              just editing. It&apos;s about conveying a message that matters.
+              {content?.body ??
+                "Hi there! I'm Laughter Ephraim, an AMVCA-nominated film editor with a passion to create stories. With 6 years in the film industry, I have developed a love for bringing stories to life with precision and creativity. I believe in the power of storytelling and its ability to connect, inspire and entertain. It's more than just editing. It's about conveying a message that matters."}
             </p>
           </div>
         </div>
@@ -75,7 +81,7 @@ export const AboutEphraim = () => {
             className="relative rounded-2xl overflow-hidden min-h-[260px] sm:min-h-[320px] lg:hidden mb-4"
           >
             <Image
-              src="/images/laughter-headshot.jpg"
+              src={headshot}
               alt="Portrait of Laughter Ephraim"
               fill
               className="object-cover object-top md:object-center"
@@ -94,7 +100,7 @@ export const AboutEphraim = () => {
           >
             {/* LEFT COLUMN (cards 1–3) */}
             <div className="order-2 lg:order-1 grid grid-cols-1 gap-4 lg:grid-rows-3">
-              {focus.slice(0, 3).map(({ id, title, description, color }) => (
+              {focusCards.slice(0, 3).map(({ id, title, description, color }) => (
                 <motion.div
                   key={id}
                   variants={gridItem}
@@ -129,10 +135,10 @@ export const AboutEphraim = () => {
                 transition={prefersReduced ? { duration: 0 } : { duration: 0.45, ease: "easeOut" }}
               >
                 <AboutCard
-                  id={focus[3].id}
-                  title={focus[3].title}
-                  description={focus[3].description}
-                  color={focus[3].color}
+                  id={focusCards[3]?.id ?? 4}
+                  title={focusCards[3]?.title ?? "Meaningful Impact"}
+                  description={focusCards[3]?.description ?? ""}
+                  color={focusCards[3]?.color ?? "#4F46E5"}
                 />
               </motion.div>
             </div>
@@ -140,10 +146,10 @@ export const AboutEphraim = () => {
         </div>
 
         <div id="tools" className="w-full">
-          <EditingTools items={Tools} />
+          <EditingTools items={tools} />
         </div>
         <div id="brands" className="w-full">
-          <FeaturedBrands items={Brands} />
+          <FeaturedBrands items={brands} />
         </div>
       </div>
     </section>

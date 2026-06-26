@@ -4,8 +4,23 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Gallery } from "./gallery";
 import Link from "next/link";
+import type { GalleryItem } from "@/sanity/lib/portfolio-data";
 
-export default function Hero() {
+type Props = {
+  headline?: string;
+  intro?: string;
+  ctaLabel?: string;
+  ctaLink?: string;
+  galleryItems?: GalleryItem[];
+};
+
+export default function Hero({
+  headline = "LAUGHTER EPHRAIM",
+  intro = "I am an AMVCA-nominated film editor with a passion to create stories. With 6 years in the film industry, I have developed a love for bringing stories to life with precision and creativity.",
+  ctaLabel = "Get in touch",
+  ctaLink = "/#contact-me",
+  galleryItems,
+}: Props) {
   return (
     <section id="home" className="mt-12 sm:mt-16">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
@@ -18,7 +33,7 @@ export default function Hero() {
               mb-3 sm:mb-4 dark:text-white
             "
           >
-            LAUGHTER EPHRAIM
+            {headline}
           </h1>
 
           <p
@@ -26,9 +41,7 @@ export default function Hero() {
               text-[#454545] dark:text-[#cacaca] text-base sm:text-lg md:text-xl leading-normal -tracking-[.8px] max-w-[600px] mb-5 sm:mb-6
             "
           >
-            I am an AMVCA-nominated film editor with a passion to create
-            stories. With 6 years in the film industry, I have developed a love
-            for bringing stories to life with precision and creativity.
+            {intro}
           </p>
 
           <Button
@@ -43,17 +56,17 @@ export default function Hero() {
             aria-label="Get in touch"
           >
             <Link
-              href="/#contact-me"
+              href={ctaLink}
               className="flex items-center justify-center gap-2.5"
             >
-              Get in touch <ArrowRight className="size-4 sm:size-5" />
+              {ctaLabel} <ArrowRight className="size-4 sm:size-5" />
             </Link>
           </Button>
         </div>
       </div>
 
       <div className="mt-8 sm:mt-10">
-        <Gallery />
+        <Gallery items={galleryItems} />
       </div>
     </section>
   );

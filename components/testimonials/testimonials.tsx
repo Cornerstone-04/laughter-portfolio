@@ -11,12 +11,18 @@ import {
   contentVariants,
   imageVariants,
 } from "../../lib/testimonial-variants";
+import type { TestimonialItem } from "@/sanity/lib/portfolio-data";
 
-export const Testimonials = () => {
+type Props = {
+  items?: TestimonialItem[];
+};
+
+export const Testimonials = ({ items }: Props) => {
+  const testimonialItems = items?.length ? items : testimonials;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [paused, setPaused] = useState(false);
-  const len = testimonials.length;
+  const len = testimonialItems.length;
   const shouldReduceMotion = useReducedMotion();
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -96,7 +102,7 @@ export const Testimonials = () => {
       />
     ));
 
-  const currentTestimonial = testimonials[currentIndex];
+  const currentTestimonial = testimonialItems[currentIndex];
 
   return (
     <section
@@ -215,7 +221,7 @@ export const Testimonials = () => {
         <div className="flex items-center justify-between w-full max-w-[800px]">
           {/* Pagination Dots */}
           <div className="flex gap-2">
-            {testimonials.map((_, index) => (
+            {testimonialItems.map((_, index) => (
               <button
                 key={index}
                 onClick={() => pauseThen(() => goToSlide(index))}
@@ -223,7 +229,7 @@ export const Testimonials = () => {
                   index === currentIndex
                     ? "w-8 bg-[#4F46E5]"
                     : index === currentIndex + 1 ||
-                      (currentIndex === testimonials.length - 1 && index === 0)
+                      (currentIndex === testimonialItems.length - 1 && index === 0)
                     ? "bg-[#9D98F5]"
                     : "bg-[#DBD9FF]"
                 }`}

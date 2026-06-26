@@ -11,6 +11,7 @@ export function EditingTools({ items }: { items: Item[] }) {
     "et-2": { w: 32, h: 32 }, // Premiere
     "et-3": { w: 71, h: 32 }, // Avid
   };
+  const FALLBACK = { w: 48, h: 48 };
 
   return (
     <section
@@ -39,8 +40,8 @@ export function EditingTools({ items }: { items: Item[] }) {
                 <Image
                   src={item.icon}
                   alt={item.label}
-                  width={ICON_SIZES[item.id].w}
-                  height={ICON_SIZES[item.id].h}
+                  width={(ICON_SIZES[item.id] ?? FALLBACK).w}
+                  height={(ICON_SIZES[item.id] ?? FALLBACK).h}
                   className="object-contain"
                 />
               </span>

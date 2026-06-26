@@ -4,7 +4,12 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { useRef } from "react";
 
-export const ContactForm = () => {
+type Props = {
+  heading?: string;
+  intro?: string;
+};
+
+export const ContactForm = ({ heading = "Contact Me", intro }: Props) => {
   const { onSubmit, sending } = useEmailJSForm<HTMLFormElement>({
     clearAfterMs: 4000,
   });
@@ -20,11 +25,10 @@ export const ContactForm = () => {
     >
       <div className="flex items-start gap-1.5 flex-col">
         <p className="text-3xl md:text-[32px] font-semibold -tracking-[0.96px] leading-normal text-white">
-          Contact Me
+          {heading}
         </p>
         <span className="text-base md:text-lg font-medium -tracking-[0.54px] leading-normal text-[#E9E9E9]">
-          Get an inside look at the edits, stories, and moments that shaped each
-          frame.
+          {intro ?? "Get an inside look at the edits, stories, and moments that shaped each frame."}
         </span>
       </div>
       <div className="w-full grid gap-1.5">

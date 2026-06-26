@@ -1,6 +1,14 @@
 import Image from "next/image";
 
-export function FavouriteQuote() {
+type Props = {
+  text?: string;
+  attribution?: string;
+};
+
+export function FavouriteQuote({
+  text = "The essence of cinema is editing. It's the combination of what can be extraordinary images of people during emotional moments, or images in a general sense, put together in a kind of alchemy.",
+  attribution = "Francis Ford Coppola",
+}: Props) {
   return (
     <section className="relative isolate overflow-hidden w-full min-h-screen flex items-center justify-center text-center p-4 md:p-6">
       {/* AURORA BACKGROUND */}
@@ -28,9 +36,7 @@ export function FavouriteQuote() {
           </div>
           {/* Quote Text */}
           <h2 className="text-pretty text-2xl md:text-[44px] font-medium leading-snug md:leading-[normal] -tracking-[1.32px] text-white">
-            The essence of cinema is editing. It&apos;s the combination of what
-            can be extraordinary images of people during emotional moments, or
-            images in a general sense, put together in a kind of alchemy.
+            {text}
           </h2>
           {/* Closing Quote */}
           <div className="py-4 md:py-6 px-3 md:px-4 flex items-center justify-center">
@@ -45,7 +51,7 @@ export function FavouriteQuote() {
         </div>
         {/* Attribution */}
         <p className="text-lg md:text-2xl font-medium text-white mt-6 md:mt-8">
-          ~ Francis Ford Coppola
+          ~ {attribution}
         </p>
       </div>
     </section>

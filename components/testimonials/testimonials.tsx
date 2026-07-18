@@ -92,14 +92,26 @@ export const Testimonials = ({ items }: Props) => {
 
   const renderStars = (rating: number) =>
     Array.from({ length: 5 }, (_, i) => (
-      <Star
+      <motion.span
         key={i}
-        className={`w-6 h-6 ${
-          i < rating
-            ? "fill-[#D0BB1C] text-[#D0BB1C]"
-            : "fill-[#D9D9D9] text-[#D9D9D9]"
-        }`}
-      />
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 6, scale: 0.75 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={shouldReduceMotion ? undefined : { opacity: 0, y: -4, scale: 0.9 }}
+        transition={{
+          duration: 0.22,
+          delay: shouldReduceMotion ? 0 : i * 0.045,
+          ease: "easeOut",
+        }}
+        className="inline-flex"
+      >
+        <Star
+          className={`w-6 h-6 ${
+            i < rating
+              ? "fill-[#D0BB1C] text-[#D0BB1C]"
+              : "fill-[#D9D9D9] text-[#D9D9D9]"
+          }`}
+        />
+      </motion.span>
     ));
 
   const currentTestimonial = testimonialItems[currentIndex];

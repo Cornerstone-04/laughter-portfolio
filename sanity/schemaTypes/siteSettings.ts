@@ -20,7 +20,11 @@ export const siteSettings = defineType({
       rows: 3,
       validation: (rule) => rule.required(),
     }),
-    defineField({ name: "email", type: "email", validation: (rule) => rule.required() }),
+    defineField({
+      name: "email",
+      type: "email",
+      validation: (rule) => rule.required(),
+    }),
     defineField({
       name: "bookingLink",
       title: "Booking link",
@@ -35,12 +39,18 @@ export const siteSettings = defineType({
         defineArrayMember({
           type: "object",
           fields: [
-            defineField({ name: "label", type: "string", validation: (rule) => rule.required() }),
+            defineField({
+              name: "label",
+              type: "string",
+              validation: (rule) => rule.required(),
+            }),
             defineField({
               name: "link",
               type: "url",
               validation: (rule) =>
-                rule.uri({ scheme: ["http", "https", "mailto", "tel"] }).required(),
+                rule
+                  .uri({ scheme: ["http", "https", "mailto", "tel"] })
+                  .required(),
             }),
           ],
           preview: { select: { title: "label", subtitle: "link" } },
@@ -49,7 +59,12 @@ export const siteSettings = defineType({
       validation: (rule) => rule.min(1).required(),
     }),
     defineField({ name: "seoTitle", title: "SEO title", type: "string" }),
-    defineField({ name: "seoDescription", title: "SEO description", type: "text", rows: 3 }),
+    defineField({
+      name: "seoDescription",
+      title: "SEO description",
+      type: "text",
+      rows: 3,
+    }),
     defineField({ name: "ogImage", title: "Open Graph image", type: "image" }),
   ],
   preview: {

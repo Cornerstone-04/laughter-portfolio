@@ -14,7 +14,7 @@ export function ThemeToggle() {
   return (
     <Button
       size="icon"
-      className="size-11 bg-le-smoke rounded-full text-le-text hover:bg-le-smoke/80"
+      className="bg-le-smoke text-le-text hover:bg-le-smoke/80 size-11 rounded-full"
       onClick={toggle}
       // Avoid hydration warnings on attributes that change after mount
       suppressHydrationWarning
@@ -36,7 +36,7 @@ export function ThemeToggle() {
         )
       ) : (
         // SSR-safe placeholder to preserve button size & layout
-        <span className="block w-4.5 h-4.5" aria-hidden />
+        <span className="block h-4.5 w-4.5" aria-hidden />
       )}
     </Button>
   );

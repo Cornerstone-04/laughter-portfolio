@@ -53,7 +53,9 @@ export const aboutPage = defineType({
               type: "string",
               initialValue: "#4F46E5",
               validation: (rule) =>
-                rule.regex(/^#[0-9A-Fa-f]{6}$/).error("Use a hex color, like #4F46E5"),
+                rule
+                  .regex(/^#[0-9A-Fa-f]{6}$/)
+                  .error("Use a hex color, like #4F46E5"),
             }),
           ],
           preview: {
@@ -62,7 +64,9 @@ export const aboutPage = defineType({
         }),
       ],
       validation: (rule) =>
-        rule.length(4).warning("The current about layout is designed for exactly 4 cards."),
+        rule
+          .length(4)
+          .warning("The current about layout is designed for exactly 4 cards."),
     }),
     defineField({
       name: "tools",
@@ -72,13 +76,22 @@ export const aboutPage = defineType({
         defineArrayMember({
           type: "object",
           fields: [
-            defineField({ name: "label", type: "string", validation: (rule) => rule.required() }),
-            defineField({ name: "icon", type: "image", options: { hotspot: true } }),
+            defineField({
+              name: "label",
+              type: "string",
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "icon",
+              type: "image",
+              options: { hotspot: true },
+            }),
             defineField({
               name: "iconPath",
               title: "Existing icon path",
               type: "string",
-              description: "Advanced: use only for existing SVGs in /public, e.g. /icons/avid.svg.",
+              description:
+                "Advanced: use only for existing SVGs in /public, e.g. /icons/avid.svg.",
             }),
           ],
           preview: { select: { title: "label", media: "icon" } },
@@ -93,13 +106,22 @@ export const aboutPage = defineType({
         defineArrayMember({
           type: "object",
           fields: [
-            defineField({ name: "label", type: "string", validation: (rule) => rule.required() }),
-            defineField({ name: "logo", type: "image", options: { hotspot: true } }),
+            defineField({
+              name: "label",
+              type: "string",
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "logo",
+              type: "image",
+              options: { hotspot: true },
+            }),
             defineField({
               name: "logoPath",
               title: "Existing logo path",
               type: "string",
-              description: "Advanced: use only for existing SVGs in /public, e.g. /icons/netflix.svg.",
+              description:
+                "Advanced: use only for existing SVGs in /public, e.g. /icons/netflix.svg.",
             }),
           ],
           preview: { select: { title: "label", media: "logo" } },

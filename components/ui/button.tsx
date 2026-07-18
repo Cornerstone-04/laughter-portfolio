@@ -39,7 +39,7 @@ const buttonVariants = cva(
       size: "default",
       rounded: true,
     },
-  }
+  },
 );
 
 function Button({

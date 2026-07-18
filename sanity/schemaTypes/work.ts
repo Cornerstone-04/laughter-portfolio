@@ -59,7 +59,11 @@ export const work = defineType({
       type: "number",
       fieldset: "basics",
       validation: (rule) =>
-        rule.required().integer().min(1900).max(new Date().getFullYear() + 2),
+        rule
+          .required()
+          .integer()
+          .min(1900)
+          .max(new Date().getFullYear() + 2),
     }),
     defineField({
       name: "role",
@@ -73,7 +77,10 @@ export const work = defineType({
       rows: 5,
       fieldset: "story",
       validation: (rule) =>
-        rule.required().max(600).warning("Shorter synopses fit the modal better."),
+        rule
+          .required()
+          .max(600)
+          .warning("Shorter synopses fit the modal better."),
     }),
     defineField({
       name: "image",
@@ -88,8 +95,7 @@ export const work = defineType({
       title: "Preview link",
       type: "url",
       fieldset: "preview",
-      validation: (rule) =>
-        rule.required().uri({ scheme: ["http", "https"] }),
+      validation: (rule) => rule.required().uri({ scheme: ["http", "https"] }),
     }),
     defineField({
       name: "previewTitle",
@@ -135,10 +141,12 @@ export const work = defineType({
               featuredOrder == $featuredOrder &&
               !(_id in [$id, "drafts." + $id])
             ])`,
-            { featuredOrder: value, id }
+            { featuredOrder: value, id },
           );
 
-          return count === 0 || "Another featured work already uses this order.";
+          return (
+            count === 0 || "Another featured work already uses this order."
+          );
         }),
     }),
     defineField({

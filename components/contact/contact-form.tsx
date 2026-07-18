@@ -11,50 +11,51 @@ type Props = {
 };
 
 export const ContactForm = ({ heading = "Contact Me", intro }: Props) => {
-  const { onSubmit, sending, status, message } = useContactForm<HTMLFormElement>({
-    clearAfterMs: 4000,
-  });
+  const { onSubmit, sending, status, message } =
+    useContactForm<HTMLFormElement>({
+      clearAfterMs: 4000,
+    });
 
   return (
     <form
       onSubmit={onSubmit}
       noValidate
-      className="w-full p-4 md:p-8 flex flex-col gap-32 md:gap-0 rounded-2xl h-auto md:h-170 justify-between items-center col-span-2 bg-le-purple"
+      className="bg-le-purple col-span-2 flex h-auto w-full flex-col items-center justify-between gap-32 rounded-2xl p-4 md:h-170 md:gap-0 md:p-8"
     >
-      <div className="flex items-start gap-1.5 flex-col">
-        <p className="text-3xl md:text-[32px] font-semibold tracking-[-0.96px] leading-normal text-white">
+      <div className="flex flex-col items-start gap-1.5">
+        <p className="text-3xl leading-normal font-semibold tracking-[-0.96px] text-white md:text-[32px]">
           {heading}
         </p>
-        <span className="text-base md:text-lg font-medium tracking-[-0.54px] leading-normal text-[#E9E9E9]">
+        <span className="text-base leading-normal font-medium tracking-[-0.54px] text-[#E9E9E9] md:text-lg">
           {intro ??
             "Get an inside look at the edits, stories, and moments that shaped each frame."}
         </span>
       </div>
-      <div className="w-full grid gap-1.5">
+      <div className="grid w-full gap-1.5">
         <Input
           type="text"
           name="name"
           placeholder="Name"
-          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal tracking-[-0.48px] placeholder:text-[#61616B] bg-[#E0DFEC]!"
+          className="rounded-4xl bg-[#E0DFEC]! px-4 py-3 text-sm leading-normal tracking-[-0.48px] placeholder:text-[#61616B] md:text-base"
           required
         />
         <Input
           type="email"
           name="email"
           placeholder="Email Address"
-          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal tracking-[-0.48px] placeholder:text-[#61616B] bg-[#E0DFEC]!"
+          className="rounded-4xl bg-[#E0DFEC]! px-4 py-3 text-sm leading-normal tracking-[-0.48px] placeholder:text-[#61616B] md:text-base"
           required
         />
         <Textarea
           name="message"
           placeholder="Your Message"
-          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal tracking-[-0.48px] placeholder:text-[#61616B] h-40 bg-[#E0DFEC]! resize-none"
+          className="h-40 resize-none rounded-4xl bg-[#E0DFEC]! px-4 py-3 text-sm leading-normal tracking-[-0.48px] placeholder:text-[#61616B] md:text-base"
           required
         />
         {message && (
           <p
             className={[
-              "rounded-4xl px-4 py-3 text-sm font-medium leading-normal tracking-[-0.42px]",
+              "rounded-4xl px-4 py-3 text-sm leading-normal font-medium tracking-[-0.42px]",
               status === "success"
                 ? "bg-white/15 text-white"
                 : "bg-[#FF4318]/20 text-white",
@@ -68,7 +69,7 @@ export const ContactForm = ({ heading = "Contact Me", intro }: Props) => {
         <Button
           type="submit"
           variant="secondary"
-          className="py-4 px-8 bg-[#2A2936]! dark:text-white! w-full h-14"
+          className="h-14 w-full bg-[#2A2936]! px-8 py-4 dark:text-white!"
           disabled={sending}
         >
           {sending ? "Sending..." : "Send message"}

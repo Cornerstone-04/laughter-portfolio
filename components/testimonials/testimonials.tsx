@@ -96,7 +96,9 @@ export const Testimonials = ({ items }: Props) => {
         key={i}
         initial={shouldReduceMotion ? false : { opacity: 0, y: 6, scale: 0.75 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={shouldReduceMotion ? undefined : { opacity: 0, y: -4, scale: 0.9 }}
+        exit={
+          shouldReduceMotion ? undefined : { opacity: 0, y: -4, scale: 0.9 }
+        }
         transition={{
           duration: 0.22,
           delay: shouldReduceMotion ? 0 : i * 0.045,
@@ -105,7 +107,7 @@ export const Testimonials = ({ items }: Props) => {
         className="inline-flex"
       >
         <Star
-          className={`w-6 h-6 ${
+          className={`h-6 w-6 ${
             i < rating
               ? "fill-[#D0BB1C] text-[#D0BB1C]"
               : "fill-[#D9D9D9] text-[#D9D9D9]"
@@ -118,29 +120,29 @@ export const Testimonials = ({ items }: Props) => {
 
   return (
     <section
-      className="w-full p-6 sm:p-8 md:p-16 flex flex-col items-center justify-center self-stretch dark:bg-[#15151E]"
+      className="flex w-full flex-col items-center justify-center self-stretch p-6 sm:p-8 md:p-16 dark:bg-[#15151E]"
       id="testimonials"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={() => setPaused(true)}
       onTouchEnd={() => setPaused(false)}
     >
-      <div className="w-full max-w-[1072px] flex flex-col items-center gap-11">
+      <div className="flex w-full max-w-268 flex-col items-center gap-11">
         {/* header */}
-        <div className="text-center flex flex-col items-center gap-1">
-          <h2 className="text-3xl md:text-5xl font-semibold text-[#2A2936] dark:text-white leading-normal -tracking-[1.44px]">
+        <div className="flex flex-col items-center gap-1 text-center">
+          <h2 className="text-3xl leading-normal font-semibold tracking-[-1.44px] text-[#2A2936] md:text-5xl dark:text-white">
             What my clients have to say
           </h2>
-          <p className="text-base md:text-lg -tracking-[0.54px] leading-normal text-[#454545] dark:text-[#CACACA] w-full max-w-[477px] text-center">
+          <p className="w-full max-w-119.25 text-center text-base leading-normal tracking-[-0.54px] text-[#454545] md:text-lg dark:text-[#CACACA]">
             Get an inside look at the edits, stories, and moments that shaped
             each frame. Dive into my world of cinematic storytelling.
           </p>
         </div>
 
         {/* card */}
-        <div className="flex flex-col lg:flex-row items-stretch gap-6 max-w-[800px] bg-white rounded-2xl overflow-hidden lg:h-[400px]">
+        <div className="flex max-w-200 flex-col items-stretch gap-6 overflow-hidden rounded-2xl bg-white lg:h-100 lg:flex-row">
           {/* Image */}
-          <div className="flex-shrink-0 w-full lg:max-w-[316px] h-56 sm:h-72 md:h-80 lg:h-full overflow-hidden relative">
+          <div className="relative h-56 w-full shrink-0 overflow-hidden sm:h-72 md:h-80 lg:h-full lg:max-w-79">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentTestimonial.id || currentIndex}
@@ -158,14 +160,14 @@ export const Testimonials = ({ items }: Props) => {
                         scale: { duration: 0.3 },
                       }
                 }
-                className="w-full h-full"
+                className="h-full w-full"
               >
                 <Image
                   src={currentTestimonial.image}
                   alt={`${currentTestimonial.name} testimonial`}
                   width={640}
                   height={800}
-                  className="w-full h-full object-cover object-top"
+                  className="h-full w-full object-cover object-top"
                   sizes="(max-width: 1024px) 100vw, 316px"
                   priority={currentIndex === 0}
                 />
@@ -174,7 +176,7 @@ export const Testimonials = ({ items }: Props) => {
           </div>
 
           {/* Content */}
-          <div className="flex flex-1 w-full lg:max-w-[460px] px-6 lg:pl-0 py-6 lg:pr-6">
+          <div className="flex w-full flex-1 px-6 py-6 lg:max-w-115 lg:pr-6 lg:pl-0">
             <AnimatePresence initial={false} mode="wait">
               <motion.div
                 key={`content-${currentTestimonial.id || currentIndex}`}
@@ -204,7 +206,7 @@ export const Testimonials = ({ items }: Props) => {
                   transition={
                     shouldReduceMotion ? { duration: 0 } : { duration: 0.4 }
                   }
-                  className="text-xl font-medium text-[#2A2936] leading-normal -tracking-[0.48px]"
+                  className="text-xl leading-normal font-medium tracking-[-0.48px] text-[#2A2936]"
                 >
                   &quot;{currentTestimonial.quote}&quot;
                 </motion.p>
@@ -217,10 +219,10 @@ export const Testimonials = ({ items }: Props) => {
                   }
                   className="flex flex-col items-start gap-0.5"
                 >
-                  <h4 className="text-lg font-semibold text-[#454545] -tracking-[0.36px]">
+                  <h4 className="text-lg font-semibold tracking-[-0.36px] text-[#454545]">
                     {currentTestimonial.name}
                   </h4>
-                  <p className="text-[#595959] font-medium -tracking-[0.28px] text-sm">
+                  <p className="text-sm font-medium tracking-[-0.28px] text-[#595959]">
                     {currentTestimonial.title}
                   </p>
                 </motion.div>
@@ -230,20 +232,21 @@ export const Testimonials = ({ items }: Props) => {
         </div>
 
         {/* footer controls */}
-        <div className="flex items-center justify-between w-full max-w-[800px]">
+        <div className="flex w-full max-w-200 items-center justify-between">
           {/* Pagination Dots */}
           <div className="flex gap-2">
             {testimonialItems.map((_, index) => (
               <button
                 key={index}
                 onClick={() => pauseThen(() => goToSlide(index))}
-                className={`w-4 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                className={`h-1.5 w-4 cursor-pointer rounded-full transition-all duration-300 ${
                   index === currentIndex
                     ? "w-8 bg-[#4F46E5]"
                     : index === currentIndex + 1 ||
-                      (currentIndex === testimonialItems.length - 1 && index === 0)
-                    ? "bg-[#9D98F5]"
-                    : "bg-[#DBD9FF]"
+                        (currentIndex === testimonialItems.length - 1 &&
+                          index === 0)
+                      ? "bg-[#9D98F5]"
+                      : "bg-[#DBD9FF]"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
@@ -254,14 +257,14 @@ export const Testimonials = ({ items }: Props) => {
           <div className="flex gap-4">
             <Button
               onClick={() => pauseThen(goToPrevious)}
-              className="size-14 p-4 rounded-xl bg-[#DBD9FF] hover:bg-[#9d98f5] flex items-center justify-center transition-colors duration-200"
+              className="flex size-14 items-center justify-center rounded-xl bg-[#DBD9FF] p-4 transition-colors duration-200 hover:bg-[#9d98f5]"
               aria-label="Previous testimonial"
             >
               <ArrowLeft className="size-6 text-[#4F46E5]" />
             </Button>
             <Button
               onClick={() => pauseThen(goToNext)}
-              className="size-14 rounded-xl bg-[#4F46E5] hover:bg-[#4F46E5]/90 flex items-center justify-center transition-colors duration-200"
+              className="flex size-14 items-center justify-center rounded-xl bg-[#4F46E5] transition-colors duration-200 hover:bg-[#4F46E5]/90"
               aria-label="Next testimonial"
             >
               <ArrowRight className="size-6 text-white" />

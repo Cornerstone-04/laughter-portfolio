@@ -33,7 +33,7 @@ export function HomePageContent({
 }: Props) {
   return (
     <LazyMotion features={domAnimation}>
-      <div className="relative grid grid-cols-1 gap-y-[40px]">
+      <div className="relative grid grid-cols-1 gap-y-10">
         <Section amount={0.25}>
           <Hero
             headline={home.heroHeadline}
@@ -47,7 +47,10 @@ export function HomePageContent({
           <SelectedWorks works={selectedWorks} />
         </Section>
         <Section amount={0.15} delay={0.05}>
-          <FavouriteQuote text={home.quoteText} attribution={home.quoteAttribution} />
+          <FavouriteQuote
+            text={home.quoteText}
+            attribution={home.quoteAttribution}
+          />
         </Section>
         <Section amount={0.15} delay={0.05}>
           <AboutEphraim content={about} />

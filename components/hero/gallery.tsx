@@ -39,7 +39,7 @@ export const Gallery = ({ items }: Props) => {
       setCurrentIndex(next);
       pauseThenScheduleResume();
     },
-    [currentIndex, total]
+    [currentIndex, total],
   );
 
   const goNext = useCallback(() => {
@@ -118,20 +118,20 @@ export const Gallery = ({ items }: Props) => {
 
     if (item.type === "video") {
       return (
-        <div className="relative w-full h-full group">
+        <div className="group relative h-full w-full">
           <Image
             src={srcToUse}
             alt={item.alt}
             width={1600}
             height={900}
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 33vw"
             priority={isMain}
           />
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 bg-[#FF2626]/60 rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors cursor-pointer">
-              <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
+            <div className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-[#FF2626]/60 shadow-lg transition-colors hover:bg-red-600">
+              <Play className="ml-1 h-8 w-8 text-white" fill="currentColor" />
             </div>
           </div>
         </div>
@@ -139,11 +139,11 @@ export const Gallery = ({ items }: Props) => {
     } else {
       return (
         <Image
-          src={isMain ? item.src : item.thumbnail ?? item.src}
+          src={isMain ? item.src : (item.thumbnail ?? item.src)}
           alt={item.alt}
           width={1600}
           height={900}
-          className="w-full h-full object-cover object-center aspect-video"
+          className="aspect-video h-full w-full object-cover object-center"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 60vw"
           priority={isMain}
         />
@@ -153,15 +153,15 @@ export const Gallery = ({ items }: Props) => {
 
   return (
     <div
-      className="mx-auto flex flex-col gap-4 items-center justify-center"
+      className="mx-auto flex flex-col items-center justify-center gap-4"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
       {/* Header */}
-      <div className="text-center flex flex-col items-center gap-3.5">
-        <h2 className="text-lg leading-normal -tracking-[0.36px] font-semibold text-[#706F7C]">
+      <div className="flex flex-col items-center gap-3.5 text-center">
+        <h2 className="text-lg leading-normal font-semibold tracking-[-0.36px] text-[#706F7C]">
           My Gallery
         </h2>
 
@@ -171,13 +171,13 @@ export const Gallery = ({ items }: Props) => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-4 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+              className={`h-1.5 w-4 cursor-pointer rounded-full transition-all duration-300 ${
                 index === currentIndex
                   ? "w-8 bg-[#4F46E5]"
                   : index === currentIndex + 1 ||
-                    (currentIndex === total - 1 && index === 0)
-                  ? "bg-[#9D98F5]"
-                  : "bg-[#DBD9FF]"
+                      (currentIndex === total - 1 && index === 0)
+                    ? "bg-[#9D98F5]"
+                    : "bg-[#DBD9FF]"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -186,15 +186,10 @@ export const Gallery = ({ items }: Props) => {
       </div>
 
       {/* Gallery Slider */}
-      <div className="relative flex items-center justify-center gap-12 h-96 md:h-[600px] px-6 md:px-0 py-9 overflow-hidden">
+      <div className="relative flex h-96 items-center justify-center gap-12 overflow-hidden px-6 py-9 md:h-150 md:px-0">
         {/* Left Side Panel */}
         <div
-          className="
-            hidden md:block
-            w-1/6 h-11/12 rounded-2xl overflow-hidden shadow-lg cursor-pointer
-            transform transition-transform duration-300 hover:scale-105
-            md:-translate-x-6 lg:-translate-x-10
-          "
+          className="hidden h-11/12 w-1/6 transform cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 md:block md:-translate-x-6 lg:-translate-x-10"
           onClick={goPrev}
         >
           <AnimatePresence mode="wait" initial={false} custom={dirRef.current}>
@@ -205,7 +200,7 @@ export const Gallery = ({ items }: Props) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 15 * dirRef.current }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="w-full h-full relative"
+              className="relative h-full w-full"
             >
               {renderMediaContent(leftItem)}
             </motion.div>
@@ -213,7 +208,7 @@ export const Gallery = ({ items }: Props) => {
         </div>
 
         {/* Main Content */}
-        <div className="w-full md:w-3/5 h-full rounded-2xl overflow-hidden">
+        <div className="h-full w-full overflow-hidden rounded-2xl md:w-3/5">
           <AnimatePresence mode="wait" initial={false} custom={dirRef.current}>
             <motion.div
               key={`main-${currentItem.id}`}
@@ -222,7 +217,7 @@ export const Gallery = ({ items }: Props) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -25 * dirRef.current }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="w-full h-full relative"
+              className="relative h-full w-full"
             >
               {renderMediaContent(currentItem, true)}
             </motion.div>
@@ -231,12 +226,7 @@ export const Gallery = ({ items }: Props) => {
 
         {/* Right Side Panel */}
         <div
-          className="
-            hidden md:block
-            w-1/6 h-11/12 rounded-2xl overflow-hidden shadow-lg cursor-pointer
-            transform transition-transform duration-300 hover:scale-105
-            md:translate-x-6 lg:translate-x-10
-          "
+          className="hidden h-11/12 w-1/6 transform cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105 md:block md:translate-x-6 lg:translate-x-10"
           onClick={goNext}
         >
           <AnimatePresence mode="wait" initial={false} custom={dirRef.current}>
@@ -247,7 +237,7 @@ export const Gallery = ({ items }: Props) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -15 * dirRef.current }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="w-full h-full relative"
+              className="relative h-full w-full"
             >
               {renderMediaContent(rightItem)}
             </motion.div>
@@ -256,17 +246,17 @@ export const Gallery = ({ items }: Props) => {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="flex md:hidden justify-center gap-4">
+      <div className="flex justify-center gap-4 md:hidden">
         <button
           onClick={goPrev}
-          className="px-6 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg transition-colors"
+          className="rounded-lg bg-gray-200 px-6 py-2 transition-colors hover:bg-gray-300"
           aria-label="Previous"
         >
           <ArrowLeft />
         </button>
         <button
           onClick={goNext}
-          className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+          className="rounded-lg bg-blue-600 px-6 py-2 text-white transition-colors hover:bg-blue-700"
           aria-label="Next"
         >
           <ArrowRight />

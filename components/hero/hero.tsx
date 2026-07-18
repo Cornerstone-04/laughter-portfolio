@@ -25,34 +25,18 @@ export default function Hero({
     <section id="home" className="mt-12 sm:mt-16">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col items-center text-center">
-          <h1
-            className="
-              uppercase font-semibold
-              text-4xl xs:text-5xl sm:text-6xl md:text-8xl
-              leading-normal tracking-normal sm:-tracking-[3.84px]
-              mb-3 sm:mb-4 dark:text-white
-            "
-          >
+          <h1 className="xs:text-5xl mb-3 text-4xl leading-normal font-semibold tracking-normal uppercase sm:mb-4 sm:text-6xl sm:tracking-[-3.84px] md:text-8xl dark:text-white">
             {headline}
           </h1>
 
-          <p
-            className="
-              text-[#454545] dark:text-[#cacaca] text-base sm:text-lg md:text-xl leading-normal -tracking-[.8px] max-w-[600px] mb-5 sm:mb-6
-            "
-          >
+          <p className="mb-5 max-w-150 text-base leading-normal tracking-[-0.8px] text-[#454545] sm:mb-6 sm:text-lg md:text-xl dark:text-[#cacaca]">
             {intro}
           </p>
 
           <Button
             asChild
             variant="primary"
-            className="
-              h-12 sm:h-14
-              text-sm sm:text-base
-              w-full sm:w-auto
-              px-5 sm:px-6 
-            "
+            className="h-12 w-full px-5 text-sm sm:h-14 sm:w-auto sm:px-6 sm:text-base"
             aria-label="Get in touch"
           >
             <Link

@@ -18,16 +18,16 @@ export function FeaturedBrands({ items }: { items: Item[] }) {
   return (
     <section
       aria-label="Scrolling list of tools"
-      className="w-full overflow-hidden flex flex-col gap-6 items-start"
+      className="flex w-full flex-col items-start gap-6 overflow-hidden"
     >
-      <h3 className="text-[#47474D] dark:text-white text-lg sm:text-xl md:text-2xl font-semibold leading-normal tracking-[-0.72px]">
+      <h3 className="text-lg leading-normal font-semibold tracking-[-0.72px] text-[#47474D] sm:text-xl md:text-2xl dark:text-white">
         Film production featured
       </h3>
 
       <div className="relative overflow-hidden py-3 sm:py-4">
         <div
           role="list"
-          className="flex gap-8 md:gap-16 min-w-max whitespace-nowrap will-change-transform"
+          className="flex min-w-max gap-8 whitespace-nowrap will-change-transform md:gap-16"
           /* ⬇️ changed: add 'alternate' (ping-pong) + smoother easing */
           style={{
             animation: "brand-marquee 18s ease-in-out infinite alternate",
@@ -39,7 +39,7 @@ export function FeaturedBrands({ items }: { items: Item[] }) {
               <div
                 key={`${item.id}-${i}`}
                 role="listitem"
-                className="flex items-center gap-3 sm:gap-4 shrink-0"
+                className="flex shrink-0 items-center gap-3 sm:gap-4"
               >
                 <span className="inline-flex items-center justify-center">
                   <Image

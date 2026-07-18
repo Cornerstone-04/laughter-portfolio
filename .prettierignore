@@ -1,0 +1,8 @@
+.next
+.sanity
+dist
+node_modules
+private
+public/sitemap*.xml
+bun.lock
+tsconfig.tsbuildinfo

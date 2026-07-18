@@ -16,12 +16,12 @@ export function WorkCard({ item, onOpen, large, priorityImage }: Props) {
   return (
     <div
       className={[
-        "flex flex-col gap-4 md:gap-6 w-full",
+        "flex w-full flex-col gap-4 md:gap-6",
         large ? "md:col-span-2" : "",
       ].join(" ")}
     >
       <div
-        className="relative rounded-2xl w-full h-[400px] overflow-hidden group cursor-pointer"
+        className="group relative h-100 w-full cursor-pointer overflow-hidden rounded-2xl"
         role="button"
         tabIndex={0}
         onClick={() => onOpen(item)}
@@ -35,7 +35,7 @@ export function WorkCard({ item, onOpen, large, priorityImage }: Props) {
           className={[
             "object-cover transition-transform duration-500 ease-in-out group-hover:scale-105",
             large ? "object-top" : "",
-            item.title=== "To Kill a Monkey" && "object-center!"
+            item.title === "To Kill a Monkey" && "object-center!",
           ].join(" ")}
           sizes={
             large
@@ -46,24 +46,24 @@ export function WorkCard({ item, onOpen, large, priorityImage }: Props) {
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <span className="flex items-center justify-center gap-2.5 font-bold text-white shadow-md group-hover:text-white/80 transition">
-            View More <ArrowRight className="inline size-[16px]" />
+        <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <span className="flex items-center justify-center gap-2.5 font-bold text-white shadow-md transition group-hover:text-white/80">
+            View More <ArrowRight className="inline size-4" />
           </span>
         </div>
       </div>
 
       {/* Meta */}
       <div>
-        <h1 className="flex gap-2 justify-start dark:items-baseline items-center mb-1">
-          <span className="font-semibold text-xl sm:text-2xl md:text-[28px] leading-normal -tracking-[0.84px] text-[#2A2936] dark:text-white capitalize!">
+        <h1 className="mb-1 flex items-center justify-start gap-2 dark:items-baseline">
+          <span className="text-xl leading-normal font-semibold tracking-[-0.84px] text-[#2A2936] capitalize! sm:text-2xl md:text-[28px] dark:text-white">
             {item.title}
           </span>
-          <Badge className="py-[3px] px-1.5 rounded-full bg-[#DFDFDF] dark:bg-transparent text-xs sm:text-sm font-medium text-[#636363] dark:text-[#999999] leading-[100%] -tracking-[3%]">
+          <Badge className="rounded-full bg-[#DFDFDF] px-1.5 py-0.75 text-xs leading-[100%] font-medium tracking-[-3%] text-[#636363] sm:text-sm dark:bg-transparent dark:text-[#999999]">
             {item.type}
           </Badge>
         </h1>
-        <h3 className="flex justify-between items-end text-sm sm:text-base md:text-lg text-[#454545] dark:text-[#CACACA] leading-[100%] -tracking-[3%] font-medium">
+        <h3 className="flex items-end justify-between text-sm leading-[100%] font-medium tracking-[-3%] text-[#454545] sm:text-base md:text-lg dark:text-[#CACACA]">
           <span className="truncate">{item.production}</span>
           <span>{item.year}</span>
         </h3>

@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
   if (!expectedSecret) {
     return NextResponse.json(
       { message: "Missing SANITY_REVALIDATE_SECRET" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -44,7 +44,11 @@ export async function POST(request: NextRequest) {
   }
 
   const paths = Array.from(
-    new Set(body.paths?.length ? body.paths : pathsByType[body._type ?? ""] ?? ["/", "/works"])
+    new Set(
+      body.paths?.length
+        ? body.paths
+        : (pathsByType[body._type ?? ""] ?? ["/", "/works"]),
+    ),
   );
 
   for (const path of paths) {

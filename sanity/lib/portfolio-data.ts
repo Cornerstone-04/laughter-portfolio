@@ -109,20 +109,22 @@ const fallbackHome: HomePageContent = {
 
 const fallbackAbout: AboutPageContent = {
   headline: "About Laughter",
-  body:
-    "Hi there! I'm Laughter Ephraim, an AMVCA-nominated film editor with a passion to create stories. With 6 years in the film industry, I have developed a love for bringing stories to life with precision and creativity. I believe in the power of storytelling and its ability to connect, inspire and entertain. It's more than just editing. It's about conveying a message that matters.",
+  body: "Hi there! I'm Laughter Ephraim, an AMVCA-nominated film editor with a passion to create stories. With 6 years in the film industry, I have developed a love for bringing stories to life with precision and creativity. I believe in the power of storytelling and its ability to connect, inspire and entertain. It's more than just editing. It's about conveying a message that matters.",
   headshot: "/images/laughter-headshot.jpg",
   focusCards: aboutFallback as AboutFocusCard[],
   tools: toolsFallback as IconItem[],
-  brands: (brandsFallback as Array<{ id: string; icon: string }>).map((brand) => ({
-    ...brand,
-    label: brand.id,
-  })),
+  brands: (brandsFallback as Array<{ id: string; icon: string }>).map(
+    (brand) => ({
+      ...brand,
+      label: brand.id,
+    }),
+  ),
 };
 
 const fallbackSettings: SiteSettings = {
   contactHeading: "Contact Me",
-  contactIntro: "Get an inside look at the edits, stories, and moments that shaped each frame.",
+  contactIntro:
+    "Get an inside look at the edits, stories, and moments that shaped each frame.",
   bookingLink: "https://calendar.app.google/f4RhQrpnjYe2uv6y5",
   socials: socialsFallback,
 };
@@ -144,7 +146,7 @@ const getSanityFetchTimeout = () => {
 
 async function sanityFetch<T>(
   query: string,
-  { label, timeoutMs = getSanityFetchTimeout() }: FetchOptions
+  { label, timeoutMs = getSanityFetchTimeout() }: FetchOptions,
 ): Promise<T | null> {
   const controller = new AbortController();
   const timeout = windowlessTimeout(() => controller.abort(), timeoutMs);
@@ -152,10 +154,13 @@ async function sanityFetch<T>(
   try {
     return await client.fetch<T>(query, {}, { signal: controller.signal });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown Sanity fetch error";
+    const message =
+      error instanceof Error ? error.message : "Unknown Sanity fetch error";
 
     if (process.env.NODE_ENV === "production") {
-      throw new Error(`Failed to fetch Sanity content for ${label}: ${message}`);
+      throw new Error(
+        `Failed to fetch Sanity content for ${label}: ${message}`,
+      );
     }
 
     console.warn(`Using local fallback for ${label}: ${message}`);

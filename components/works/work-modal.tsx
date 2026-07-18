@@ -47,24 +47,21 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
       <DialogTitle className="hidden">Portfolio Details</DialogTitle>
       <DialogContent
         showCloseButton={false}
-        className="p-6 md:p-16 w-full overflow-auto sm:max-w-none! md:w-[1200px]! max-h-[90vh] bg-white dark:bg-[#131316] border-0 rounded-2xl font-inter-tight"
+        className="font-inter-tight max-h-[90vh] w-full overflow-auto rounded-2xl border-0 bg-white p-6 sm:max-w-none! md:w-300! md:p-16 dark:bg-[#131316]"
       >
         {/* Close */}
-        <div className="sticky top-4 md:top-12 z-20 flex justify-end">
+        <div className="sticky top-4 z-20 flex justify-end md:top-12">
           <DialogClose
-            className="inline-flex items-center justify-center rounded-full transition cursor-pointer p-1 
-               bg-black/60 hover:bg-black/70 
-               dark:bg-white/20 dark:hover:bg-white/30 
-               md:bg-transparent! w-fit"
+            className="inline-flex w-fit cursor-pointer items-center justify-center rounded-full bg-black/60 p-1 transition hover:bg-black/70 md:bg-transparent! dark:bg-white/20 dark:hover:bg-white/30"
             aria-label="Close"
           >
             <X className="size-6 text-[#2A2936] dark:text-white" />
           </DialogClose>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {/* LEFT: Poster */}
-          <div className="relative w-full max-w-[520px] h-[380px] md:h-full rounded-2xl overflow-hidden">
+          <div className="relative h-95 w-full max-w-130 overflow-hidden rounded-2xl md:h-full">
             <Image
               src={item.imageUrl}
               alt={item.title}
@@ -76,13 +73,13 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
           </div>
 
           {/* RIGHT: Content */}
-          <div className="flex flex-col gap-8 md:justify-between overflow-y-auto">
+          <div className="flex flex-col gap-8 overflow-y-auto md:justify-between">
             {/* Title + Type badge */}
-            <div className="flex items-center dark:items-baseline gap-2">
+            <div className="flex items-center gap-2 dark:items-baseline">
               <h2 className="text-[28px] font-semibold text-[#2A2936] dark:text-white">
                 {item.title}
               </h2>
-              <Badge className="bg-[#DFDFDF] rounded-full py-[3px] px-1.5 dark:bg-transparent text-[#636363] dark:text-[#999999]">
+              <Badge className="rounded-full bg-[#DFDFDF] px-1.5 py-0.75 text-[#636363] dark:bg-transparent dark:text-[#999999]">
                 {item.type}
               </Badge>
             </div>
@@ -90,10 +87,10 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
             {/* Synopsis */}
             {item.synopsis && (
               <section className="flex flex-col gap-4">
-                <h3 className="text-xl font-medium -tracking-[0.8px] text-[#17161D] dark:text-white">
+                <h3 className="text-xl font-medium tracking-[-0.8px] text-[#17161D] dark:text-white">
                   Synopsis
                 </h3>
-                <p className="text-base leading-normal -tracking-[0.64px] text-[#454545] dark:text-[#CACACA]">
+                <p className="text-base leading-normal tracking-[-0.64px] text-[#454545] dark:text-[#CACACA]">
                   {item.synopsis}
                 </p>
               </section>
@@ -111,15 +108,15 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
 
             {/* Details */}
             <section className="flex flex-col gap-4">
-              <h3 className="text-xl font-medium leading-normal -tracking-[0.8px] text-[#17161D] dark:text-white">
+              <h3 className="text-xl leading-normal font-medium tracking-[-0.8px] text-[#17161D] dark:text-white">
                 Details
               </h3>
 
-              <div className="rounded-2xl overflow-hidden bg-[#E6E6E6] dark:bg-[#1b1b1f] text-base p-4">
+              <div className="overflow-hidden rounded-2xl bg-[#E6E6E6] p-4 text-base dark:bg-[#1b1b1f]">
                 <dl className="divide-y divide-[#CCCCCC] dark:divide-gray-700">
                   {item.role && (
                     <div className="flex items-center justify-between pb-4">
-                      <dt className="font-medium text-[#666666] -tracking-[0.64px] dark:text-[#cacaca]">
+                      <dt className="font-medium tracking-[-0.64px] text-[#666666] dark:text-[#cacaca]">
                         Role:
                       </dt>
                       <dd className="text-[#2A2936] dark:text-white">
@@ -129,16 +126,16 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
                   )}
 
                   <div className="flex items-center justify-between py-4">
-                    <dt className="font-medium text-[#666666] -tracking-[0.64px] dark:text-[#cacaca]">
+                    <dt className="font-medium tracking-[-0.64px] text-[#666666] dark:text-[#cacaca]">
                       Production:
                     </dt>
-                    <dd className="text-right max-w-[260px] text-[#2A2936] dark:text-white">
+                    <dd className="max-w-65 text-right text-[#2A2936] dark:text-white">
                       {item.production}
                     </dd>
                   </div>
 
                   <div className="flex items-center justify-between py-4">
-                    <dt className="font-medium text-[#666666] -tracking-[0.64px] dark:text-[#cacaca]">
+                    <dt className="font-medium tracking-[-0.64px] text-[#666666] dark:text-[#cacaca]">
                       Type:
                     </dt>
                     <dd className="text-[#2A2936] dark:text-white">
@@ -147,7 +144,7 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
                   </div>
 
                   <div className="flex items-center justify-between py-4">
-                    <dt className="font-medium text-[#666666] -tracking-[0.64px] dark:text-[#cacaca]">
+                    <dt className="font-medium tracking-[-0.64px] text-[#666666] dark:text-[#cacaca]">
                       Year:
                     </dt>
                     <dd className="text-[#2A2936] dark:text-white">
@@ -156,7 +153,7 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
                   </div>
 
                   <div className="flex items-center justify-between pt-4">
-                    <dt className="font-medium text-[#666666] -tracking-[0.64px] dark:text-[#cacaca]">
+                    <dt className="font-medium tracking-[-0.64px] text-[#666666] dark:text-[#cacaca]">
                       Preview:
                     </dt>
                     <dd className="text-right">
@@ -164,7 +161,7 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#2A2936] dark:text-white underline decoration-solid underline-offset-[3px] decoration-[1px] flex items-center justify-end"
+                        className="flex items-center justify-end text-[#2A2936] underline decoration-solid decoration-1 underline-offset-[3px] dark:text-white"
                       >
                         {item.previewTitle ?? "Open link"}
                         <ExternalLink className="ml-2 h-4 w-4" />

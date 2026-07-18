@@ -45,7 +45,8 @@ const slugify = (value: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 
-const keyFor = (value: string, index: number) => `${slugify(value)}-${index + 1}`;
+const keyFor = (value: string, index: number) =>
+  `${slugify(value)}-${index + 1}`;
 
 async function imageField(publicPath?: string) {
   if (!publicPath) return undefined;
@@ -57,7 +58,7 @@ async function imageField(publicPath?: string) {
   const filename = path.basename(filePath);
   const existingAsset = await client.fetch<{ _id: string } | null>(
     `*[_type == "sanity.imageAsset" && originalFilename == $filename][0]{_id}`,
-    { filename }
+    { filename },
   );
 
   const asset =
@@ -85,7 +86,7 @@ async function upsertSingleton(id: string, doc: SeedDocument) {
 async function upsertByQuery(
   query: string,
   params: Record<string, unknown>,
-  doc: SeedDocument
+  doc: SeedDocument,
 ) {
   const existing = await client.fetch<{ _id: string } | null>(query, params);
 
@@ -99,7 +100,8 @@ async function upsertByQuery(
 }
 
 async function seedHomePage() {
-  const gallery = readJson<Array<{ src: string; alt: string }>>("data/gallery.json");
+  const gallery =
+    readJson<Array<{ src: string; alt: string }>>("data/gallery.json");
 
   await upsertSingleton("homePage", {
     _type: "homePage",
@@ -114,7 +116,7 @@ async function seedHomePage() {
         _type: "object",
         image: await imageField(item.src),
         alt: item.alt,
-      }))
+      })),
     ),
     quoteText:
       "The essence of cinema is editing. It's the combination of what can be extraordinary images of people during emotional moments, or images in a general sense, put together in a kind of alchemy.",
@@ -124,16 +126,17 @@ async function seedHomePage() {
 
 async function seedAboutPage() {
   const focusCards = readJson<FocusCard[]>("data/about.json");
-  const tools = readJson<Array<{ id: string; icon: string; label: string }>>(
-    "data/tools.json"
-  );
-  const brands = readJson<Array<{ id: string; icon: string }>>("data/brands.json");
+  const tools =
+    readJson<Array<{ id: string; icon: string; label: string }>>(
+      "data/tools.json",
+    );
+  const brands =
+    readJson<Array<{ id: string; icon: string }>>("data/brands.json");
 
   await upsertSingleton("aboutPage", {
     _type: "aboutPage",
     headline: "About Laughter",
-    body:
-      "Hi there! I'm Laughter Ephraim, an AMVCA-nominated film editor with a passion to create stories. With 6 years in the film industry, I have developed a love for bringing stories to life with precision and creativity. I believe in the power of storytelling and its ability to connect, inspire and entertain. It's more than just editing. It's about conveying a message that matters.",
+    body: "Hi there! I'm Laughter Ephraim, an AMVCA-nominated film editor with a passion to create stories. With 6 years in the film industry, I have developed a love for bringing stories to life with precision and creativity. I believe in the power of storytelling and its ability to connect, inspire and entertain. It's more than just editing. It's about conveying a message that matters.",
     headshot: await imageField("/images/laughter-headshot.jpg"),
     focusCards: focusCards.map((card, index) => ({
       _key: keyFor(card.title, index),
@@ -158,7 +161,8 @@ async function seedAboutPage() {
 }
 
 async function seedSiteSettings() {
-  const socials = readJson<Array<{ label: string; link: string }>>("data/socials.json");
+  const socials =
+    readJson<Array<{ label: string; link: string }>>("data/socials.json");
 
   await upsertSingleton("siteSettings", {
     _type: "siteSettings",
@@ -184,10 +188,13 @@ async function seedWorks() {
   const works = readJson<Work[]>("data/works.json");
   const selectedWorks = readJson<Work[]>("data/selected-works.json");
   const featuredOrderByTitle = new Map(
-    selectedWorks.map((work, index) => [work.title, index + 1])
+    selectedWorks.map((work, index) => [work.title, index + 1]),
   );
   const featuredLayoutByTitle = new Map(
-    selectedWorks.map((work) => [work.title, work.featuredLayout ?? "standard"])
+    selectedWorks.map((work) => [
+      work.title,
+      work.featuredLayout ?? "standard",
+    ]),
   );
 
   for (const work of works) {
@@ -211,9 +218,9 @@ async function seedWorks() {
         featured: Boolean(featuredOrder),
         featuredOrder,
         featuredLayout: featuredOrder
-          ? featuredLayoutByTitle.get(work.title) ?? "standard"
+          ? (featuredLayoutByTitle.get(work.title) ?? "standard")
           : undefined,
-      }
+      },
     );
   }
 }
@@ -235,7 +242,7 @@ async function seedTestimonials() {
         imagePath: testimonial.image,
         order: index + 1,
         visible: true,
-      }
+      },
     );
   }
 }

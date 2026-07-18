@@ -52,15 +52,15 @@ export function Navbar() {
 
   return (
     // max-w-7xl mx-auto
-    <nav className="w-full px-4 sm:px-8 lg:px-30 sticky top-0 z-50">
+    <nav className="sticky top-0 z-50 w-full px-4 sm:px-8 lg:px-30">
       <div className="w-full py-4">
-        <div className="flex justify-between items-center px-3 py-2 bg-white dark:bg-[#1d1d1d] rounded-[41px]">
+        <div className="flex items-center justify-between rounded-[41px] bg-white px-3 py-2 dark:bg-[#1d1d1d]">
           {/* Left: Logo + Theme toggle */}
           <div className="flex items-center gap-2">
             <ThemeToggle />
             <Link
               href="/"
-              className="font-semibold text-base sm:text-lg leading-none dark:text-le-smoke tracking-[-0.02em]"
+              className="dark:text-le-smoke text-base leading-none font-semibold tracking-[-0.02em] sm:text-lg"
               // optional: treat clicking logo as "Home"
               onClick={() => setActiveFromHref("/#home")}
             >
@@ -69,8 +69,8 @@ export function Navbar() {
           </div>
 
           {/* Desktop menu */}
-          <div className="hidden md:flex gap-8 items-center justify-end">
-            <div className="flex gap-3 items-center font-medium text-[#534C57] dark:text-[#cacaca]">
+          <div className="hidden items-center justify-end gap-8 md:flex">
+            <div className="flex items-center gap-3 font-medium text-[#534C57] dark:text-[#cacaca]">
               {navItems.map(({ href, label }) => (
                 <Link
                   key={href}
@@ -79,7 +79,7 @@ export function Navbar() {
                   className={`transition-all ease-linear ${
                     activeHash === href.replace("/", "")
                       ? "text-le-purple font-semibold"
-                      : "text-[#534C57] dark:text-[#cacaca] hover:text-le-purple"
+                      : "hover:text-le-purple text-[#534C57] dark:text-[#cacaca]"
                   }`}
                   aria-current={
                     activeHash === href.replace("/", "") ? "page" : undefined
@@ -91,7 +91,7 @@ export function Navbar() {
             </div>
             <Button
               variant="primary"
-              className="h-11 font-medium text-sm"
+              className="h-11 text-sm font-medium"
               asChild
             >
               <Link
@@ -107,7 +107,7 @@ export function Navbar() {
           <div className="relative md:hidden" ref={mobileMenuRef}>
             <button
               type="button"
-              className="p-2 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-le-purple"
+              className="focus-visible:ring-le-purple rounded-full p-2 focus:outline-none focus-visible:ring-2"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"
@@ -117,11 +117,15 @@ export function Navbar() {
                 <motion.span
                   key={mobileMenuOpen ? "close" : "open"}
                   initial={
-                    shouldReduceMotion ? false : { opacity: 0, rotate: -45, scale: 0.85 }
+                    shouldReduceMotion
+                      ? false
+                      : { opacity: 0, rotate: -45, scale: 0.85 }
                   }
                   animate={{ opacity: 1, rotate: 0, scale: 1 }}
                   exit={
-                    shouldReduceMotion ? undefined : { opacity: 0, rotate: 45, scale: 0.85 }
+                    shouldReduceMotion
+                      ? undefined
+                      : { opacity: 0, rotate: 45, scale: 0.85 }
                   }
                   transition={{ duration: 0.18, ease: "easeOut" }}
                   className="flex"
@@ -151,7 +155,7 @@ export function Navbar() {
                       : { opacity: 0, y: -6, scale: 0.98 }
                   }
                   transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute right-0 top-[calc(100%+12px)] w-[min(17rem,calc(100vw-2rem))] origin-top-right overflow-hidden rounded-2xl border border-black/5 bg-white p-2 shadow-xl shadow-black/10 dark:border-white/10 dark:bg-[#1d1d1d] dark:shadow-black/30"
+                  className="absolute top-[calc(100%+12px)] right-0 w-[min(17rem,calc(100vw-2rem))] origin-top-right overflow-hidden rounded-2xl border border-black/5 bg-white p-2 shadow-xl shadow-black/10 dark:border-white/10 dark:bg-[#1d1d1d] dark:shadow-black/30"
                 >
                   <motion.nav
                     className="flex flex-col gap-1"
@@ -184,11 +188,13 @@ export function Navbar() {
                           onClick={() => handleMobileLinkClick(href)}
                           className={`block rounded-xl px-4 py-3 text-base font-medium transition-all ease-linear ${
                             activeHash === href.replace("/", "")
-                              ? "bg-[#F0EEFF] text-le-purple dark:bg-white/10 dark:text-white"
-                              : "text-[#534C57] hover:bg-[#F0EEFF] hover:text-le-purple dark:text-[#cacaca] dark:hover:bg-white/10 dark:hover:text-white"
+                              ? "text-le-purple bg-[#F0EEFF] dark:bg-white/10 dark:text-white"
+                              : "hover:text-le-purple text-[#534C57] hover:bg-[#F0EEFF] dark:text-[#cacaca] dark:hover:bg-white/10 dark:hover:text-white"
                           }`}
                           aria-current={
-                            activeHash === href.replace("/", "") ? "page" : undefined
+                            activeHash === href.replace("/", "")
+                              ? "page"
+                              : undefined
                           }
                         >
                           {label}

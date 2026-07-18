@@ -5,7 +5,7 @@ import Image from "next/image";
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="py-10 sm:py-16 flex items-center justify-center self-stretch relative overflow-hidden mt-10 px-6 sm:px-6 md:h-160 ">
+    <footer className="relative mt-10 flex items-center justify-center self-stretch overflow-hidden px-6 py-10 sm:px-6 sm:py-16 md:h-160">
       <div className="absolute inset-0 -z-10 dark:bg-[#131316]">
         <Image
           src="/images/mesh-gradient.png"
@@ -13,17 +13,17 @@ export const Footer = () => {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[70%_70%] md:object-center mix-blend-color shrink-0"
+          className="shrink-0 object-cover object-[70%_70%] mix-blend-color md:object-center"
         />
       </div>
-      <div className="w-full max-w-268 flex flex-col md:gap-22.5 gap-10 items-center mx-auto">
+      <div className="mx-auto flex w-full max-w-268 flex-col items-center gap-10 md:gap-22.5">
         {/* Top block */}
-        <div className="flex flex-col items-center justify-start gap-6 sm:gap-8 w-full">
-          <div className="flex flex-col items-center text-center gap-3 sm:gap-4 self-stretch">
-            <h1 className="text-4xl sm:text-6xl md:text-8xl leading-normal md:tracking-[-2.88px] text-[#2a2938] dark:text-white">
+        <div className="flex w-full flex-col items-center justify-start gap-6 sm:gap-8">
+          <div className="flex flex-col items-center gap-3 self-stretch text-center sm:gap-4">
+            <h1 className="text-4xl leading-normal text-[#2a2938] sm:text-6xl md:text-8xl md:tracking-[-2.88px] dark:text-white">
               Laughter Ephraim
             </h1>
-            <p className="text-base sm:text-lg md:text-xl tracking-[-0.4px] leading-normal font-medium text-[#454545] dark:text-[#cacaca]">
+            <p className="text-base leading-normal font-medium tracking-[-0.4px] text-[#454545] sm:text-lg md:text-xl dark:text-[#cacaca]">
               Have any project in mind? Let&apos;s have a quick call.
             </p>
           </div>
@@ -31,7 +31,7 @@ export const Footer = () => {
           <Button
             variant="primary"
             asChild
-            className="h-12 sm:h-14 w-full sm:w-fit px-6 sm:px-8 py-3 sm:py-4 text-base flex items-center justify-center font-medium"
+            className="flex h-12 w-full items-center justify-center px-6 py-3 text-base font-medium sm:h-14 sm:w-fit sm:px-8 sm:py-4"
           >
             <Link
               href="https://calendar.app.google/f4RhQrpnjYe2uv6y5"
@@ -43,29 +43,29 @@ export const Footer = () => {
           </Button>
         </div>
         {/* Bottom row */}
-        <div className="w-full flex flex-col md:flex-row items-center md:items-center justify-center md:justify-between gap-3 sm:gap-4 text-center md:text-left">
-          <p className="text-[#464554] dark:text-white font-medium tracking-[-0.48px] text-base">
+        <div className="flex w-full flex-col items-center justify-center gap-3 text-center sm:gap-4 md:flex-row md:items-center md:justify-between md:text-left">
+          <p className="text-base font-medium tracking-[-0.48px] text-[#464554] dark:text-white">
             Designed by{" "}
             <Link
               href="https://linktr.ee/ToluwalopeAdebunmi"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-le-purple dark:text-[#cacaca] underline"
+              className="text-le-purple underline dark:text-[#cacaca]"
             >
               Tolu Adebunmi
             </Link>
           </p>
-          <p className="text-white dark:text-white font-medium tracking-[-0.48px] text-base flex items-center">
+          <p className="flex items-center text-base font-medium tracking-[-0.48px] text-white dark:text-white">
             <span className="text-2xl">&copy;</span>
             {currentYear}. All rights reserved
           </p>
-          <p className="text-white dark:text-white font-medium tracking-[-0.48px] text-base">
+          <p className="text-base font-medium tracking-[-0.48px] text-white dark:text-white">
             Developed by{" "}
             <Link
               href="https://cornerstoneephraim.vercel.app/"
               rel="noopener noreferrer"
               target="_blank"
-              className="dark:text-[#cacaca] underline"
+              className="underline dark:text-[#cacaca]"
             >
               Cornerstone
             </Link>

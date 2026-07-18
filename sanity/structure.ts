@@ -5,7 +5,7 @@ const singletonTypes = new Set(["homePage", "aboutPage", "siteSettings"]);
 const singletonItem = (
   S: Parameters<StructureResolver>[0],
   type: string,
-  title: string
+  title: string,
 ) =>
   S.listItem()
     .title(title)
@@ -29,7 +29,7 @@ export const structure: StructureResolver = (S) =>
             .title("Featured Works")
             .schemaType("work")
             .filter('_type == "work" && featured == true')
-            .defaultOrdering([{ field: "featuredOrder", direction: "asc" }])
+            .defaultOrdering([{ field: "featuredOrder", direction: "asc" }]),
         ),
       S.listItem()
         .title("All Works")
@@ -37,10 +37,10 @@ export const structure: StructureResolver = (S) =>
         .child(
           S.documentTypeList("work")
             .title("All Works")
-            .defaultOrdering([{ field: "year", direction: "desc" }])
+            .defaultOrdering([{ field: "year", direction: "desc" }]),
         ),
       ...S.documentTypeListItems().filter(
-        (item) => !singletonTypes.has(item.getId() ?? "")
-          && item.getId() !== "work"
+        (item) =>
+          !singletonTypes.has(item.getId() ?? "") && item.getId() !== "work",
       ),
     ]);

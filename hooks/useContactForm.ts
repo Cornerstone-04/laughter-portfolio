@@ -58,7 +58,9 @@ export function useContactForm<T extends HTMLFormElement = HTMLFormElement>({
 
         form.reset();
         setStatus("success");
-        setMessage("Message sent successfully. Laughter will get back to you soon.");
+        setMessage(
+          "Message sent successfully. Laughter will get back to you soon.",
+        );
 
         clearStatusTimerRef.current = window.setTimeout(() => {
           setStatus("idle");
@@ -71,13 +73,13 @@ export function useContactForm<T extends HTMLFormElement = HTMLFormElement>({
         setMessage(
           error instanceof Error
             ? error.message
-            : "Failed to send. Please try again."
+            : "Failed to send. Please try again.",
         );
       } finally {
         setSending(false);
       }
     },
-    [clearAfterMs, clearStatusTimer]
+    [clearAfterMs, clearStatusTimer],
   );
 
   return { onSubmit, sending, status, message };

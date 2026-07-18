@@ -16,18 +16,18 @@ export const AboutCard: FC<AboutCardProps> = ({
   return (
     <div
       key={id}
-      className="rounded-2xl text-white p-8.5 flex justify-center items-center"
+      className="flex items-center justify-center rounded-2xl p-8.5 text-white"
       style={{ backgroundColor: color }}
     >
-      <div className="flex flex-col md:flex-row gap-6 items-start">
-        <span className="text-5xl sm:text-6xl md:text-[64px] font-medium leading-normal tracking-[-1.92px]">
+      <div className="flex flex-col items-start gap-6 md:flex-row">
+        <span className="text-5xl leading-normal font-medium tracking-[-1.92px] sm:text-6xl md:text-[64px]">
           {String(id).padStart(2, "0")}
         </span>
         <div className="space-y-4">
-          <h3 className="text-white font-semibold leading-normal tracking-[-0.72px] text-xl sm:text-2xl">
+          <h3 className="text-xl leading-normal font-semibold tracking-[-0.72px] text-white sm:text-2xl">
             {title}
           </h3>
-          <p className="text-white/90 text-base sm:text-lg font-medium tracking-[-0.54px] leading-normal">
+          <p className="text-base leading-normal font-medium tracking-[-0.54px] text-white/90 sm:text-lg">
             {description}
           </p>
         </div>

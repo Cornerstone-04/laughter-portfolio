@@ -135,7 +135,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-le-smoke dark:bg-[#131316] text-le-text font-inter-tight;
+    @apply bg-le-smoke text-le-text font-inter-tight dark:bg-[#131316];
   }
 }
 
@@ -174,7 +174,8 @@
 /* globals.css */
 .mesh-bg {
   background-color: #ffffff;
-  background-image: radial-gradient(at 20% 20%, #ffffff 0px, transparent 50%),
+  background-image:
+    radial-gradient(at 20% 20%, #ffffff 0px, transparent 50%),
     radial-gradient(at 80% 80%, #4f46e5 0px, transparent 50%),
     radial-gradient(at 60% 100%, #ff4318 0px, transparent 60%);
   background-attachment: fixed;

@@ -16,16 +16,16 @@ export function EditingTools({ items }: { items: Item[] }) {
   return (
     <section
       aria-label="Scrolling list of tools"
-      className="w-full overflow-hidden flex flex-col gap-6 items-start"
+      className="flex w-full flex-col items-start gap-6 overflow-hidden"
     >
-      <h3 className="text-[#47474D] dark:text-white text-lg sm:text-xl md:text-2xl font-semibold leading-normal tracking-[-0.72px]">
+      <h3 className="text-lg leading-normal font-semibold tracking-[-0.72px] text-[#47474D] sm:text-xl md:text-2xl dark:text-white">
         Proficient with these editing tools
       </h3>
 
       <div className="relative overflow-hidden py-3 sm:py-4">
         <div
           role="list"
-          className="flex gap-6 min-w-max whitespace-nowrap will-change-transform"
+          className="flex min-w-max gap-6 whitespace-nowrap will-change-transform"
           style={{
             animation: "tools-marquee 18s ease-in-out infinite alternate",
           }}
@@ -34,7 +34,7 @@ export function EditingTools({ items }: { items: Item[] }) {
             <div
               key={`${item.label}-${i}`}
               role="listitem"
-              className="flex items-center gap-3 sm:gap-4 shrink-0"
+              className="flex shrink-0 items-center gap-3 sm:gap-4"
             >
               <span className="inline-flex items-center justify-center">
                 <Image
@@ -45,7 +45,7 @@ export function EditingTools({ items }: { items: Item[] }) {
                   className="object-contain"
                 />
               </span>
-              <span className="text-base sm:text-lg md:text-xl text-[#797882] dark:text-[#cacaca] leading-normal tracking-[-0.6px] font-medium">
+              <span className="text-base leading-normal font-medium tracking-[-0.6px] text-[#797882] sm:text-lg md:text-xl dark:text-[#cacaca]">
                 {item.label}
               </span>
             </div>

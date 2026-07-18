@@ -54,19 +54,23 @@ export function WorksPageContent({ works }: Props) {
   const yearOptions = useMemo(
     () =>
       Array.from(
-        new Set(data.map((item) => getYear(item.year)).filter((year): year is number => year !== null))
+        new Set(
+          data
+            .map((item) => getYear(item.year))
+            .filter((year): year is number => year !== null),
+        ),
       ).sort((a, b) => b - a),
-    [data]
+    [data],
   );
 
   return (
     <LazyMotion features={domAnimation}>
       <Section amount={0}>
         <main className="w-full p-6 sm:p-8 md:p-16">
-          <div className="w-full max-w-6xl mx-auto grid gap-6">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6">
+          <div className="mx-auto grid w-full max-w-6xl gap-6">
+            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-6">
               <header className="mb-0">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#2A2936] dark:text-white">
+                <h1 className="text-3xl font-semibold tracking-tight text-[#2A2936] sm:text-4xl md:text-5xl dark:text-white">
                   All Works
                 </h1>
                 <p className="mt-2 text-[#454545] dark:text-[#cacaca]">
@@ -86,11 +90,11 @@ export function WorksPageContent({ works }: Props) {
                 onSubmit={(e) => e.preventDefault()}
                 aria-label="Filter by year"
               >
-                <div className="flex items-end justify-between gap-3 bg-white dark:bg-[#1d1d1d] rounded-2xl p-3 shadow-sm border border-[#eee] dark:border-[#2a2a2a]">
+                <div className="flex items-end justify-between gap-3 rounded-2xl border border-[#eee] bg-white p-3 shadow-sm dark:border-[#2a2a2a] dark:bg-[#1d1d1d]">
                   <div className="flex flex-col">
                     <Label
                       htmlFor="year-filter"
-                      className="text-xs font-medium text-[#706F7C] mb-1"
+                      className="mb-1 text-xs font-medium text-[#706F7C]"
                     >
                       Filter by year
                     </Label>
@@ -98,12 +102,12 @@ export function WorksPageContent({ works }: Props) {
                     <Select value={yearFilter} onValueChange={setYearFilter}>
                       <SelectTrigger
                         id="year-filter"
-                        className="h-10 rounded-xl px-3 border border-[#e5e5ea] dark:border-[#303036] bg-white dark:bg-[#141416] text-[#2A2936] dark:text-[#e6e6e6] w-48"
+                        className="h-10 w-48 rounded-xl border border-[#e5e5ea] bg-white px-3 text-[#2A2936] dark:border-[#303036] dark:bg-[#141416] dark:text-[#e6e6e6]"
                         aria-label="Filter by year"
                       >
                         <SelectValue placeholder="All years" />
                       </SelectTrigger>
-                      <SelectContent align="end" className="min-w-[10rem]">
+                      <SelectContent align="end" className="min-w-40">
                         <SelectItem value="all">All years</SelectItem>
                         {yearOptions.map((y) => (
                           <SelectItem key={`y-${y}`} value={String(y)}>
@@ -117,7 +121,7 @@ export function WorksPageContent({ works }: Props) {
                   {yearFilter !== "all" && (
                     <Button
                       onClick={() => setYearFilter("all")}
-                      className="h-10 px-3 rounded-xl border border-[#e5e5ea] dark:border-[#303036] text-sm font-medium text-white hover:bg-[#2A2936]/80 bg-[#2A2936] dark:bg-white dark:hover:bg-white/80 dark:text-[#131316] transition"
+                      className="h-10 rounded-xl border border-[#e5e5ea] bg-[#2A2936] px-3 text-sm font-medium text-white transition hover:bg-[#2A2936]/80 dark:border-[#303036] dark:bg-white dark:text-[#131316] dark:hover:bg-white/80"
                       aria-label="Clear year filter"
                     >
                       Clear
@@ -127,7 +131,7 @@ export function WorksPageContent({ works }: Props) {
               </form>
             </div>
 
-            <section className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
+            <section className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-3">
               {filtered.map((item, idx) => (
                 <WorkCard
                   key={item._id ?? `${item.title}-${item.production}-${idx}`}

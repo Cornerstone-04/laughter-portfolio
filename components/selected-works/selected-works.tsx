@@ -26,7 +26,10 @@ const shouldRenderWide = (item: WorkItem, index: number) => {
 };
 
 export function SelectedWorks({ works: cmsWorks }: Props) {
-  const data = useMemo(() => (cmsWorks?.length ? cmsWorks : works) as WorkItem[], [cmsWorks]);
+  const data = useMemo(
+    () => (cmsWorks?.length ? cmsWorks : works) as WorkItem[],
+    [cmsWorks],
+  );
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState<WorkItem | null>(null);
 
@@ -40,21 +43,21 @@ export function SelectedWorks({ works: cmsWorks }: Props) {
       id="selected-works"
       className="w-full p-6 sm:p-8 md:p-16 dark:bg-[#15151E]"
     >
-      <div className="w-full max-w-[1072px] mx-auto grid gap-y-10 md:gap-y-16">
+      <div className="mx-auto grid w-full max-w-268 gap-y-10 md:gap-y-16">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <header className="flex flex-col gap-2 md:gap-1">
-            <div className="flex items-baseline justify-between sm:justify-start gap-2.5">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-normal -tracking-[1.44px] text-le-text dark:text-white">
+            <div className="flex items-baseline justify-between gap-2.5 sm:justify-start">
+              <h1 className="text-le-text text-3xl leading-normal font-semibold tracking-[-1.44px] sm:text-4xl md:text-5xl dark:text-white">
                 Selected Works
               </h1>
-              <p className="pt-1 pb-1.5 px-2 flex justify-center items-center">
-                <span className="text-sm sm:text-base md:text-lg text-[#5A5874] leading-normal -tracking-[0.54px] font-medium dark:text-[#999999]">
+              <p className="flex items-center justify-center px-2 pt-1 pb-1.5">
+                <span className="text-sm leading-normal font-medium tracking-[-0.54px] text-[#5A5874] sm:text-base md:text-lg dark:text-[#999999]">
                   2022 - 2025
                 </span>
               </p>
             </div>
-            <p className="w-full max-w-lg text-base md:text-lg text-[#454545] dark:text-[#cacaca] leading-normal -tracking-[.54px] font-medium">
+            <p className="w-full max-w-lg text-base leading-normal font-medium tracking-[-0.54px] text-[#454545] md:text-lg dark:text-[#cacaca]">
               Get an inside look at the edits, stories, and moments that shaped
               each frame. Dive into my world of cinematic storytelling.
               <InfoTooltip
@@ -67,7 +70,7 @@ export function SelectedWorks({ works: cmsWorks }: Props) {
           <Button
             asChild
             variant="secondary"
-            className="h-12 sm:h-14 w-full sm:w-fit flex items-center justify-center gap-2 md:inline-flex"
+            className="flex h-12 w-full items-center justify-center gap-2 sm:h-14 sm:w-fit md:inline-flex"
           >
             <Link href="/works">
               See all works <ArrowRight />
@@ -76,7 +79,7 @@ export function SelectedWorks({ works: cmsWorks }: Props) {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 md:gap-x-8 gap-y-10 md:gap-y-16">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-3 md:gap-x-8 md:gap-y-16">
           {data.map((item, idx) => (
             <WorkCard
               key={item._id ?? `${item.title}-${item.production}-${idx}`}
@@ -88,11 +91,11 @@ export function SelectedWorks({ works: cmsWorks }: Props) {
         </div>
 
         {/* CTA Buttons */}
-        <div className="mx-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full">
+        <div className="mx-auto flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4">
           <Button
             asChild
             variant="primary"
-            className="h-12 sm:h-14 w-full sm:w-fit px-6 sm:px-8 py-3 sm:py-4 text-base flex items-center justify-center gap-2"
+            className="flex h-12 w-full items-center justify-center gap-2 px-6 py-3 text-base sm:h-14 sm:w-fit sm:px-8 sm:py-4"
           >
             <Link href="/#contact-me">Start new project</Link>
           </Button>

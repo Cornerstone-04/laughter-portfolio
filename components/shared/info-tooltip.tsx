@@ -32,7 +32,7 @@ export function InfoTooltip({
             type="button"
             aria-label="Information tooltip"
             onClick={() => setOpen((o) => !o)} // toggle on mobile
-            className="inline-flex items-center justify-center size-4 rounded-full text-[#454545] dark:text-[#cacaca] dark:hover:bg-[#13131d] hover:bg-[#F7F7FB] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4F46E5] cursor-pointer"
+            className="inline-flex size-4 cursor-pointer items-center justify-center rounded-full text-[#454545] hover:bg-[#F7F7FB] focus:ring-2 focus:ring-[#4F46E5] focus:ring-offset-2 focus:outline-none dark:text-[#cacaca] dark:hover:bg-[#13131d]"
           >
             <Info className="size-4" aria-hidden="true" />
           </button>
@@ -40,7 +40,7 @@ export function InfoTooltip({
         <TooltipContent
           side={side}
           align={align}
-          className="max-w-55 text-sm font-medium bg-le-purple text-white"
+          className="bg-le-purple max-w-55 text-sm font-medium text-white"
         >
           {message}
         </TooltipContent>

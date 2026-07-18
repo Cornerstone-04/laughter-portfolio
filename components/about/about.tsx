@@ -43,27 +43,33 @@ export const AboutEphraim = ({ content }: Props) => {
   return (
     <section
       id="about-laughter"
-      className="w-full p-6 sm:p-8 md:p-16 flex flex-col items-center justify-center self-stretch dark:bg-[#15151E]"
+      className="flex w-full flex-col items-center justify-center self-stretch p-6 sm:p-8 md:p-16 dark:bg-[#15151E]"
     >
-      <div className="flex flex-col gap-16 w-full max-w-[1072px] justify-center items-center mx-auto">
+      <div className="mx-auto flex w-full max-w-268 flex-col items-center justify-center gap-16">
         {/* Details (unchanged) */}
-        <div id="details" className="flex flex-col items-start self-stretch gap-8">
-          <div className="w-full flex flex-col md:flex-row items-center gap-4 md:gap-6 justify-between">
-            <h1 className="text-[#2A2936] dark:text-white text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight md:leading-normal tracking-[-1.44px]">
+        <div
+          id="details"
+          className="flex flex-col items-start gap-8 self-stretch"
+        >
+          <div className="flex w-full flex-col items-center justify-between gap-4 md:flex-row md:gap-6">
+            <h1 className="text-3xl leading-tight font-semibold tracking-[-1.44px] text-[#2A2936] sm:text-4xl md:text-5xl md:leading-normal dark:text-white">
               {content?.headline ?? "About Laughter"}
             </h1>
             <Button
               asChild
               variant="primary"
-              className="h-12 sm:h-14 w-full sm:w-fit px-6 sm:px-8 py-3 sm:py-4 text-base flex items-center justify-center font-medium"
+              className="flex h-12 w-full items-center justify-center px-6 py-3 text-base font-medium sm:h-14 sm:w-fit sm:px-8 sm:py-4"
             >
-              <Link href="#contact-me" className="flex items-center justify-center gap-2.5">
+              <Link
+                href="#contact-me"
+                className="flex items-center justify-center gap-2.5"
+              >
                 Let&apos;s Colab! <ArrowRight />
               </Link>
             </Button>
           </div>
           <div>
-            <p className="text-[#454545] dark:text-[#cacaca] text-base sm:text-lg md:text-2xl font-medium leading-relaxed md:leading-normal tracking-[-0.48px] self-stretch ">
+            <p className="self-stretch text-base leading-relaxed font-medium tracking-[-0.48px] text-[#454545] sm:text-lg md:text-2xl md:leading-normal dark:text-[#cacaca]">
               {content?.body ??
                 "Hi there! I'm Laughter Ephraim, an AMVCA-nominated film editor with a passion to create stories. With 6 years in the film industry, I have developed a love for bringing stories to life with precision and creativity. I believe in the power of storytelling and its ability to connect, inspire and entertain. It's more than just editing. It's about conveying a message that matters."}
             </p>
@@ -77,8 +83,12 @@ export const AboutEphraim = ({ content }: Props) => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.25 }}
-            transition={prefersReduced ? { duration: 0 } : { duration: 0.5, ease: "easeOut" }}
-            className="relative rounded-2xl overflow-hidden min-h-[260px] sm:min-h-[320px] lg:hidden mb-4"
+            transition={
+              prefersReduced
+                ? { duration: 0 }
+                : { duration: 0.5, ease: "easeOut" }
+            }
+            className="relative mb-4 min-h-65 overflow-hidden rounded-2xl sm:min-h-80 lg:hidden"
           >
             <Image
               src={headshot}
@@ -96,28 +106,43 @@ export const AboutEphraim = ({ content }: Props) => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.25 }}
-            className="w-full grid grid-cols-1 lg:grid-cols-2 gap-4"
+            className="grid w-full grid-cols-1 gap-4 lg:grid-cols-2"
           >
             {/* LEFT COLUMN (cards 1–3) */}
-            <div className="order-2 lg:order-1 grid grid-cols-1 gap-4 lg:grid-rows-3">
-              {focusCards.slice(0, 3).map(({ id, title, description, color }) => (
-                <motion.div
-                  key={id}
-                  variants={gridItem}
-                  transition={prefersReduced ? { duration: 0 } : { duration: 0.45, ease: "easeOut" }}
-                >
-                  <AboutCard id={id} title={title} description={description} color={color} />
-                </motion.div>
-              ))}
+            <div className="order-2 grid grid-cols-1 gap-4 lg:order-1 lg:grid-rows-3">
+              {focusCards
+                .slice(0, 3)
+                .map(({ id, title, description, color }) => (
+                  <motion.div
+                    key={id}
+                    variants={gridItem}
+                    transition={
+                      prefersReduced
+                        ? { duration: 0 }
+                        : { duration: 0.45, ease: "easeOut" }
+                    }
+                  >
+                    <AboutCard
+                      id={id}
+                      title={title}
+                      description={description}
+                      color={color}
+                    />
+                  </motion.div>
+                ))}
             </div>
 
             {/* RIGHT COLUMN (desktop image + card 4) */}
-            <div className="order-3 lg:order-2 grid grid-cols-1 gap-4 lg:grid-rows-3">
+            <div className="order-3 grid grid-cols-1 gap-4 lg:order-2 lg:grid-rows-3">
               {/* Desktop image */}
               <motion.div
                 variants={gridItem}
-                transition={prefersReduced ? { duration: 0 } : { duration: 0.45, ease: "easeOut" }}
-                className="relative rounded-2xl overflow-hidden row-span-1 lg:row-span-2 min-h-[260px] sm:min-h-[320px] hidden lg:block"
+                transition={
+                  prefersReduced
+                    ? { duration: 0 }
+                    : { duration: 0.45, ease: "easeOut" }
+                }
+                className="relative row-span-1 hidden min-h-65 overflow-hidden rounded-2xl sm:min-h-80 lg:row-span-2 lg:block"
               >
                 <Image
                   src="/images/laughter-headshot.jpg"
@@ -132,7 +157,11 @@ export const AboutEphraim = ({ content }: Props) => {
               {/* Card 4 */}
               <motion.div
                 variants={gridItem}
-                transition={prefersReduced ? { duration: 0 } : { duration: 0.45, ease: "easeOut" }}
+                transition={
+                  prefersReduced
+                    ? { duration: 0 }
+                    : { duration: 0.45, ease: "easeOut" }
+                }
               >
                 <AboutCard
                   id={focusCards[3]?.id ?? 4}

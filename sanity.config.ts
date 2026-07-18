@@ -11,6 +11,9 @@ export default defineConfig({
   title: "Laughter Portfolio",
   projectId,
   dataset,
-  plugins: [structureTool({ structure }), visionTool({ defaultApiVersion: apiVersion })],
+  plugins: [
+    structureTool({ structure }),
+    visionTool({ defaultApiVersion: apiVersion }),
+  ],
   schema,
 });

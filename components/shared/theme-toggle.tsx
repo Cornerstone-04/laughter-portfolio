@@ -30,13 +30,13 @@ export function ThemeToggle() {
     >
       {mounted ? (
         dark ? (
-          <Sun className="size-[18px]" />
+          <Sun className="size-4.5" />
         ) : (
-          <Moon className="size-[18px]" />
+          <Moon className="size-4.5" />
         )
       ) : (
         // SSR-safe placeholder to preserve button size & layout
-        <span className="block w-[18px] h-[18px]" aria-hidden />
+        <span className="block w-4.5 h-4.5" aria-hidden />
       )}
     </Button>
   );

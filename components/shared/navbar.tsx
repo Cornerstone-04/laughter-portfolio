@@ -52,7 +52,7 @@ export function Navbar() {
 
   return (
     // max-w-7xl mx-auto
-    <nav className="w-full px-4 sm:px-8 lg:px-[120px] sticky top-0 z-50">
+    <nav className="w-full px-4 sm:px-8 lg:px-30 sticky top-0 z-50">
       <div className="w-full py-4">
         <div className="flex justify-between items-center px-3 py-2 bg-white dark:bg-[#1d1d1d] rounded-[41px]">
           {/* Left: Logo + Theme toggle */}
@@ -60,7 +60,7 @@ export function Navbar() {
             <ThemeToggle />
             <Link
               href="/"
-              className="font-semibold text-base sm:text-lg leading-none dark:text-le-smoke -tracking-[0.02em]"
+              className="font-semibold text-base sm:text-lg leading-none dark:text-le-smoke tracking-[-0.02em]"
               // optional: treat clicking logo as "Home"
               onClick={() => setActiveFromHref("/#home")}
             >

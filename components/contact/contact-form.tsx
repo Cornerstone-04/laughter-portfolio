@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const ContactForm = ({ heading = "Contact Me", intro }: Props) => {
-  const { onSubmit, sending } = useContactForm<HTMLFormElement>({
+  const { onSubmit, sending, status, message } = useContactForm<HTMLFormElement>({
     clearAfterMs: 4000,
   });
 
@@ -51,6 +51,20 @@ export const ContactForm = ({ heading = "Contact Me", intro }: Props) => {
           className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal tracking-[-0.48px] placeholder:text-[#61616B] h-40 bg-[#E0DFEC]! resize-none"
           required
         />
+        {message && (
+          <p
+            className={[
+              "rounded-4xl px-4 py-3 text-sm font-medium leading-normal tracking-[-0.42px]",
+              status === "success"
+                ? "bg-white/15 text-white"
+                : "bg-[#FF4318]/20 text-white",
+            ].join(" ")}
+            role={status === "error" ? "alert" : "status"}
+            aria-live="polite"
+          >
+            {message}
+          </p>
+        )}
         <Button
           type="submit"
           variant="secondary"

@@ -1,16 +1,29 @@
 "use client";
 
-import { useCallback, useState } from "react";
-import { toast } from "sonner";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type Options = {
   clearAfterMs?: number;
 };
 
+type FormStatus = "idle" | "success" | "error";
+
 export function useContactForm<T extends HTMLFormElement = HTMLFormElement>({
   clearAfterMs = 4000,
 }: Options = {}) {
   const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [message, setMessage] = useState("");
+  const clearStatusTimerRef = useRef<number | null>(null);
+
+  const clearStatusTimer = useCallback(() => {
+    if (clearStatusTimerRef.current) {
+      window.clearTimeout(clearStatusTimerRef.current);
+      clearStatusTimerRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => clearStatusTimer, [clearStatusTimer]);
 
   const onSubmit = useCallback(
     async (e: React.SyntheticEvent<T>) => {
@@ -20,6 +33,9 @@ export function useContactForm<T extends HTMLFormElement = HTMLFormElement>({
       const formData = new FormData(form);
 
       try {
+        clearStatusTimer();
+        setStatus("idle");
+        setMessage("");
         setSending(true);
 
         const response = await fetch("/api/contact", {
@@ -40,13 +56,19 @@ export function useContactForm<T extends HTMLFormElement = HTMLFormElement>({
           throw new Error(result?.error ?? "Failed to send message.");
         }
 
-        toast.success("Message sent successfully!");
-        window.setTimeout(() => {
-          form.reset();
+        form.reset();
+        setStatus("success");
+        setMessage("Message sent successfully. Laughter will get back to you soon.");
+
+        clearStatusTimerRef.current = window.setTimeout(() => {
+          setStatus("idle");
+          setMessage("");
+          clearStatusTimerRef.current = null;
         }, clearAfterMs);
       } catch (error) {
         console.error(error);
-        toast.error(
+        setStatus("error");
+        setMessage(
           error instanceof Error
             ? error.message
             : "Failed to send. Please try again."
@@ -55,8 +77,8 @@ export function useContactForm<T extends HTMLFormElement = HTMLFormElement>({
         setSending(false);
       }
     },
-    [clearAfterMs]
+    [clearAfterMs, clearStatusTimer]
   );
 
-  return { onSubmit, sending };
+  return { onSubmit, sending, status, message };
 }

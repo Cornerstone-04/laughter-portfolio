@@ -1,9 +1,11 @@
+import { UserIcon } from "@sanity/icons";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const aboutPage = defineType({
   name: "aboutPage",
   title: "About Page",
   type: "document",
+  icon: UserIcon,
   fields: [
     defineField({
       name: "headline",
@@ -24,6 +26,7 @@ export const aboutPage = defineType({
       title: "Headshot",
       type: "image",
       options: { hotspot: true },
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "focusCards",
@@ -58,7 +61,8 @@ export const aboutPage = defineType({
           },
         }),
       ],
-      validation: (rule) => rule.min(1).max(4),
+      validation: (rule) =>
+        rule.length(4).warning("The current about layout is designed for exactly 4 cards."),
     }),
     defineField({
       name: "tools",
@@ -74,7 +78,7 @@ export const aboutPage = defineType({
               name: "iconPath",
               title: "Existing icon path",
               type: "string",
-              description: "Use this for existing SVGs in /public, e.g. /icons/avid.svg.",
+              description: "Advanced: use only for existing SVGs in /public, e.g. /icons/avid.svg.",
             }),
           ],
           preview: { select: { title: "label", media: "icon" } },
@@ -95,7 +99,7 @@ export const aboutPage = defineType({
               name: "logoPath",
               title: "Existing logo path",
               type: "string",
-              description: "Use this for existing SVGs in /public, e.g. /icons/netflix.svg.",
+              description: "Advanced: use only for existing SVGs in /public, e.g. /icons/netflix.svg.",
             }),
           ],
           preview: { select: { title: "label", media: "logo" } },

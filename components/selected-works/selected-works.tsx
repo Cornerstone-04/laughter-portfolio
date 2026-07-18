@@ -70,7 +70,7 @@ export function SelectedWorks({ works: cmsWorks }: Props) {
             const isSeries = idx === 0 || idx === 3 || idx === 4;
             return (
               <WorkCard
-                key={`${item.title}-${idx}`}
+                key={item._id ?? `${item.title}-${item.production}-${idx}`}
                 item={item}
                 onOpen={handleOpen}
                 large={isSeries}

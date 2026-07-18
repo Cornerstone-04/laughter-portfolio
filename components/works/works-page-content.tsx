@@ -16,9 +16,6 @@ import type { WorkContent } from "@/sanity/lib/portfolio-data";
 import { domAnimation, LazyMotion } from "motion/react";
 import { useMemo, useState } from "react";
 
-const MIN_YEAR = 2020;
-const MAX_YEAR = 2025;
-
 type WorkWithYear = WorkItem & { year: string | number };
 
 type Props = {
@@ -54,9 +51,12 @@ export function WorksPageContent({ works }: Props) {
     });
   }, [data, yearFilter]);
 
-  const yearOptions = Array.from(
-    { length: MAX_YEAR - MIN_YEAR + 1 },
-    (_, i) => MAX_YEAR - i
+  const yearOptions = useMemo(
+    () =>
+      Array.from(
+        new Set(data.map((item) => getYear(item.year)).filter((year): year is number => year !== null))
+      ).sort((a, b) => b - a),
+    [data]
   );
 
   return (
@@ -130,7 +130,7 @@ export function WorksPageContent({ works }: Props) {
             <section className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
               {filtered.map((item, idx) => (
                 <WorkCard
-                  key={`${item.title}-${idx}`}
+                  key={item._id ?? `${item.title}-${item.production}-${idx}`}
                   item={item}
                   onOpen={(it) => {
                     setCurrent(it);

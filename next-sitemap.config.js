@@ -39,7 +39,7 @@ module.exports = {
   },
 
   // Additional paths (for hash-based sections)
-  additionalPaths: async (config) => {
+  additionalPaths: async () => {
     const result = [];
 
     // Add homepage sections with hash anchors

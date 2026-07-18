@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 
-type Options<T extends HTMLFormElement> = {
+type Options = {
   clearAfterMs?: number;
   serviceId?: string;
   templateId?: string;
@@ -17,7 +17,7 @@ export function useEmailJSForm<T extends HTMLFormElement = HTMLFormElement>({
   serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "",
   templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "",
   publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "",
-}: Options<T> = {}) {
+}: Options = {}) {
   const [sending, setSending] = useState(false);
   const initializedRef = useRef(false);
 
@@ -30,7 +30,7 @@ export function useEmailJSForm<T extends HTMLFormElement = HTMLFormElement>({
 
   const onSubmit = useCallback(
     async (e: React.FormEvent<T>) => {
-      e.preventDefault(); // ✅ stop native form navigation
+      e.preventDefault();
 
       const form = e.currentTarget;
       if (!form) return;

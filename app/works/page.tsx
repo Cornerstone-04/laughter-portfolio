@@ -1,6 +1,8 @@
 import { WorksPageContent } from "@/components/works/works-page-content";
 import { getAllWorks } from "@/sanity/lib/portfolio-data";
 
+export const revalidate = 60;
+
 export default async function WorksPage() {
   const works = await getAllWorks();
 

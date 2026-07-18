@@ -82,6 +82,7 @@ export type TestimonialItem = {
 };
 
 export type WorkContent = {
+  _id?: string;
   title: string;
   type: string;
   production: string;
@@ -125,13 +126,28 @@ const fallbackSettings: SiteSettings = {
   socials: socialsFallback,
 };
 
-async function fetchOrNull<T>(query: string): Promise<T | null> {
+type FetchOptions = {
+  label: string;
+  timeoutMs?: number;
+};
+
+async function sanityFetch<T>(
+  query: string,
+  { label, timeoutMs = 4000 }: FetchOptions
+): Promise<T | null> {
   const controller = new AbortController();
-  const timeout = windowlessTimeout(() => controller.abort(), 4000);
+  const timeout = windowlessTimeout(() => controller.abort(), timeoutMs);
 
   try {
     return await client.fetch<T>(query, {}, { signal: controller.signal });
-  } catch {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown Sanity fetch error";
+
+    if (process.env.NODE_ENV === "production") {
+      throw new Error(`Failed to fetch Sanity content for ${label}: ${message}`);
+    }
+
+    console.warn(`Using local fallback for ${label}: ${message}`);
     return null;
   } finally {
     clearTimeout(timeout);
@@ -143,7 +159,9 @@ function windowlessTimeout(callback: () => void, ms: number) {
 }
 
 export async function getHomePageContent(): Promise<HomePageContent> {
-  const data = await fetchOrNull<Partial<HomePageContent>>(HOME_PAGE_QUERY);
+  const data = await sanityFetch<Partial<HomePageContent>>(HOME_PAGE_QUERY, {
+    label: "homePage",
+  });
   return {
     ...fallbackHome,
     ...data,
@@ -152,7 +170,9 @@ export async function getHomePageContent(): Promise<HomePageContent> {
 }
 
 export async function getAboutPageContent(): Promise<AboutPageContent> {
-  const data = await fetchOrNull<Partial<AboutPageContent>>(ABOUT_PAGE_QUERY);
+  const data = await sanityFetch<Partial<AboutPageContent>>(ABOUT_PAGE_QUERY, {
+    label: "aboutPage",
+  });
   return {
     ...fallbackAbout,
     ...data,
@@ -165,7 +185,9 @@ export async function getAboutPageContent(): Promise<AboutPageContent> {
 }
 
 export async function getSiteSettings(): Promise<SiteSettings> {
-  const data = await fetchOrNull<Partial<SiteSettings>>(SITE_SETTINGS_QUERY);
+  const data = await sanityFetch<Partial<SiteSettings>>(SITE_SETTINGS_QUERY, {
+    label: "siteSettings",
+  });
   return {
     ...fallbackSettings,
     ...data,
@@ -174,17 +196,23 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 }
 
 export async function getFeaturedWorks(): Promise<WorkContent[]> {
-  const data = await fetchOrNull<WorkContent[]>(FEATURED_WORKS_QUERY);
+  const data = await sanityFetch<WorkContent[]>(FEATURED_WORKS_QUERY, {
+    label: "featuredWorks",
+  });
   return data?.length ? data : (selectedWorksFallback as WorkContent[]);
 }
 
 export async function getAllWorks(): Promise<WorkContent[]> {
-  const data = await fetchOrNull<WorkContent[]>(ALL_WORKS_QUERY);
+  const data = await sanityFetch<WorkContent[]>(ALL_WORKS_QUERY, {
+    label: "allWorks",
+  });
   return data?.length ? data : (worksFallback as WorkContent[]);
 }
 
 export async function getTestimonials(): Promise<TestimonialItem[]> {
-  const data = await fetchOrNull<TestimonialItem[]>(TESTIMONIALS_QUERY);
+  const data = await sanityFetch<TestimonialItem[]>(TESTIMONIALS_QUERY, {
+    label: "testimonials",
+  });
   return data?.length
     ? data.map((item, index) => ({ ...item, id: item.id ?? index + 1 }))
     : (testimonialsFallback as TestimonialItem[]);

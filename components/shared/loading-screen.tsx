@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import "@/styles/loading-screen.css";
+import "../../styles/loading-screen.css";
 
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,12 +22,8 @@ export default function LoadingScreen() {
           transition={{ duration: 0.6, ease: "easeInOut" }}
         >
           <div className="loader-container">
-            <h1 className="loader-name text-le-purple">
-              Laughter Ephraim
-            </h1>
-            <p className="loader-subtitle text-le-purple">
-              Post-Production Editor
-            </p>
+            <h1 className="loader-name text-le-purple">Laughter Ephraim</h1>
+            <p className="loader-subtitle text-le-purple">Film Editor</p>
             <div className="loader-progress">
               <div className="loader-progress-fill"></div>
             </div>

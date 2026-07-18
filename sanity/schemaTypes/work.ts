@@ -1,61 +1,169 @@
+import { DocumentVideoIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
+
+const workTypes = [
+  "TV Series",
+  "Feature Film",
+  "Short Film",
+  "Web Series",
+  "Documentary",
+  "Documentary Series",
+  "Reality TV",
+  "Commercial",
+  "Music Video",
+];
 
 export const work = defineType({
   name: "work",
   title: "Work",
   type: "document",
+  icon: DocumentVideoIcon,
+  fieldsets: [
+    { name: "basics", title: "Basic info", options: { columns: 2 } },
+    { name: "story", title: "Story and role" },
+    { name: "media", title: "Media" },
+    { name: "preview", title: "Preview link" },
+    {
+      name: "homepage",
+      title: "Homepage featuring",
+      options: { collapsible: true, collapsed: false },
+    },
+    {
+      name: "legacy",
+      title: "Legacy import fields",
+      options: { collapsible: true, collapsed: true },
+    },
+  ],
   fields: [
-    defineField({ name: "title", type: "string", validation: (rule) => rule.required() }),
+    defineField({
+      name: "title",
+      type: "string",
+      fieldset: "basics",
+      validation: (rule) => rule.required(),
+    }),
     defineField({
       name: "type",
       type: "string",
-      options: {
-        list: [
-          "TV Series",
-          "Feature Film",
-          "Short Film",
-          "Web Series",
-          "Documentary",
-          "Documentary Series",
-          "Reality TV",
-          "Commercial",
-        ],
-      },
+      fieldset: "basics",
+      options: { list: workTypes },
       validation: (rule) => rule.required(),
     }),
-    defineField({ name: "production", type: "string", validation: (rule) => rule.required() }),
-    defineField({ name: "year", type: "number", validation: (rule) => rule.required().min(1900) }),
-    defineField({ name: "role", type: "string" }),
-    defineField({ name: "synopsis", type: "text", rows: 5 }),
+    defineField({
+      name: "production",
+      type: "string",
+      fieldset: "basics",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "year",
+      type: "number",
+      fieldset: "basics",
+      validation: (rule) =>
+        rule.required().integer().min(1900).max(new Date().getFullYear() + 2),
+    }),
+    defineField({
+      name: "role",
+      type: "string",
+      fieldset: "story",
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "synopsis",
+      type: "text",
+      rows: 5,
+      fieldset: "story",
+      validation: (rule) =>
+        rule.required().max(600).warning("Shorter synopses fit the modal better."),
+    }),
     defineField({
       name: "image",
       title: "Poster / image",
       type: "image",
+      fieldset: "media",
       options: { hotspot: true },
-    }),
-    defineField({
-      name: "imagePath",
-      title: "Existing image path",
-      type: "string",
-      description: "Use this only before uploading the image to Sanity, e.g. /works/ENAKHE.jpg.",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "link",
       title: "Preview link",
       type: "url",
-      validation: (rule) => rule.uri({ scheme: ["http", "https"] }),
+      fieldset: "preview",
+      validation: (rule) =>
+        rule.required().uri({ scheme: ["http", "https"] }),
     }),
-    defineField({ name: "previewTitle", title: "Preview link label", type: "string" }),
-    defineField({ name: "featured", title: "Show on homepage", type: "boolean", initialValue: false }),
+    defineField({
+      name: "previewTitle",
+      title: "Preview link label",
+      type: "string",
+      fieldset: "preview",
+      initialValue: "Open link",
+    }),
+    defineField({
+      name: "featured",
+      title: "Show on homepage",
+      type: "boolean",
+      fieldset: "homepage",
+      description:
+        "Only works with this enabled appear in the homepage Selected Works section.",
+      initialValue: false,
+    }),
     defineField({
       name: "featuredOrder",
       title: "Homepage order",
       type: "number",
+      fieldset: "homepage",
+      description: "Lower numbers appear first. Use 1, 2, 3...",
       hidden: ({ document }) => !document?.featured,
+      validation: (rule) =>
+        rule.custom(async (value, context) => {
+          const document = context.document;
+
+          if (!document?.featured) return true;
+          if (value === undefined || value === null) {
+            return "Set a homepage order when showing this work on the homepage.";
+          }
+          if (!Number.isInteger(value) || value < 1) {
+            return "Use a whole number greater than 0.";
+          }
+
+          const id = String(document._id ?? "").replace(/^drafts\./, "");
+          const client = context.getClient({ apiVersion: "2026-06-26" });
+          const count = await client.fetch<number>(
+            `count(*[
+              _type == "work" &&
+              featured == true &&
+              featuredOrder == $featuredOrder &&
+              !(_id in [$id, "drafts." + $id])
+            ])`,
+            { featuredOrder: value, id }
+          );
+
+          return count === 0 || "Another featured work already uses this order.";
+        }),
+    }),
+    defineField({
+      name: "imagePath",
+      title: "Legacy image path",
+      type: "string",
+      fieldset: "legacy",
+      description:
+        "Read-only import artifact from the old JSON setup. Use Poster / image instead.",
+      deprecated: {
+        reason: "Images should now be uploaded to Sanity using Poster / image.",
+      },
+      readOnly: true,
+      hidden: ({ value }) => value === undefined,
     }),
   ],
   orderings: [
-    { title: "Year, newest first", name: "yearDesc", by: [{ field: "year", direction: "desc" }] },
+    {
+      title: "Year, newest first",
+      name: "yearDesc",
+      by: [
+        { field: "year", direction: "desc" },
+        { field: "title", direction: "asc" },
+      ],
+    },
     {
       title: "Featured order",
       name: "featuredOrder",
@@ -63,6 +171,16 @@ export const work = defineType({
     },
   ],
   preview: {
-    select: { title: "title", subtitle: "production", media: "image" },
+    select: {
+      title: "title",
+      production: "production",
+      year: "year",
+      media: "image",
+    },
+    prepare: ({ title, production, year, media }) => ({
+      title,
+      subtitle: [production, year].filter(Boolean).join(" - "),
+      media,
+    }),
   },
 });

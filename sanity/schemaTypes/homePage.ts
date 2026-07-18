@@ -1,9 +1,11 @@
+import { HomeIcon } from "@sanity/icons";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const homePage = defineType({
   name: "homePage",
   title: "Home Page",
   type: "document",
+  icon: HomeIcon,
   fields: [
     defineField({
       name: "heroHeadline",
@@ -57,17 +59,21 @@ export const homePage = defineType({
           },
         }),
       ],
+      validation: (rule) =>
+        rule.min(1).warning("Add at least one image for the hero gallery."),
     }),
     defineField({
       name: "quoteText",
       title: "Favorite quote",
       type: "text",
       rows: 4,
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "quoteAttribution",
       title: "Quote attribution",
       type: "string",
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {

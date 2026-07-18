@@ -21,7 +21,26 @@ export const structure: StructureResolver = (S) =>
       singletonItem(S, "aboutPage", "About Page"),
       singletonItem(S, "siteSettings", "Site Settings"),
       S.divider(),
+      S.listItem()
+        .title("Featured Works")
+        .schemaType("work")
+        .child(
+          S.documentList()
+            .title("Featured Works")
+            .schemaType("work")
+            .filter('_type == "work" && featured == true')
+            .defaultOrdering([{ field: "featuredOrder", direction: "asc" }])
+        ),
+      S.listItem()
+        .title("All Works")
+        .schemaType("work")
+        .child(
+          S.documentTypeList("work")
+            .title("All Works")
+            .defaultOrdering([{ field: "year", direction: "desc" }])
+        ),
       ...S.documentTypeListItems().filter(
         (item) => !singletonTypes.has(item.getId() ?? "")
+          && item.getId() !== "work"
       ),
     ]);

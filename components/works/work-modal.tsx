@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { ExternalLink, X } from "lucide-react";
 
 export type WorkItem = {
+  _id?: string;
   title: string;
   type: string;
   production: string;

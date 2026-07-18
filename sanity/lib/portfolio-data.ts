@@ -132,9 +132,19 @@ type FetchOptions = {
   timeoutMs?: number;
 };
 
+const getSanityFetchTimeout = () => {
+  const configuredTimeout = Number(process.env.SANITY_FETCH_TIMEOUT_MS);
+
+  if (Number.isFinite(configuredTimeout) && configuredTimeout > 0) {
+    return configuredTimeout;
+  }
+
+  return 15000;
+};
+
 async function sanityFetch<T>(
   query: string,
-  { label, timeoutMs = 4000 }: FetchOptions
+  { label, timeoutMs = getSanityFetchTimeout() }: FetchOptions
 ): Promise<T | null> {
   const controller = new AbortController();
   const timeout = windowlessTimeout(() => controller.abort(), timeoutMs);

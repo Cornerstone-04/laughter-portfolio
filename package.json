@@ -14,7 +14,6 @@
     "sanity:seed": "sanity exec scripts/seed-sanity.ts --with-user-token"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@hookform/resolvers": "^5.4.0",
     "@radix-ui/react-dialog": "^1.1.17",
     "@radix-ui/react-label": "^2.1.10",

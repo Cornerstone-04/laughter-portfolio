@@ -1,8 +1,9 @@
-import { useEmailJSForm } from "@/hooks/useEmailJSForm";
+"use client";
+
+import { useContactForm } from "@/hooks/useContactForm";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { useRef } from "react";
 
 type Props = {
   heading?: string;
@@ -10,46 +11,44 @@ type Props = {
 };
 
 export const ContactForm = ({ heading = "Contact Me", intro }: Props) => {
-  const { onSubmit, sending } = useEmailJSForm<HTMLFormElement>({
+  const { onSubmit, sending } = useContactForm<HTMLFormElement>({
     clearAfterMs: 4000,
   });
 
-  const formRef = useRef<HTMLFormElement | null>(null);
-
   return (
     <form
-      ref={formRef}
       onSubmit={onSubmit}
       noValidate
-      className="w-full p-4 md:p-8 flex flex-col gap-32 md:gap-0 rounded-2xl h-auto md:h-[680px] justify-between items-center col-span-2 bg-le-purple"
+      className="w-full p-4 md:p-8 flex flex-col gap-32 md:gap-0 rounded-2xl h-auto md:h-170 justify-between items-center col-span-2 bg-le-purple"
     >
       <div className="flex items-start gap-1.5 flex-col">
-        <p className="text-3xl md:text-[32px] font-semibold -tracking-[0.96px] leading-normal text-white">
+        <p className="text-3xl md:text-[32px] font-semibold tracking-[-0.96px] leading-normal text-white">
           {heading}
         </p>
-        <span className="text-base md:text-lg font-medium -tracking-[0.54px] leading-normal text-[#E9E9E9]">
-          {intro ?? "Get an inside look at the edits, stories, and moments that shaped each frame."}
+        <span className="text-base md:text-lg font-medium tracking-[-0.54px] leading-normal text-[#E9E9E9]">
+          {intro ??
+            "Get an inside look at the edits, stories, and moments that shaped each frame."}
         </span>
       </div>
       <div className="w-full grid gap-1.5">
         <Input
           type="text"
-          name="from_name"
+          name="name"
           placeholder="Name"
-          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal -tracking-[0.48px] placeholder:text-[#61616B] bg-[#E0DFEC]!"
+          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal tracking-[-0.48px] placeholder:text-[#61616B] bg-[#E0DFEC]!"
           required
         />
         <Input
           type="email"
-          name="reply_to"
-          placeholder="Email Adresss"
-          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal -tracking-[0.48px] placeholder:text-[#61616B] bg-[#E0DFEC]!"
+          name="email"
+          placeholder="Email Address"
+          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal tracking-[-0.48px] placeholder:text-[#61616B] bg-[#E0DFEC]!"
           required
         />
         <Textarea
           name="message"
           placeholder="Your Message"
-          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal -tracking-[0.48px] placeholder:text-[#61616B] h-40 bg-[#E0DFEC]! resize-none"
+          className="px-4 py-3 rounded-4xl text-sm md:text-base leading-normal tracking-[-0.48px] placeholder:text-[#61616B] h-40 bg-[#E0DFEC]! resize-none"
           required
         />
         <Button

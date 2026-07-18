@@ -6,6 +6,7 @@
     "year": "2022",
     "imageUrl": "/works/far-from-home.jpeg",
     "link": "https://www.youtube.com/watch?v=JtrA9DELEhA",
+    "featuredLayout": "wide",
     "synopsis": "A troubled teenager finds himself in the world of luxury after winning a prestigious scholarship to an exclusive school. As he attempts to navigate this new world, the teenagers continues to aim for the top.",
     "role": "Assistant Editor"
   },
@@ -16,6 +17,7 @@
     "year": "2022",
     "imageUrl": "/works/obaram.jpg",
     "link": "https://youtu.be/P7oG85bv4Zw?si=YSHM3qyibG71quNZ",
+    "featuredLayout": "standard",
     "synopsis": "Confronted by her past, promising musician Oluchi tries to reconcile with the daughter she abandoned. However, some things cannot be forgiven.",
     "role": "Editor"
   },
@@ -26,6 +28,7 @@
     "year": "2024",
     "imageUrl": "/works/AFMAG @20.jpg",
     "link": "https://vimeo.com/1035826636?share=copy#t=0",
+    "featuredLayout": "standard",
     "synopsis": "A documentary series celebrating Africa Magic at 20",
     "role": "Editor"
   },
@@ -36,6 +39,7 @@
     "year": "2024",
     "imageUrl": "/works/POAH.jpg",
     "link": "https://vimeo.com/1032822683?share=copy#t=0",
+    "featuredLayout": "wide",
     "synopsis": "Zara, the naive protege and winner of a reality show, makes her debut in the most powerful boardroom in the country. She must save the company from decline while resisting the dark influence of the enigmatic tyrant pulling her strings.",
     "role": "Editor, Trailer Editor"
   },
@@ -46,6 +50,7 @@
     "year": "2025",
     "imageUrl": "/works/to-kill-a-monkey.JPG",
     "link": "https://www.youtube.com/watch?v=aLxhNzvqToY&pp=ygUQdG8ga2lsbCBhIG1vbmtleQ%3D%3D",
+    "featuredLayout": "wide",
     "synopsis": "Efemini, a down-on-his-luck everyman whose life changes forever after a chance meeting with an old friend. Forced by circumstance to suppress his principles and explore a life of cybercrime, he finds himself making ever-greater moral compromises to stay ahead of the consequences of his new choices... and broadening tastes.",
     "role": "Offline Editor"
   },
@@ -56,6 +61,7 @@
     "year": "2025",
     "imageUrl": "/works/BAMBAM IG RECTANGLE.png",
     "link": "https://vimeo.com/1116263035?fl=pl&fe=sh",
+    "featuredLayout": "standard",
     "synopsis": "Babatunde is a gifted but awkward teenager caught in the middle of his parents’ divorce. When he falls for a girl in his class, he turns to Bam Bam, his AI friend who seems to have all the answers. but the closer he gets to love, the more he must choose between connection and the doubts that have always controlled him.",
     "role": "Editor"
   }

@@ -89,6 +89,7 @@ export type WorkContent = {
   year: string | number;
   imageUrl: string;
   link: string;
+  featuredLayout?: "auto" | "standard" | "wide" | null;
   role?: string;
   previewTitle?: string;
   synopsis?: string;

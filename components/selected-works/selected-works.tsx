@@ -14,6 +14,17 @@ type Props = {
   works?: WorkContent[];
 };
 
+const isWideByGridRhythm = (index: number) => {
+  const slot = index % 4;
+  return slot === 0 || slot === 3;
+};
+
+const shouldRenderWide = (item: WorkItem, index: number) => {
+  if (item.featuredLayout === "wide") return true;
+  if (item.featuredLayout === "standard") return false;
+  return isWideByGridRhythm(index);
+};
+
 export function SelectedWorks({ works: cmsWorks }: Props) {
   const data = useMemo(() => (cmsWorks?.length ? cmsWorks : works) as WorkItem[], [cmsWorks]);
   const [open, setOpen] = useState(false);
@@ -66,17 +77,14 @@ export function SelectedWorks({ works: cmsWorks }: Props) {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 md:gap-x-8 gap-y-10 md:gap-y-16">
-          {data.map((item, idx) => {
-            const isSeries = idx === 0 || idx === 3 || idx === 4;
-            return (
-              <WorkCard
-                key={item._id ?? `${item.title}-${item.production}-${idx}`}
-                item={item}
-                onOpen={handleOpen}
-                large={isSeries}
-              />
-            );
-          })}
+          {data.map((item, idx) => (
+            <WorkCard
+              key={item._id ?? `${item.title}-${item.production}-${idx}`}
+              item={item}
+              onOpen={handleOpen}
+              large={shouldRenderWide(item, idx)}
+            />
+          ))}
         </div>
 
         {/* CTA Buttons */}

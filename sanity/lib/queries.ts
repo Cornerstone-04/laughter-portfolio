@@ -72,7 +72,8 @@ export const FEATURED_WORKS_QUERY = `
     synopsis,
     "imageUrl": coalesce(image.asset->url, imagePath),
     link,
-    previewTitle
+    previewTitle,
+    featuredLayout
   }
 `;
 

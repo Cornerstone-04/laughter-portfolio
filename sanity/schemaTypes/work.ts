@@ -142,6 +142,29 @@ export const work = defineType({
         }),
     }),
     defineField({
+      name: "featuredLayout",
+      title: "Homepage card prominence",
+      type: "string",
+      fieldset: "homepage",
+      description:
+        "Controls whether this work appears as a standard or wider card in Selected Works. Auto follows the homepage grid rhythm.",
+      initialValue: "auto",
+      hidden: ({ document }) => !document?.featured,
+      options: {
+        layout: "radio",
+        list: [
+          { title: "Auto", value: "auto" },
+          { title: "Standard", value: "standard" },
+          { title: "Wide", value: "wide" },
+        ],
+      },
+      validation: (rule) =>
+        rule.custom((value, context) => {
+          if (!context.document?.featured) return true;
+          return value ? true : "Choose a homepage card prominence.";
+        }),
+    }),
+    defineField({
       name: "imagePath",
       title: "Legacy image path",
       type: "string",

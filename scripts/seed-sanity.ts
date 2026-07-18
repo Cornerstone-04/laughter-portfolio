@@ -9,6 +9,7 @@ type Work = {
   year: string | number;
   imageUrl: string;
   link: string;
+  featuredLayout?: "auto" | "standard" | "wide";
   role?: string;
   previewTitle?: string;
   synopsis?: string;
@@ -185,6 +186,9 @@ async function seedWorks() {
   const featuredOrderByTitle = new Map(
     selectedWorks.map((work, index) => [work.title, index + 1])
   );
+  const featuredLayoutByTitle = new Map(
+    selectedWorks.map((work) => [work.title, work.featuredLayout ?? "standard"])
+  );
 
   for (const work of works) {
     const featuredOrder = featuredOrderByTitle.get(work.title);
@@ -206,6 +210,9 @@ async function seedWorks() {
         previewTitle: work.previewTitle,
         featured: Boolean(featuredOrder),
         featuredOrder,
+        featuredLayout: featuredOrder
+          ? featuredLayoutByTitle.get(work.title) ?? "standard"
+          : undefined,
       }
     );
   }

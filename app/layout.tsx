@@ -3,16 +3,15 @@ import "./globals.css";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { ThemeProvider } from "@/lib/theme-provider";
-import { Toaster } from "sonner";
 import LoadingScreen from "@/components/shared/loading-screen";
 
 export const metadata: Metadata = {
-  title: "Laughter Ephraim – Post Production Editor",
+  title: "Laughter Ephraim – Film Editor",
   description:
     "Laughter Ephraim is an AMVCA-nominated film editor with 6+ years of experience crafting stories with precision and creativity. Passionate about the power of storytelling to connect, inspire, and entertain.",
   metadataBase: new URL("https://laughterephraim.com/"),
   openGraph: {
-    title: "Laughter Ephraim – Post Production Editor",
+    title: "Laughter Ephraim – Film Editor",
     description:
       "Laughter Ephraim is an AMVCA-nominated film editor with 6+ years of experience crafting stories with precision and creativity. Passionate about the power of storytelling to connect, inspire, and entertain.",
     url: "https://laughterephraim.com/",
@@ -24,7 +23,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     creator: "@film__addict",
-    title: "Laughter Ephraim – Post Production Editor",
+    title: "Laughter Ephraim – Film Editor",
     description:
       "Laughter Ephraim is an AMVCA-nominated film editor with 6+ years of experience crafting stories with precision and creativity. Passionate about the power of storytelling to connect, inspire, and entertain.",
     images: ["/android-chrome-512x512.png"],
@@ -68,7 +67,6 @@ export default function RootLayout({
           <Navbar />
           <main className="min-h-dvh">{children}</main>
           <Footer />
-          <Toaster richColors position="top-right" />
         </ThemeProvider>
       </body>
     </html>

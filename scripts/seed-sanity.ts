@@ -177,7 +177,7 @@ async function seedSiteSettings() {
       label: social.label,
       link: social.link,
     })),
-    seoTitle: "Laughter Ephraim - Post Production Editor",
+    seoTitle: "Laughter Ephraim - Film Editor",
     seoDescription:
       "Laughter Ephraim is an AMVCA-nominated film editor with 6+ years of experience crafting stories with precision and creativity.",
     ogImage: await imageField("/android-chrome-512x512.png"),

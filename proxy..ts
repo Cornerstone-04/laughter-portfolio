@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+// Next.js 16+ convention exports 'proxy' instead of 'middleware'
+export function proxy(request: NextRequest) {
   const host = request.headers.get("host");
 
   if (host === "laughterephraim.vercel.app") {

@@ -48,7 +48,7 @@ export function SelectedWorks({ works: cmsWorks }: Props) {
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <header className="flex flex-col gap-2 md:gap-1">
             <div className="flex items-baseline justify-between gap-2.5 sm:justify-start">
-              <h1 className="text-le-text text-3xl leading-normal font-semibold tracking-[-1.44px] sm:text-4xl md:text-5xl dark:text-white">
+              <h1 className="text-3xl leading-normal font-semibold tracking-[-1.44px] text-le-text sm:text-4xl md:text-5xl dark:text-white">
                 Selected Works
               </h1>
               <p className="flex items-center justify-center px-2 pt-1 pb-1.5">

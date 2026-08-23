@@ -47,7 +47,7 @@ export function WorkModal({ open, onOpenChange, item }: Props) {
       <DialogTitle className="hidden">Portfolio Details</DialogTitle>
       <DialogContent
         showCloseButton={false}
-        className="font-inter-tight max-h-[90vh] w-full overflow-auto rounded-2xl border-0 bg-white p-6 sm:max-w-none! md:w-300! md:p-16 dark:bg-[#131316]"
+        className="max-h-[90vh] w-full overflow-auto rounded-2xl border-0 bg-white p-6 font-inter-tight sm:max-w-none! md:w-300! md:p-16 dark:bg-[#131316]"
       >
         {/* Close */}
         <div className="sticky top-4 z-20 flex justify-end md:top-12">

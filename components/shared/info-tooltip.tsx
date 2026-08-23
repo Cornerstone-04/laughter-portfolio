@@ -40,7 +40,7 @@ export function InfoTooltip({
         <TooltipContent
           side={side}
           align={align}
-          className="bg-le-purple max-w-55 text-sm font-medium text-white"
+          className="max-w-55 bg-le-purple text-sm font-medium text-white"
         >
           {message}
         </TooltipContent>

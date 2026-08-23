@@ -59,7 +59,15 @@ const targets = args.filter((arg) => arg !== "--fix");
 const root = process.cwd();
 const scriptPath = fileURLToPath(import.meta.url);
 
-const defaultTargets = ["app", "components", "hooks", "lib", "sanity", "scripts", "styles"];
+const defaultTargets = [
+  "app",
+  "components",
+  "hooks",
+  "lib",
+  "sanity",
+  "scripts",
+  "styles",
+];
 
 async function pathExists(filePath) {
   try {
@@ -80,7 +88,9 @@ async function collectFiles(targetPath) {
   const stats = await fs.stat(absolutePath);
 
   if (stats.isFile()) {
-    return checkedExtensions.has(path.extname(absolutePath)) ? [absolutePath] : [];
+    return checkedExtensions.has(path.extname(absolutePath))
+      ? [absolutePath]
+      : [];
   }
 
   if (!stats.isDirectory()) {
@@ -94,7 +104,7 @@ async function collectFiles(targetPath) {
 
   const entries = await fs.readdir(absolutePath, { withFileTypes: true });
   const nestedFiles = await Promise.all(
-    entries.map((entry) => collectFiles(path.join(absolutePath, entry.name)))
+    entries.map((entry) => collectFiles(path.join(absolutePath, entry.name))),
   );
 
   return nestedFiles.flat();
@@ -134,15 +144,17 @@ function findIssues(source, filePath) {
 function applyFixes(source) {
   return replacements.reduce(
     (updatedSource, [from, to]) => updatedSource.split(from).join(to),
-    source
+    source,
   );
 }
 
 const files = [
   ...new Set(
     (
-      await Promise.all((targets.length ? targets : defaultTargets).map(collectFiles))
-    ).flat()
+      await Promise.all(
+        (targets.length ? targets : defaultTargets).map(collectFiles),
+      )
+    ).flat(),
   ),
 ];
 
@@ -178,7 +190,7 @@ if (shouldFix) {
   console.log(
     `Fixed ${allIssues.length} non-canonical Tailwind class${
       allIssues.length === 1 ? "" : "es"
-    } in ${changedFileCount} file${changedFileCount === 1 ? "" : "s"}.`
+    } in ${changedFileCount} file${changedFileCount === 1 ? "" : "s"}.`,
   );
   process.exit(0);
 }
@@ -188,7 +200,7 @@ console.error("Found non-canonical Tailwind classes:");
 for (const issue of allIssues) {
   console.error(
     `${path.relative(root, issue.filePath)}:${issue.line}:${issue.column} ` +
-      `${issue.from} -> ${issue.to}`
+      `${issue.from} -> ${issue.to}`,
   );
 }
 

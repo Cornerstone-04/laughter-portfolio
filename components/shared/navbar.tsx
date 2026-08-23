@@ -95,7 +95,7 @@ export function Navbar() {
             <ThemeToggle />
             <Link
               href="/"
-              className="dark:text-le-smoke text-base leading-none font-semibold tracking-[-0.02em] sm:text-lg"
+              className="text-base leading-none font-semibold tracking-[-0.02em] sm:text-lg dark:text-le-smoke"
               // optional: treat clicking logo as "Home"
               onClick={() => setActiveFromHref("/#home")}
             >
@@ -113,8 +113,8 @@ export function Navbar() {
                   onClick={() => setActiveFromHref(href)}
                   className={`transition-all ease-linear ${
                     activeHash === href.replace("/", "")
-                      ? "text-le-purple font-semibold"
-                      : "hover:text-le-purple text-[#534C57] dark:text-[#cacaca]"
+                      ? "font-semibold text-le-purple"
+                      : "text-[#534C57] hover:text-le-purple dark:text-[#cacaca]"
                   }`}
                   aria-current={
                     activeHash === href.replace("/", "") ? "page" : undefined
@@ -142,7 +142,7 @@ export function Navbar() {
           <div className="md:hidden">
             <button
               type="button"
-              className="focus-visible:ring-le-purple rounded-full p-2 focus:outline-none focus-visible:ring-2"
+              className="rounded-full p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-le-purple"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-navigation"
@@ -230,8 +230,8 @@ export function Navbar() {
                         onClick={() => handleMobileLinkClick(href)}
                         className={`block rounded-2xl px-4 py-3 text-base font-medium transition-all ease-linear ${
                           activeHash === href.replace("/", "")
-                            ? "text-le-purple bg-[#F0EEFF] dark:bg-white/10 dark:text-white"
-                            : "hover:text-le-purple text-[#534C57] hover:bg-[#F0EEFF] dark:text-[#cacaca] dark:hover:bg-white/10 dark:hover:text-white"
+                            ? "bg-[#F0EEFF] text-le-purple dark:bg-white/10 dark:text-white"
+                            : "text-[#534C57] hover:bg-[#F0EEFF] hover:text-le-purple dark:text-[#cacaca] dark:hover:bg-white/10 dark:hover:text-white"
                         }`}
                         aria-current={
                           activeHash === href.replace("/", "")

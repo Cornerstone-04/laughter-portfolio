@@ -20,7 +20,7 @@ export const ContactForm = ({ heading = "Contact Me", intro }: Props) => {
     <form
       onSubmit={onSubmit}
       noValidate
-      className="bg-le-purple col-span-2 flex h-auto w-full flex-col items-center justify-between gap-32 rounded-2xl p-4 md:h-170 md:gap-0 md:p-8"
+      className="col-span-2 flex h-auto w-full flex-col items-center justify-between gap-32 rounded-2xl bg-le-purple p-4 md:h-170 md:gap-0 md:p-8"
     >
       <div className="flex flex-col items-start gap-1.5">
         <p className="text-3xl leading-normal font-semibold tracking-[-0.96px] text-white md:text-[32px]">

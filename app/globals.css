@@ -135,7 +135,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-le-smoke text-le-text font-inter-tight dark:bg-[#131316];
+    @apply bg-le-smoke font-inter-tight text-le-text dark:bg-[#131316];
   }
 }
 

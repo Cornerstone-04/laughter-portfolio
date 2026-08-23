@@ -14,7 +14,7 @@ export function ThemeToggle() {
   return (
     <Button
       size="icon"
-      className="bg-le-smoke text-le-text hover:bg-le-smoke/80 size-11 rounded-full"
+      className="size-11 rounded-full bg-le-smoke text-le-text hover:bg-le-smoke/80"
       onClick={toggle}
       // Avoid hydration warnings on attributes that change after mount
       suppressHydrationWarning

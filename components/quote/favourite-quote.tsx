@@ -12,7 +12,7 @@ export function FavouriteQuote({
   return (
     <section className="relative isolate flex min-h-screen w-full items-center justify-center overflow-hidden p-4 text-center md:p-6">
       {/* AURORA BACKGROUND */}
-      <div className="blur-in animate-gradient pointer-events-none absolute inset-0 -z-10 bg-[#F9F9FB] bg-size-[200%_200%] dark:bg-[#15151d]">
+      <div className="animate-gradient pointer-events-none absolute inset-0 -z-10 bg-[#F9F9FB] bg-size-[200%_200%] blur-in dark:bg-[#15151d]">
         <Image
           src="/images/gradient.png"
           alt=""

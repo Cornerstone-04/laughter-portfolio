@@ -78,6 +78,7 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 w-full px-4 sm:px-8 lg:px-30">
       <div className="w-full py-4">
         <motion.div
+          ref={mobileMenuRef}
           layout
           transition={{
             duration: shouldReduceMotion ? 0 : 0.5,
@@ -138,7 +139,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile menu */}
-          <div className="relative md:hidden" ref={mobileMenuRef}>
+          <div className="md:hidden">
             <button
               type="button"
               className="focus-visible:ring-le-purple rounded-full p-2 focus:outline-none focus-visible:ring-2"
@@ -172,97 +173,103 @@ export function Navbar() {
                 </motion.span>
               </AnimatePresence>
             </button>
+          </div>
 
-            <AnimatePresence>
-              {mobileMenuOpen && (
-                <motion.div
-                  id="mobile-navigation"
-                  initial={
-                    shouldReduceMotion
-                      ? { opacity: 1 }
-                      : { opacity: 0, y: -8, scale: 0.96 }
-                  }
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={
-                    shouldReduceMotion
-                      ? { opacity: 0 }
-                      : { opacity: 0, y: -6, scale: 0.98 }
-                  }
-                  transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute top-[calc(100%+12px)] right-0 w-[min(17rem,calc(100vw-2rem))] origin-top-right overflow-hidden rounded-2xl border border-black/5 bg-white p-2 shadow-xl shadow-black/10 dark:border-white/10 dark:bg-[#1d1d1d] dark:shadow-black/30"
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                id="mobile-navigation"
+                initial={
+                  shouldReduceMotion
+                    ? { opacity: 1 }
+                    : {
+                        opacity: 0,
+                        transform: "translateY(-10px) scaleY(0.96)",
+                      }
+                }
+                animate={{ opacity: 1, transform: "translateY(0) scaleY(1)" }}
+                exit={
+                  shouldReduceMotion
+                    ? { opacity: 0 }
+                    : {
+                        opacity: 0,
+                        transform: "translateY(-8px) scaleY(0.98)",
+                      }
+                }
+                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute top-[calc(100%+10px)] left-0 w-full origin-top overflow-hidden rounded-[28px] border border-black/5 bg-white p-2 shadow-xl shadow-black/10 md:hidden dark:border-white/10 dark:bg-[#1d1d1d] dark:shadow-black/30"
+              >
+                <motion.nav
+                  className="flex flex-col gap-1"
+                  aria-label="Mobile navigation"
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  variants={{
+                    hidden: {},
+                    visible: {
+                      transition: shouldReduceMotion
+                        ? { staggerChildren: 0 }
+                        : { staggerChildren: 0.045, delayChildren: 0.05 },
+                    },
+                  }}
                 >
-                  <motion.nav
-                    className="flex flex-col gap-1"
-                    aria-label="Mobile navigation"
-                    initial="hidden"
-                    animate="visible"
-                    exit="hidden"
-                    variants={{
-                      hidden: {},
-                      visible: {
-                        transition: shouldReduceMotion
-                          ? { staggerChildren: 0 }
-                          : { staggerChildren: 0.045, delayChildren: 0.04 },
-                      },
-                    }}
-                  >
-                    {navItems.map(({ href, label }) => (
-                      <motion.div
-                        key={href}
-                        variants={{
-                          hidden: shouldReduceMotion
-                            ? { opacity: 1 }
-                            : { opacity: 0, y: -4 },
-                          visible: { opacity: 1, y: 0 },
-                        }}
-                        transition={{ duration: 0.18, ease: "easeOut" }}
-                      >
-                        <Link
-                          href={href}
-                          onClick={() => handleMobileLinkClick(href)}
-                          className={`block rounded-xl px-4 py-3 text-base font-medium transition-all ease-linear ${
-                            activeHash === href.replace("/", "")
-                              ? "text-le-purple bg-[#F0EEFF] dark:bg-white/10 dark:text-white"
-                              : "hover:text-le-purple text-[#534C57] hover:bg-[#F0EEFF] dark:text-[#cacaca] dark:hover:bg-white/10 dark:hover:text-white"
-                          }`}
-                          aria-current={
-                            activeHash === href.replace("/", "")
-                              ? "page"
-                              : undefined
-                          }
-                        >
-                          {label}
-                        </Link>
-                      </motion.div>
-                    ))}
-
+                  {navItems.map(({ href, label }) => (
                     <motion.div
+                      key={href}
                       variants={{
                         hidden: shouldReduceMotion
                           ? { opacity: 1 }
-                          : { opacity: 0, y: -4 },
+                          : { opacity: 0, y: -5 },
                         visible: { opacity: 1, y: 0 },
                       }}
                       transition={{ duration: 0.18, ease: "easeOut" }}
                     >
-                      <Button
-                        asChild
-                        variant="primary"
-                        className="mt-1 h-12 w-full justify-center font-medium"
+                      <Link
+                        href={href}
+                        onClick={() => handleMobileLinkClick(href)}
+                        className={`block rounded-2xl px-4 py-3 text-base font-medium transition-all ease-linear ${
+                          activeHash === href.replace("/", "")
+                            ? "text-le-purple bg-[#F0EEFF] dark:bg-white/10 dark:text-white"
+                            : "hover:text-le-purple text-[#534C57] hover:bg-[#F0EEFF] dark:text-[#cacaca] dark:hover:bg-white/10 dark:hover:text-white"
+                        }`}
+                        aria-current={
+                          activeHash === href.replace("/", "")
+                            ? "page"
+                            : undefined
+                        }
                       >
-                        <Link
-                          href="/#contact-me"
-                          onClick={() => handleMobileLinkClick("/#contact-me")}
-                        >
-                          Contact Me
-                        </Link>
-                      </Button>
+                        {label}
+                      </Link>
                     </motion.div>
-                  </motion.nav>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+                  ))}
+
+                  <motion.div
+                    variants={{
+                      hidden: shouldReduceMotion
+                        ? { opacity: 1 }
+                        : { opacity: 0, y: -5 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                  >
+                    <Button
+                      asChild
+                      variant="primary"
+                      className="mt-1 h-12 w-full justify-center font-medium"
+                    >
+                      <Link
+                        href="/#contact-me"
+                        onClick={() => handleMobileLinkClick("/#contact-me")}
+                      >
+                        Contact Me
+                      </Link>
+                    </Button>
+                  </motion.div>
+                </motion.nav>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </div>
     </nav>

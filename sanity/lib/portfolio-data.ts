@@ -124,7 +124,7 @@ const fallbackAbout: AboutPageContent = {
 const fallbackSettings: SiteSettings = {
   contactHeading: "Contact Me",
   contactIntro:
-    "Get an inside look at the edits, stories, and moments that shaped each frame.",
+    "Share a brief, timeline, or collaboration idea and I'll get back to you.",
   bookingLink: "https://calendar.app.google/f4RhQrpnjYe2uv6y5",
   socials: socialsFallback,
 };

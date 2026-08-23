@@ -45,10 +45,14 @@ export function WorkCard({ item, onOpen, large, priorityImage }: Props) {
           priority={!!priorityImage}
         />
 
+        <div className="absolute right-3 bottom-3 flex items-center gap-1.5 rounded-full bg-white/92 px-3 py-2 text-xs font-semibold tracking-[-0.24px] text-[#2A2936] shadow-lg shadow-black/15 backdrop-blur-md transition group-hover:bg-white sm:text-sm">
+          View details <ArrowRight className="size-3.5" />
+        </div>
+
         {/* Overlay */}
         <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <span className="flex items-center justify-center gap-2.5 font-bold text-white shadow-md transition group-hover:text-white/80">
-            View More <ArrowRight className="inline size-4" />
+            View details <ArrowRight className="inline size-4" />
           </span>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { ThemeProvider } from "@/lib/theme-provider";
 import LoadingScreen from "@/components/shared/loading-screen";
+import { ScrollToTop } from "@/components/shared/scroll-to-top";
 
 export const metadata: Metadata = {
   title: "Laughter Ephraim – Film Editor",
@@ -67,6 +68,7 @@ export default function RootLayout({
           <Navbar />
           <main className="min-h-dvh">{children}</main>
           <Footer />
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>

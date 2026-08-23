@@ -58,8 +58,8 @@ export function SelectedWorks({ works: cmsWorks }: Props) {
               </p>
             </div>
             <p className="w-full max-w-lg text-base leading-normal font-medium tracking-[-0.54px] text-[#454545] md:text-lg dark:text-[#cacaca]">
-              Get an inside look at the edits, stories, and moments that shaped
-              each frame. Dive into my world of cinematic storytelling.
+              A curated selection of edits across film, television, documentary,
+              and commercial work.
               <InfoTooltip
                 className="ml-2 dark:text-[#cacaca]"
                 message="Click any card to view details and preview."

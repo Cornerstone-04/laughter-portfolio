@@ -134,8 +134,8 @@ export const Testimonials = ({ items }: Props) => {
             What my clients have to say
           </h2>
           <p className="w-full max-w-119.25 text-center text-base leading-normal tracking-[-0.54px] text-[#454545] md:text-lg dark:text-[#CACACA]">
-            Get an inside look at the edits, stories, and moments that shaped
-            each frame. Dive into my world of cinematic storytelling.
+            Notes from collaborators who trusted Laughter with the pace, rhythm,
+            and emotional shape of their stories.
           </p>
         </div>
 

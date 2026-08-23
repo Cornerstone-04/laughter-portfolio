@@ -2,6 +2,7 @@
 
 import { Section } from "@/components/shared/animated-section";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -27,6 +28,8 @@ export function WorksPageContent({ works }: Props) {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState<WorkWithYear | null>(null);
   const [yearFilter, setYearFilter] = useState<string>("all");
+  const [typeFilter, setTypeFilter] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const getYear = (val: string | number): number | null => {
     const s = String(val);
@@ -38,10 +41,25 @@ export function WorksPageContent({ works }: Props) {
 
   const filtered = useMemo(() => {
     let list: WorkWithYear[] = data;
+    const normalizedSearch = searchQuery.trim().toLowerCase();
 
     if (yearFilter !== "all") {
       const target = Number(yearFilter);
-      list = data.filter((item) => getYear(item.year) === target);
+      list = list.filter((item) => getYear(item.year) === target);
+    }
+
+    if (typeFilter !== "all") {
+      list = list.filter((item) => item.type === typeFilter);
+    }
+
+    if (normalizedSearch) {
+      list = list.filter((item) =>
+        [item.title, item.production, item.type, item.role]
+          .filter(Boolean)
+          .some((value) =>
+            String(value).toLowerCase().includes(normalizedSearch),
+          ),
+      );
     }
 
     return [...list].sort((a, b) => {
@@ -49,7 +67,7 @@ export function WorksPageContent({ works }: Props) {
       const yb = getYear(b.year) ?? 0;
       return yb - ya;
     });
-  }, [data, yearFilter]);
+  }, [data, searchQuery, typeFilter, yearFilter]);
 
   const yearOptions = useMemo(
     () =>
@@ -63,6 +81,20 @@ export function WorksPageContent({ works }: Props) {
     [data],
   );
 
+  const typeOptions = useMemo(
+    () => Array.from(new Set(data.map((item) => item.type))).sort(),
+    [data],
+  );
+
+  const hasActiveFilters =
+    yearFilter !== "all" || typeFilter !== "all" || searchQuery.trim() !== "";
+
+  const clearFilters = () => {
+    setYearFilter("all");
+    setTypeFilter("all");
+    setSearchQuery("");
+  };
+
   return (
     <LazyMotion features={domAnimation}>
       <Section amount={0}>
@@ -74,23 +106,67 @@ export function WorksPageContent({ works }: Props) {
                   All Works
                 </h1>
                 <p className="mt-2 text-[#454545] dark:text-[#cacaca]">
-                  Explore the full catalog. Click any card to view details and
-                  preview.
+                  Explore the full catalog by title, production, format, or
+                  year.
                 </p>
                 <p className="mt-1 text-xs text-[#706F7C]">
                   Showing{" "}
                   <span className="font-semibold">{filtered.length}</span> of{" "}
                   <span className="font-semibold">{data.length}</span> items
                   {yearFilter !== "all" ? ` (Year: ${yearFilter})` : ""}
+                  {typeFilter !== "all" ? ` (Type: ${typeFilter})` : ""}
                 </p>
               </header>
 
               <form
                 className="w-full md:w-auto"
                 onSubmit={(e) => e.preventDefault()}
-                aria-label="Filter by year"
+                aria-label="Filter works"
               >
-                <div className="flex items-end justify-between gap-3 rounded-2xl border border-[#eee] bg-white p-3 shadow-sm dark:border-[#2a2a2a] dark:bg-[#1d1d1d]">
+                <div className="grid gap-3 rounded-2xl border border-[#eee] bg-white p-3 shadow-sm sm:grid-cols-2 md:flex md:items-end dark:border-[#2a2a2a] dark:bg-[#1d1d1d]">
+                  <div className="flex flex-col sm:col-span-2 md:col-span-1">
+                    <Label
+                      htmlFor="work-search"
+                      className="mb-1 text-xs font-medium text-[#706F7C]"
+                    >
+                      Search
+                    </Label>
+                    <Input
+                      id="work-search"
+                      value={searchQuery}
+                      onChange={(event) => setSearchQuery(event.target.value)}
+                      placeholder="Title or production"
+                      className="h-10 w-full rounded-xl border border-[#e5e5ea] bg-white px-3 text-[#2A2936] md:w-56 dark:border-[#303036] dark:bg-[#141416] dark:text-[#e6e6e6]"
+                    />
+                  </div>
+
+                  <div className="flex flex-col">
+                    <Label
+                      htmlFor="type-filter"
+                      className="mb-1 text-xs font-medium text-[#706F7C]"
+                    >
+                      Filter by type
+                    </Label>
+
+                    <Select value={typeFilter} onValueChange={setTypeFilter}>
+                      <SelectTrigger
+                        id="type-filter"
+                        className="h-10 w-full rounded-xl border border-[#e5e5ea] bg-white px-3 text-[#2A2936] md:w-44 dark:border-[#303036] dark:bg-[#141416] dark:text-[#e6e6e6]"
+                        aria-label="Filter by type"
+                      >
+                        <SelectValue placeholder="All types" />
+                      </SelectTrigger>
+                      <SelectContent align="end" className="min-w-40">
+                        <SelectItem value="all">All types</SelectItem>
+                        {typeOptions.map((type) => (
+                          <SelectItem key={type} value={type}>
+                            {type}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
                   <div className="flex flex-col">
                     <Label
                       htmlFor="year-filter"
@@ -102,7 +178,7 @@ export function WorksPageContent({ works }: Props) {
                     <Select value={yearFilter} onValueChange={setYearFilter}>
                       <SelectTrigger
                         id="year-filter"
-                        className="h-10 w-48 rounded-xl border border-[#e5e5ea] bg-white px-3 text-[#2A2936] dark:border-[#303036] dark:bg-[#141416] dark:text-[#e6e6e6]"
+                        className="h-10 w-full rounded-xl border border-[#e5e5ea] bg-white px-3 text-[#2A2936] md:w-36 dark:border-[#303036] dark:bg-[#141416] dark:text-[#e6e6e6]"
                         aria-label="Filter by year"
                       >
                         <SelectValue placeholder="All years" />
@@ -118,11 +194,11 @@ export function WorksPageContent({ works }: Props) {
                     </Select>
                   </div>
 
-                  {yearFilter !== "all" && (
+                  {hasActiveFilters && (
                     <Button
-                      onClick={() => setYearFilter("all")}
+                      onClick={clearFilters}
                       className="h-10 rounded-xl border border-[#e5e5ea] bg-[#2A2936] px-3 text-sm font-medium text-white transition hover:bg-[#2A2936]/80 dark:border-[#303036] dark:bg-white dark:text-[#131316] dark:hover:bg-white/80"
-                      aria-label="Clear year filter"
+                      aria-label="Clear filters"
                     >
                       Clear
                     </Button>
@@ -145,7 +221,7 @@ export function WorksPageContent({ works }: Props) {
               ))}
               {filtered.length === 0 && (
                 <div className="col-span-full text-[#706F7C]">
-                  No works found for {yearFilter}.
+                  No works found for the current filters.
                 </div>
               )}
             </section>

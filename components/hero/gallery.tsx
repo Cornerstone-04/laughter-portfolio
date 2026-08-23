@@ -23,8 +23,8 @@ export const Gallery = ({ items }: Props) => {
   // Track direction for animations
   const dirRef = useRef<1 | -1>(1);
 
-  const INTERVAL_MS = 2500;
-  const RESUME_AFTER_MS = 3000;
+  const INTERVAL_MS = 5000;
+  const RESUME_AFTER_MS = 5000;
 
   const total = galleryItems.length;
 
@@ -162,7 +162,7 @@ export const Gallery = ({ items }: Props) => {
       {/* Header */}
       <div className="flex flex-col items-center gap-3.5 text-center">
         <h2 className="text-lg leading-normal font-semibold tracking-[-0.36px] text-[#706F7C]">
-          My Gallery
+          Inside the edit
         </h2>
 
         {/* Pagination Dots */}

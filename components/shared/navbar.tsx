@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from "react";
 export function Navbar() {
   const { activeHash, setActiveFromHref } = useActiveSection("#home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [compact, setCompact] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const shouldReduceMotion = useReducedMotion();
 
@@ -20,6 +21,28 @@ export function Navbar() {
     { href: "/#about-laughter", label: "About" },
     { href: "/#testimonials", label: "Testimonials" },
   ];
+
+  useEffect(() => {
+    const updateNavbar = () => {
+      const openingSection = document.querySelector<HTMLElement>(
+        "main section:first-of-type, main header:first-of-type",
+      );
+      const boundary = openingSection
+        ? openingSection.offsetTop + openingSection.offsetHeight * 0.5
+        : 160;
+
+      setCompact(window.scrollY > Math.max(96, boundary));
+    };
+
+    updateNavbar();
+    window.addEventListener("scroll", updateNavbar, { passive: true });
+    window.addEventListener("resize", updateNavbar);
+
+    return () => {
+      window.removeEventListener("scroll", updateNavbar);
+      window.removeEventListener("resize", updateNavbar);
+    };
+  }, []);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -54,7 +77,18 @@ export function Navbar() {
     // max-w-7xl mx-auto
     <nav className="sticky top-0 z-50 w-full px-4 sm:px-8 lg:px-30">
       <div className="w-full py-4">
-        <div className="flex items-center justify-between rounded-[41px] bg-white px-3 py-2 dark:bg-[#1d1d1d]">
+        <motion.div
+          layout
+          transition={{
+            duration: shouldReduceMotion ? 0 : 0.5,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className={`mx-auto flex items-center justify-between rounded-[41px] px-3 shadow-lg shadow-black/8 backdrop-blur-xl transition-[max-width,height,background-color,color,padding,box-shadow] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] dark:bg-[#1d1d1d] dark:shadow-black/30 ${
+            compact
+              ? "h-14 max-w-260 bg-white/92 shadow-xl shadow-black/12 dark:bg-[#1d1d1d]/92 dark:shadow-black/40"
+              : "h-16 max-w-335 bg-white dark:bg-[#1d1d1d]"
+          } ${shouldReduceMotion ? "transition-none" : ""}`}
+        >
           {/* Left: Logo + Theme toggle */}
           <div className="flex items-center gap-2">
             <ThemeToggle />
@@ -229,7 +263,7 @@ export function Navbar() {
               )}
             </AnimatePresence>
           </div>
-        </div>
+        </motion.div>
       </div>
     </nav>
   );

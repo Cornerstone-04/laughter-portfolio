@@ -86,7 +86,7 @@ export function Navbar() {
           }}
           className={`mx-auto flex items-center justify-between rounded-[41px] px-3 shadow-lg shadow-black/8 backdrop-blur-xl transition-[max-width,height,background-color,color,padding,box-shadow] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] dark:bg-[#1d1d1d] dark:shadow-black/30 ${
             compact
-              ? "h-14 max-w-260 bg-white/92 shadow-xl shadow-black/12 dark:bg-[#1d1d1d]/92 dark:shadow-black/40"
+              ? "h-14 max-w-268 bg-white/92 shadow-xl shadow-black/12 dark:bg-[#1d1d1d]/92 dark:shadow-black/40"
               : "h-16 max-w-335 bg-white dark:bg-[#1d1d1d]"
           } ${shouldReduceMotion ? "transition-none" : ""}`}
         >

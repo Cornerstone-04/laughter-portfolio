@@ -6,7 +6,7 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="mt-10 self-stretch px-6 shadow-lg shadow-black/8 lg:px-20 dark:shadow-black/30">
-      <div className="relative mx-auto flex max-w-360 items-center justify-center overflow-hidden rounded-t-[2rem] px-6 py-10 shadow-[0_-24px_80px_rgba(42,41,54,0.12)] sm:rounded-t-[2.5rem] sm:py-16 md:h-160 dark:shadow-[0_-24px_80px_rgba(0,0,0,0.45)]">
+      <div className="relative mx-auto flex max-w-360 items-center justify-center overflow-hidden rounded-t-4xl px-6 py-10 shadow-[0_-24px_80px_rgba(42,41,54,0.12)] sm:rounded-t-[2.5rem] sm:py-16 md:h-160 dark:shadow-[0_-24px_80px_rgba(0,0,0,0.45)]">
         <div className="absolute inset-0 -z-10 dark:bg-[#131316]">
           <Image
             src="/images/mesh-gradient.png"
